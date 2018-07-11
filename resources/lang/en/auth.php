@@ -1,19 +1,56 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
+    'account_activated' => 'Your account has been activated.',
+    'account_activation' => 'Account Activation',
+    'account_already_activated' => 'Your account is already activated.',
+    'account_approval' => 'Account Approval',
+    'account_banned' => 'Your account is banned.',
+    'account_created' => 'You have registered successfully. Please check your email.',
+    'already_have_account?' => 'Already have an account?',
+    'auth_required' => 'Authentication required to perform this action.',
+    'authentication' => 'Authentication',
+    'back_to_login?' => 'Back to Login?',
+    'change_password' => 'Change Password',
+    'confirm' => 'Confirm',
+    'confirm_password' => 'Confirm Password',
+    'create_account?' => 'Don\'t have an account?',
+    'current_password' => 'Current Password',
+    'email' => 'Email',
+    'email_verification' => 'Email Verification',
     'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'first_name' => 'First Name',
+    'forgot_your_password?' => 'Forgot your Password?',
+    'guest_required' => 'You cannot access this page while you are logged in.',
+    'in_minute' => '(in minutes)',
+    'invalid_token' => 'This is not a valid activation token.',
+    'invalid_two_factor_code' => 'Invalid two factor code. Try again.',
+    'last_name' => 'Last Name',
+    'lock_screen' => 'Lock Screen',
+    'lock_screen_timeout' => 'Lock Screen Timeout',
+    'lock_screen_verified' => 'You are redirected to home page.',
+    'logged_in' => 'You are successfully logged in.',
+    'logged_out' => 'You are successfully logged out.',
+    'logging_in' => 'Logging in...',
+    'login' => 'Login',
+    'login_permission_disabled' => 'You cannot login because no login permission is assigned to you.',
+    'logout' => 'Logout',
+    'new_password' => 'New Password',
+    'new_password_confirmation' => 'Confirm New Password',
+    'not_activated' => 'There is something wrong with your account.',
+    'password' => 'Password',
+    'password_confirmation' => 'Confirm Password',
+    'pending_activation' => 'Your account hasn\'t been activated. Please check your email & activate account.',
+    'pending_approval' => 'Your account hasn\'t been approved. Please wait for administrator approval.',
+    'register' => 'Register',
+    'registration' => 'Registration',
+    'reset_here!' => 'Reset here!',
+    'reset_password' => 'Reset Password',
+    'reset_password_token_lifetime' => 'Reset Password Token Lifetime',
+    'session_expired' => 'Your session is expired. Please login again.',
+    'sign_in' => 'Sign In',
+    'sign_up' => 'Sign Up',
+    'two_factor_code' => 'Enter the emailed code',
+    'two_factor_security' => 'Two Factor Security',
+    'two_factor_security_verified' => 'Two factor security verified.',
 ];

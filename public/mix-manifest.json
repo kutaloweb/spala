@@ -1,0 +1,17 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/style.css": "/css/style.css",
+    "/css/colors/blue.css": "/css/colors/blue.css",
+    "/css/colors/blue-dark.css": "/css/colors/blue-dark.css",
+    "/css/colors/default.css": "/css/colors/default.css",
+    "/css/colors/default-dark.css": "/css/colors/default-dark.css",
+    "/css/colors/green.css": "/css/colors/green.css",
+    "/css/colors/green-dark.css": "/css/colors/green-dark.css",
+    "/css/colors/megna.css": "/css/colors/megna.css",
+    "/css/colors/megna-dark.css": "/css/colors/megna-dark.css",
+    "/css/colors/purple.css": "/css/colors/purple.css",
+    "/css/colors/purple-dark.css": "/css/colors/purple-dark.css",
+    "/css/colors/red.css": "/css/colors/red.css",
+    "/css/colors/red-dark.css": "/css/colors/red-dark.css",
+    "/js/plugin.js": "/js/plugin.js"
+}

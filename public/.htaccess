@@ -19,3 +19,10 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<ifModule mod_deflate.c>
+    <filesMatch "\.(js|css)$">
+    SetOutputFilter DEFLATE
+    </filesMatch>
+</ifModule>
+
