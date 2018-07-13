@@ -119,9 +119,9 @@ class LocaleRepository
      *
      * @return Locale
      */
-    public function firstOrNew($params)
+    public function firstOrCreate($params)
     {
-        $locale = $this->locale->firstOrNew($params);
+        $locale = $this->locale->firstOrCreate($params);
 
         return $locale;
     }

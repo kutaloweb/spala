@@ -6,7 +6,7 @@ return [
     'account_already_activated' => 'Аккаунт уже активирован.',
     'account_approval' => 'Подтверждение аккаунта администратором',
     'account_banned' => 'Ваш аккаунт забанен.',
-    'account_created' => 'Вы успешно зарегистрированы. Пожалуйста, проверьте Вашу почту.',
+    'account_created' => 'Вы успешно зарегистрированы.',
     'already_have_account?' => 'Уже есть аккаунт?',
     'auth_required' => 'У Вас недостаточно прав для этого действия.',
     'authentication' => 'Сессия',

@@ -111,7 +111,7 @@ class Install extends Command
      */
     protected function createLocals()
     {
-        $this->locale->firstOrNew(['locale' => 'en', 'name' => 'English']);
-        $this->locale->firstOrNew(['locale' => 'ru', 'name' => 'Russian']);
+        $this->locale->firstOrCreate(['locale' => 'en', 'name' => 'English']);
+        $this->locale->firstOrCreate(['locale' => 'ru', 'name' => 'Russian']);
     }
 }

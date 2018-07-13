@@ -155,12 +155,11 @@
                     token_lifetime: '',
                     reset_password_token_lifetime: '',
                     registration: 0,
-                    password_strength_meter: 0,
                     email_verification: 0,
                     account_approval: 0,
                     reset_password: 0,
                     two_factor_security: 0,
-                    lock_screen: 30,
+                    lock_screen: 0,
                     lock_screen_timeout: '',
                 }, false)
             }
@@ -183,7 +182,6 @@
             submit() {
                 this.configForm.config_type = 'authentication';
                 this.configForm.registration = (this.configForm.registration) ? 1 : 0;
-                this.configForm.password_strength_meter = (this.configForm.password_strength_meter) ? 1 : 0;
                 this.configForm.email_verification = (this.configForm.email_verification) ? 1 : 0;
                 this.configForm.account_approval = (this.configForm.account_approval) ? 1 : 0;
                 this.configForm.reset_password = (this.configForm.reset_password) ? 1 : 0;
