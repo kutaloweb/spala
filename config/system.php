@@ -15,7 +15,8 @@ return [
         "reset_password" => 1,
         "registration" => 1,
         "footer_credit" => "Copyright © 2018 Alexey Kutalo",
-        "multilingual" => 1
+        "multilingual" => 1,
+        "post" => 1,
     ],
     "default_role" => [
         "admin" => "admin",
@@ -24,18 +25,23 @@ return [
     ],
     "public_config" => [
         "color_theme",
+        "locale",
+        "timezone",
         "notification_position",
+        "page_length",
+        "company_name",
         "maintenance_mode",
-        "registration",
         "reset_password",
+        "registration",
+        "footer_credit",
         "two_factor_security",
         "https",
         "email_verification",
-        "footer_credit"
     ],
     "upload_path" => [
         "config" => "uploads/config",
-        "avatar" => "uploads/avatar"
+        "avatar" => "uploads/avatar",
+        "images" => "uploads/images",
     ],
     "pagination" => [
         "5",
@@ -52,8 +58,7 @@ return [
         "force-reset-user-password",
         "email-user",
         "change-status-user",
-        "access-message",
-        "access-todo",
+        "access-post",
         "enable-login"
     ],
     "color_themes" => [

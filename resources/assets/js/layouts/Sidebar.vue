@@ -27,6 +27,12 @@
                             <span class="hide-menu">{{ trans('user.user') }}</span>
                         </router-link>
                     </li>
+                    <li v-if="hasPermission('access-post')">
+                        <router-link to="/post" exact>
+                            <i class="far fa-share-square fa-fw"></i>
+                            <span class="hide-menu">{{ trans('post.posts') }}</span>
+                        </router-link>
+                    </li>
                     <li v-if="hasPermission('access-configuration')">
                         <router-link to="/activity-log" exact>
                             <i class="fas fa-bars fa-fw"></i>

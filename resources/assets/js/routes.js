@@ -164,6 +164,31 @@ let routes = [
                 component: require('./views/user/Password.vue'),
                 meta: {title: appName + ' | ' + i18n.user.user + ' - ' + i18n.user.password}
             },
+            {
+                path: '/post',
+                component: require('./views/post/Index.vue'),
+                meta: {title: appName + ' | ' + i18n.post.new}
+            },
+            {
+                path: '/post/new',
+                component: require('./views/post/Index.vue'),
+                meta: {title: appName + ' | ' + i18n.post.new}
+            },
+            {
+                path: '/post/published',
+                component: require('./views/post/Published.vue'),
+                meta: {title: appName + ' | ' + i18n.post.published_box}
+            },
+            {
+                path: '/post/draft',
+                component: require('./views/post/Draft.vue'),
+                meta: {title: appName + ' | ' + i18n.post.draft}
+            },
+            {
+                path: '/post/:slug/edit',
+                component: require('./views/post/Edit'),
+                meta: {title: appName + ' | ' + i18n.post.edit}
+            }
         ]
     },
     {

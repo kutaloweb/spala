@@ -33,6 +33,7 @@ return [
     'menu' => 'Меню',
     'name' => 'Название',
     'no' => 'Нет',
+    'no_file_uploaded' => 'Файл не загружен.',
     'no_result_found' => 'Ничего не найдено.',
     'order' => 'Упорядочить',
     'page_not_found_error' => '404',

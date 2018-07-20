@@ -34,6 +34,7 @@ return [
     'menu' => 'Menu',
     'name' => 'Name',
     'no' => 'No',
+    'no_file_uploaded' => 'No file uploaded.',
     'no_result_found' => 'No result found.',
     'order' => 'Order',
     'page_not_found_error' => '404',
