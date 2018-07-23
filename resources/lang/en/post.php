@@ -8,6 +8,7 @@ return [
     'delete_published' => 'Delete published post',
     'deleted' => ':type deleted.',
     'draft' => 'Draft',
+    'drafts' => 'Drafts',
     'drafted' => 'drafted.',
     'drafted_at' => 'Drafted at',
     'edit' => 'Edit',

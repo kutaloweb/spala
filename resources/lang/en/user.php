@@ -42,6 +42,7 @@ return [
     'status_pending_approval' => 'Pending',
     'update_profile' => 'Update Profile',
     'user' => 'User',
+    'users' => 'Users',
     'user_action_activate' => 'Activate',
     'user_action_approve' => 'Approve',
     'user_action_ban' => 'Ban',

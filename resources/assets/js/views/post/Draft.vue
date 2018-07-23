@@ -10,7 +10,7 @@
                     <li class="breadcrumb-item">
                         <router-link to="/post">{{ trans('post.posts') }}</router-link>
                     </li>
-                    <li class="breadcrumb-item active">{{ trans('post.draft') }}</li>
+                    <li class="breadcrumb-item active">{{ trans('post.drafts') }}</li>
                 </ol>
             </div>
         </div>
@@ -21,7 +21,7 @@
                         <div class="row">
                             <post-sidebar menu="draft" :statistics="statistics"></post-sidebar>
                             <div class="col-10 col-lg-10 col-md-10">
-                                <h4 class="card-title">{{ trans('post.draft') }}</h4>
+                                <h4 class="card-title">{{ trans('post.drafts') }}</h4>
                                 <h6 class="card-subtitle" v-if="posts">
                                     {{ trans('general.total_result_found',{'count': posts.total}) }}
                                 </h6>

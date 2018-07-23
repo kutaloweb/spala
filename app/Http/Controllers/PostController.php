@@ -75,7 +75,7 @@ class PostController extends Controller
         $this->activity->record([
             'module' => $this->module,
             'module_id' => $post->id,
-            'activity' => 'published'
+            'activity' => $request->is_draft ? 'drafted' : 'published'
         ]);
 
         return $this->success(['post' => trans('post.post_processed', ['action' => request('is_draft') ? trans('post.drafted') : trans('post.published')])]);
@@ -169,7 +169,8 @@ class PostController extends Controller
         $this->authorize('delete', $post);
 
         $this->activity->record([
-            'module' => 'draft',
+            'module' => 'post',
+            'sub_module' => $post->is_draft ? 'draft' : 'post',
             'module_id' => $post->id,
             'activity' => 'deleted'
         ]);

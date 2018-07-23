@@ -2,12 +2,12 @@
     <div>
         <div class="row page-titles">
             <div class="col-md-6 col-8 align-self-center">
-                <h3 class="text-themecolor m-b-0 m-t-0">{{ trans('user.user') }}</h3>
+                <h3 class="text-themecolor m-b-0 m-t-0">{{ trans('user.users') }}</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         <router-link to="/home">{{ trans('general.home') }}</router-link>
                     </li>
-                    <li class="breadcrumb-item active">{{ trans('user.user') }}</li>
+                    <li class="breadcrumb-item active">{{ trans('user.users') }}</li>
                 </ol>
             </div>
         </div>

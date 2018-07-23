@@ -10,7 +10,7 @@
             <router-link to="/post/draft" :class="[menu === 'draft' ? 'active' : '', 'list-group-item']">
                 <span class="hidden-sm-up"><i class="fas fa-edit"></i></span>
                 <span class="hidden-xs-down">
-                    {{ trans('post.draft') }}
+                    {{ trans('post.drafts') }}
                     <span v-if="statistics.draft">
                         ({{ statistics.draft }})
                     </span>

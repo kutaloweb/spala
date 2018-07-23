@@ -24,7 +24,7 @@
                     <li v-if="hasPermission('list-user')">
                         <router-link to="/user" exact>
                             <i class="fas fa-users fa-fw"></i>
-                            <span class="hide-menu">{{ trans('user.user') }}</span>
+                            <span class="hide-menu">{{ trans('user.users') }}</span>
                         </router-link>
                     </li>
                     <li v-if="hasPermission('access-post')">
