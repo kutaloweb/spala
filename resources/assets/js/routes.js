@@ -182,7 +182,7 @@ let routes = [
             {
                 path: '/post/draft',
                 component: require('./views/post/Draft.vue'),
-                meta: {title: appName + ' | ' + i18n.post.draft}
+                meta: {title: appName + ' | ' + i18n.post.drafts}
             },
             {
                 path: '/post/:slug/edit',
@@ -193,6 +193,11 @@ let routes = [
                 path: '/post/:slug/cover',
                 component: require('./views/post/Cover'),
                 meta: {title: appName + ' | ' + i18n.post.cover}
+            },
+            {
+                path: '/category',
+                component: require('./views/category/Category'),
+                meta: {title: appName + ' | ' + i18n.category.categories}
             }
         ]
     },

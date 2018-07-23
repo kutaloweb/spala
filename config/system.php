@@ -23,6 +23,9 @@ return [
         "author" => "author",
         "user" => "user",
     ],
+    "default_category" => [
+        "articles" => "articles",
+    ],
     "public_config" => [
         "color_theme",
         "locale",
@@ -59,7 +62,8 @@ return [
         "email-user",
         "change-status-user",
         "access-post",
-        "enable-login"
+        "enable-login",
+        "access-category"
     ],
     "color_themes" => [
         [

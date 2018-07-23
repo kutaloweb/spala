@@ -221,6 +221,8 @@ export default {
             }
         } else if (error.hasOwnProperty("response") && error.response.status === 403) {
             toastr.error(i18n.general.permission_denied);
+        } else if (error.hasOwnProperty("response") && error.response.status === 500) {
+            toastr.error('500 Internal Server Error');
         } else if (error.response && error.response.data.errors.hasOwnProperty("message")) {
             toastr.error(error.response.data.errors.message[0]);
         } else if (error) {
@@ -241,6 +243,8 @@ export default {
             }
         } else if (error.hasOwnProperty("response") && error.response.status === 403) {
             toastr.error(i18n.general.permission_denied);
+        } else if (error.hasOwnProperty("response") && error.response.status === 500) {
+            toastr.error('500 Internal Server Error');
         } else if (error.errors.hasOwnProperty("message"))
             toastr.error(error.errors.message[0]);
     }

@@ -33,6 +33,12 @@
                             <span class="hide-menu">{{ trans('post.posts') }}</span>
                         </router-link>
                     </li>
+                    <li v-if="hasPermission('access-category')">
+                        <router-link to="/category" exact>
+                            <i class="fas fa-sitemap fa-fw"></i>
+                            <span class="hide-menu">{{ trans('category.categories') }}</span>
+                        </router-link>
+                    </li>
                     <li v-if="hasPermission('access-configuration')">
                         <router-link to="/activity-log" exact>
                             <i class="fas fa-bars fa-fw"></i>

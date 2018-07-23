@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Category;
+use App\Repositories\CategoryRepository;
 use Illuminate\Console\Command;
 use Spatie\Permission\Models\Role;
 use App\Repositories\RoleRepository;
@@ -11,6 +13,11 @@ use App\Repositories\PermissionRepository;
 
 class Install extends Command
 {
+    /**
+     * @var CategoryRepository
+     */
+    protected $category;
+
     /**
      * @var LocaleRepository
      */
@@ -43,12 +50,14 @@ class Install extends Command
     /**
      * Create a new command instance.
      *
+     * @param CategoryRepository $category
      * @param LocaleRepository $locale
      * @param RoleRepository $role
      * @param PermissionRepository $permission
      */
-    public function __construct(LocaleRepository $locale, RoleRepository $role, PermissionRepository $permission)
+    public function __construct(CategoryRepository $category, LocaleRepository $locale, RoleRepository $role, PermissionRepository $permission)
     {
+        $this->category = $category;
         $this->locale = $locale;
         $this->role = $role;
         $this->permission = $permission;
@@ -63,12 +72,26 @@ class Install extends Command
      */
     public function handle()
     {
+        $this->createCategories();
         $this->createRoles();
         $this->createPermissions();
         $this->assignPermissions();
         $this->createLocals();
 
         $this->info('Installation Completed Successfully');
+    }
+
+    /**
+     * Initialize default roles.
+     */
+    protected function createCategories()
+    {
+        $categories = $this->category->listName();
+        foreach (config('system.default_category') as $key => $value) {
+            if (!in_array($value, $categories)) {
+                Category::create(['name' => $value]);
+            }
+        }
     }
 
     /**
