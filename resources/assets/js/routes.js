@@ -188,6 +188,11 @@ let routes = [
                 path: '/post/:slug/edit',
                 component: require('./views/post/Edit'),
                 meta: {title: appName + ' | ' + i18n.post.edit}
+            },
+            {
+                path: '/post/:slug/cover',
+                component: require('./views/post/Cover'),
+                meta: {title: appName + ' | ' + i18n.post.cover}
             }
         ]
     },

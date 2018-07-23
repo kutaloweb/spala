@@ -12,6 +12,7 @@ use App\Repositories\UserRepository;
 use App\Http\Requests\PostRequest;
 use App\Repositories\PostRepository;
 use App\Repositories\ActivityLogRepository;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -154,6 +155,83 @@ class PostController extends Controller
     }
 
     /**
+     * Update post cover image
+     *
+     * @param int $id
+     *
+     * @return JsonResponse
+     * @throws AuthorizationException
+     * @throws ValidationException
+     */
+    public function uploadCover($id)
+    {
+        $post = $this->repo->findOrFail($id);
+
+        $this->authorize('update', $post);
+
+        $image_path = config('system.upload_path.images') . '/';
+        $image = $post->cover;
+
+        if ($image && File::exists($image)) {
+            File::delete($image);
+        }
+
+        $extension = request()->file('image')->getClientOriginalExtension();
+        $filename = uniqid();
+        request()->file('image')->move($image_path, $filename . "." . $extension);
+        $img = \Image::make($image_path . $filename . "." . $extension);
+        $img->resize(500, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save($image_path . $filename . "." . $extension);
+        $post->cover = $image_path . $filename . "." . $extension;
+        $post->save();
+
+        $this->activity->record([
+            'module' => $this->module,
+            'module_id' => $post->id,
+            'sub_module' => 'cover',
+            'activity' => 'uploaded'
+        ]);
+
+        return $this->success(['message' => trans('post.cover_uploaded'), 'image' => $image_path . $filename . "." . $extension]);
+    }
+
+    /**
+     * Remove post cover image
+     *
+     * @param int $id
+     *
+     * @return JsonResponse
+     * @throws AuthorizationException
+     * @throws ValidationException
+     */
+    public function removeCover($id)
+    {
+        $post = $this->repo->findOrFail($id);
+
+        $this->authorize('update', $post);
+
+        $image = $post->cover;
+
+        if ($image && File::exists($image)) {
+            File::delete($image);
+        }
+
+        $post->cover = null;
+        $post->save();
+
+        $this->activity->record([
+            'module' => $this->module,
+            'module_id' => $post->id,
+            'sub_module' => 'cover',
+            'activity' => 'removed'
+        ]);
+
+        return $this->success(['message' => trans('post.cover_removed')]);
+    }
+
+    /**
      * Delete post
      *
      * @param string $slug
@@ -174,6 +252,13 @@ class PostController extends Controller
             'module_id' => $post->id,
             'activity' => 'deleted'
         ]);
+
+        $image = $post->cover;
+
+        if ($image && File::exists($image)) {
+            File::delete($image);
+        }
+
         $post->delete();
 
         return $this->success(['post' => trans('post.deleted', ['type' => trans('post.post')])]);

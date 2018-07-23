@@ -4,6 +4,9 @@ return [
     'body' => 'Содержание',
     'cancel' => 'Отменить',
     'could_not_find' => 'Не удалось найти :type',
+    'cover' => 'Изображение',
+    'cover_removed' => 'Изображение удалено.',
+    'cover_uploaded' => 'Изображение загружено.',
     'delete_draft' => 'Удалить черновик',
     'delete_published' => 'Удалить пост',
     'deleted' => ':type удален.',
@@ -26,6 +29,7 @@ return [
     'save_as_draft' => 'В черновик',
     'slug' => 'Слаг',
     'title' => 'Заголовок',
+    'upload_cover' => 'Загрузить изображение',
     'user' => 'Пользователь',
     'view' => 'Просмотр',
 ];

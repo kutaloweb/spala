@@ -80,4 +80,6 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::delete('/post/{slug}','PostController@destroy');
     Route::get('/post/{slug}','PostController@show');
     Route::post('/post/upload/image','PostController@uploadImage');
+    Route::post('/post/cover/{id}', 'PostController@uploadCover');
+    Route::delete('/post/cover/remove/{id}', 'PostController@removeCover');
 });

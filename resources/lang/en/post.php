@@ -4,6 +4,9 @@ return [
     'body' => 'Body',
     'cancel' => 'Cancel',
     'could_not_find' => 'Could not find :type',
+    'cover' => 'Cover Image',
+    'cover_removed' => 'Cover removed.',
+    'cover_uploaded' => 'Cover uploaded.',
     'delete_draft' => 'Delete Draft',
     'delete_published' => 'Delete published post',
     'deleted' => ':type deleted.',
@@ -27,5 +30,6 @@ return [
     'slug' => 'Slug',
     'title' => 'Title',
     'user' => 'User',
+    'upload_cover' => 'Upload cover image',
     'view' => 'View',
 ];

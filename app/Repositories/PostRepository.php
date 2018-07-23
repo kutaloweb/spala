@@ -47,6 +47,25 @@ class PostRepository
     }
 
     /**
+     * Find post by Id
+     *
+     * @param int|null $id
+     *
+     * @return Post
+     * @throws ValidationException
+     */
+    public function findOrFail($id = null)
+    {
+        $post = $this->post->find($id);
+
+        if (!$post) {
+            throw ValidationException::withMessages(['message' => trans('post.could_not_find')]);
+        }
+
+        return $post;
+    }
+
+    /**
      * Publish post or save draft.
      *
      * @param array $params

@@ -43,6 +43,11 @@
                                             <td>{{ draft.updated_at }}</td>
                                             <td class="table-option">
                                                 <div class="btn-group">
+                                                    <router-link :to="`/post/${draft.slug}/cover`"
+                                                                 class="btn btn-success btn-sm"
+                                                                 v-tooltip="trans('post.upload_cover')">
+                                                        <i class="far fa-images"></i>
+                                                    </router-link>
                                                     <router-link :to="`/post/${draft.slug}/edit`"
                                                                  class="btn btn-info btn-sm"
                                                                  v-tooltip="trans('post.edit_draft')">
