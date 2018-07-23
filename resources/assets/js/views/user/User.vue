@@ -22,26 +22,26 @@
                             </button>
                             <h4 class="card-title">{{ trans('general.filter') }}</h4>
                             <div class="row">
-                                <div class="col-6 col-md-3">
+                                <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('user.first_name') }}</label>
                                         <input class="form-control" name="first_name"
                                                v-model="filterUserForm.first_name">
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('user.last_name') }}</label>
                                         <input class="form-control" name="last_name" v-model="filterUserForm.last_name">
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('user.email') }}</label>
                                         <input class="form-control" name="email" v-model="filterUserForm.email">
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('role.role') }}</label>
                                         <select v-model="filterUserForm.role_id" class="custom-select col-12 form-control">
@@ -52,7 +52,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('user.status') }}</label>
                                         <select v-model="filterUserForm.status" class="custom-select col-12 form-control">
@@ -69,7 +69,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-6">
+                                <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <date-range-picker
                                                 :start-date.sync="filterUserForm.created_at_start_date"
@@ -78,7 +78,7 @@
                                         </date-range-picker>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('general.sort_by') }}</label>
                                         <select name="order" class="custom-select form-control" v-model="filterUserForm.sort_by">
@@ -90,7 +90,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('general.order') }}</label>
                                         <select name="order" class="custom-select form-control" v-model="filterUserForm.order">

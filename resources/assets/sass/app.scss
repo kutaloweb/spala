@@ -739,6 +739,10 @@ Pagination
   color: $dark;
 }
 
+.pagination-select {
+  margin-top: 15px;
+}
+
 /*******************
 Table Cell
 *******************/
@@ -2239,6 +2243,12 @@ Custom
   }
 }
 
+.logo {
+  @media (max-width: 576px) {
+    display: none;
+  }
+}
+
 .topbar .profile-pic {
   width: 40px;
   border-radius: 100%;
@@ -2530,4 +2540,9 @@ samp {
 
 .table-option-sm {
   text-align: right;
+}
+
+.input-group > .form-control:not(:last-child),
+.input-group > .custom-select:not(:last-child) {
+  border-radius: 0.25rem !important;
 }

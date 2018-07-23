@@ -23,7 +23,7 @@
                             </button>
                             <h4 class="card-title">{{ trans('general.filter') }}</h4>
                             <div class="row">
-                                <div class="col-6 col-md-6">
+                                <div class="col-12 col-md-6">
                                     <div class="form-group" v-show="users">
                                         <label>{{ trans('user.user') }}</label>
                                         <select v-model="filterActivityLogForm.user_id" class="custom-select col-12 form-control">
@@ -34,7 +34,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-6">
+                                <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <date-range-picker
                                                 :start-date.sync="filterActivityLogForm.created_at_start_date"

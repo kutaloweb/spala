@@ -5,7 +5,7 @@
         </div>
         <div class="col-md-4" v-if="records.total">
             <div class="pull-right">
-                <select name="page_length" class="custom-select form-control" :value="pageLength" @change="updateValue">
+                <select name="page_length" class="custom-select pagination-select form-control" :value="pageLength" @change="updateValue">
                     <option v-for="option in getConfig('pagination')" :value="option">
                         {{ option + ' ' + trans('general.per_page') }}
                     </option>

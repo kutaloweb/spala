@@ -2,7 +2,7 @@
     <div class="form-group">
         <label>{{ label || trans('general.date_range') }}</label>
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <datepicker
                         :language="locale"
                         :monday-first="true"
@@ -15,7 +15,7 @@
                         @cleared="clearStartDate">
                 </datepicker>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <datepicker
                         :language="locale"
                         :monday-first="true"
