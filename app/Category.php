@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read string $detail
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Post[] $posts
  */
 class Category extends Model
 {
@@ -32,6 +33,16 @@ class Category extends Model
     public function getDetailAttribute()
     {
         return ucfirst($this->name);
+    }
+
+    /**
+     * Get the category posts.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
     /**

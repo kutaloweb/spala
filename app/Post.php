@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \App\User $user
+ * @property-read \App\Category $category
  */
 class Post extends Model
 {
@@ -28,6 +29,7 @@ class Post extends Model
      */
     protected $fillable = [
         'user_id',
+        'category_id',
         'title',
         'body'
     ];
@@ -40,6 +42,16 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     /**

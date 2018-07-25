@@ -34,7 +34,7 @@ class PostRepository
      */
     public function getBySlug($slug)
     {
-        $post = $this->post->with('user', 'user.profile')
+        $post = $this->post->with('user', 'user.profile', 'category')
             ->filterBySlug($slug)
             ->filterByUserId(\Auth::user()->id)
             ->first();
@@ -87,7 +87,8 @@ class PostRepository
         $post = ($id) ? $this->post->find($id) : $this->post;
         $post->fill([
             'title' => $params['title'],
-            'body' => $params['body']
+            'body' => $params['body'],
+            'category_id' => $params['category_id'],
         ]);
 
         if (!$id) {
@@ -133,7 +134,7 @@ class PostRepository
     public function getDraftList($params = [])
     {
         $page_length = isset($params['page_length']) ? $params['page_length'] : config('config.page_length');
-        $draft = $this->post->with('user', 'user.profile')->filterByUserId(\Auth::user()->id)->filterByIsDraft(1);
+        $draft = $this->post->with('user', 'user.profile', 'category')->filterByUserId(\Auth::user()->id)->filterByIsDraft(1);
         if (!isset($params['page_length'])) {
             return $draft->get();
         }
@@ -151,7 +152,7 @@ class PostRepository
     public function getPublishedList($params = [])
     {
         $page_length = isset($params['page_length']) ? $params['page_length'] : config('config.page_length');
-        $published = $this->post->with('user', 'user.profile')->filterByUserId(\Auth::user()->id)->filterByIsDraft(0);
+        $published = $this->post->with('user', 'user.profile', 'category')->filterByUserId(\Auth::user()->id)->filterByIsDraft(0);
 
         if (!isset($params['page_length'])) {
             return $published->get();

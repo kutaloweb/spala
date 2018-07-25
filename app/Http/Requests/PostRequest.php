@@ -26,6 +26,7 @@ class PostRequest extends FormRequest
         return [
             'title' => 'sometimes|required',
             'body' => 'sometimes|required',
+            'category_id' => 'sometimes|required',
             'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
@@ -40,6 +41,7 @@ class PostRequest extends FormRequest
         return [
             'title' => trans('post.title'),
             'body' => trans('post.body'),
+            'category_id' => trans('category.category'),
             'file' => trans('general.file')
         ];
     }

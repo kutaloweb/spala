@@ -73,6 +73,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::delete('/user/profile/avatar/remove/{id}', 'UserController@removeAvatar');
     Route::delete('/user/{id}', 'UserController@destroy');
 
+    Route::get('/post/pre-requisite','PostController@preRequisite');
     Route::post('/post/statistics','PostController@statistics');
     Route::post('/post/new','PostController@store');
     Route::get('/post/draft','PostController@getDraftList');

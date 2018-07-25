@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Repositories\CategoryRepository;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
@@ -37,6 +38,11 @@ class PostController extends Controller
     protected $user;
 
     /**
+     * @var CategoryRepository
+     */
+    protected $category;
+
+    /**
      * @var string
      */
     protected $module = 'post';
@@ -49,13 +55,27 @@ class PostController extends Controller
      * @param ActivityLogRepository $activity
      * @param UserRepository $user
      */
-    public function __construct(Request $request, PostRepository $repo, ActivityLogRepository $activity, UserRepository $user)
+    public function __construct(Request $request, PostRepository $repo, ActivityLogRepository $activity, UserRepository $user, CategoryRepository $category)
     {
         $this->request = $request;
         $this->repo = $repo;
         $this->activity = $activity;
         $this->user = $user;
+        $this->category = $category;
         $this->middleware('permission:access-post');
+    }
+
+    /**
+     * Get pre-requisites for post module
+     *
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function preRequisite()
+    {
+        $this->authorize('create', Post::class);
+
+        return generateSelect($this->category->list());
     }
 
     /**
