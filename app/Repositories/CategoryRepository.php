@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Category;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 
 class CategoryRepository
@@ -155,7 +156,15 @@ class CategoryRepository
      */
     public function delete(Category $category)
     {
-        return $category->delete();
+        try {
+            return $category->delete();
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] === 1451) {
+                throw ValidationException::withMessages(['message' => trans('category.integrity_constraint_violation')]);
+            } else {
+                throw $e;
+            }
+        }
     }
 
     /**

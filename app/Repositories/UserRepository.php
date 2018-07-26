@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\User;
 use App\Profile;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
 use App\Notifications\Activation;
 use Illuminate\Validation\ValidationException;
@@ -300,7 +301,15 @@ class UserRepository
      */
     public function delete(User $user)
     {
-        return $user->delete();
+        try {
+            return $user->delete();
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] === 1451) {
+                throw ValidationException::withMessages(['message' => trans('user.integrity_constraint_violation')]);
+            } else {
+                throw $e;
+            }
+        }
     }
 
     /**

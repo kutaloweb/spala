@@ -20,6 +20,7 @@ return [
     'delete_user' => 'Удалить пользователя',
     'deleted' => 'Пользователь удален.',
     'email' => 'Email',
+    'integrity_constraint_violation' => 'Пользователь уже имеет посты и/или логи.',
     'first_name' => 'Имя',
     'gender' => 'Пол',
     'last_name' => 'Фамилия',

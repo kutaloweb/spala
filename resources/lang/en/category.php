@@ -12,6 +12,7 @@ return [
     'categories' => 'Categories',
     'category_list' => 'Category List',
     'exists' => 'This category already exists.',
+    'integrity_constraint_violation' => 'Category is associated with one or more post.',
     'select_category' => 'Select Category',
     'slug' => 'Slug',
 ];

@@ -20,6 +20,7 @@ return [
     'delete_user' => 'Delete User',
     'deleted' => 'User deleted.',
     'email' => 'Email',
+    'integrity_constraint_violation' => 'User already has one or more post/log.',
     'first_name' => 'First Name',
     'gender' => 'Gender',
     'last_name' => 'Last Name',

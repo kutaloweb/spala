@@ -12,6 +12,7 @@ return [
     'categories' => 'Категории',
     'category_list' => 'Список',
     'exists' => 'Такая категория уже существует.',
+    'integrity_constraint_violation' => 'Категория уже ассциирована с постами.',
     'select_category' => 'Выбрать',
     'slug' => 'Слаг',
 ];
