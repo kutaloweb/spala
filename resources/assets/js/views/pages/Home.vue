@@ -18,7 +18,7 @@
                         <h4 class="card-title">{{ trans('dashboard.total') }}</h4>
                         <div class="text-right">
                             <h2 class="font-light m-b-0"><i class="fas fa-users fa-lg pull-right"></i> <span
-                                    class="pull-left">{{ users }}</span></h2>
+                                    class="pull-left">{{ all_registered_users }}</span></h2>
                         </div>
                     </div>
                 </div>
@@ -52,6 +52,55 @@
                         <div class="text-right">
                             <h2 class="font-light m-b-0"><i class="fas fa-users fa-lg pull-right"></i> <span
                                     class="pull-left">{{ monthly_registered_users }}</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" v-if="hasRole('admin')">
+            <div class="col-lg-12 col-md-12">
+                <h3>{{ trans('dashboard.posts') }}</h3>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ trans('dashboard.total') }}</h4>
+                        <div class="text-right">
+                            <h2 class="font-light m-b-0"><i class="far fa-share-square fa-lg pull-right"></i> <span
+                                    class="pull-left">{{ all_published_posts }}</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ trans('dashboard.today') }}</h4>
+                        <div class="text-right">
+                            <h2 class="font-light m-b-0"><i class="far fa-share-square fa-lg pull-right"></i> <span
+                                    class="pull-left">{{ today_published_posts }}</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{trans('dashboard.week') }}</h4>
+                        <div class="text-right">
+                            <h2 class="font-light m-b-0"><i class="far fa-share-square fa-lg pull-right"></i> <span
+                                    class="pull-left">{{ weekly_published_posts }}</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ trans('dashboard.month') }}</h4>
+                        <div class="text-right">
+                            <h2 class="font-light m-b-0"><i class="far fa-share-square fa-lg pull-right"></i> <span
+                                    class="pull-left">{{ monthly_published_posts }}</span></h2>
                         </div>
                     </div>
                 </div>
@@ -129,11 +178,14 @@
     export default {
         data() {
             return {
-                users: 0,
+                all_registered_users: 0,
                 today_registered_users: 0,
                 weekly_registered_users: 0,
                 monthly_registered_users: 0,
-                records: 0,
+                all_published_posts: 0,
+                today_published_posts: 0,
+                weekly_published_posts: 0,
+                monthly_published_posts: 0,
                 activity_logs: {},
                 posts: {}
             }
@@ -142,10 +194,16 @@
             axios.get('/api/dashboard')
                 .then(response => response.data)
                 .then(response => {
-                    this.users = response.users;
+                    this.all_registered_users = response.all_registered_users;
                     this.today_registered_users = response.today_registered_users;
                     this.weekly_registered_users = response.weekly_registered_users;
                     this.monthly_registered_users = response.monthly_registered_users;
+
+                    this.all_published_posts = response.all_published_posts;
+                    this.today_published_posts = response.today_published_posts;
+                    this.weekly_published_posts = response.weekly_published_posts;
+                    this.monthly_published_posts = response.monthly_published_posts;
+
                     this.activity_logs = response.activity_logs;
                     this.posts = response.posts;
                 })

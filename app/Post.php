@@ -166,4 +166,21 @@ class Post extends Model
 
         return $query->where('user_id', '=', $user_id);
     }
+
+    /**
+     * Scope a query to only include posts between dates.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string status
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCreatedAtDateBetween($query, $dates)
+    {
+        if ((!$dates['start_date'] || !$dates['end_date']) && $dates['start_date'] <= $dates['end_date']) {
+            return $query;
+        }
+
+        return $query->where('created_at', '>=', getStartOfDate($dates['start_date']))->where('created_at', '<=', getEndOfDate($dates['end_date']));
+    }
 }

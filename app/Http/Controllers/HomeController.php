@@ -44,16 +44,33 @@ class HomeController extends Controller
     public function dashboard()
     {
         if (Auth::user()->hasRole(config('system.default_role.admin'))) {
-            $users = $this->user->count();
+            $all_registered_users = $this->user->count();
             $today_registered_users = $this->user->countDateBetween(date('Y-m-d'), date('Y-m-d'));
             $weekly_registered_users = $this->user->countDateBetween(date('Y-m-d', strtotime("-7 days")), date('Y-m-d'));
             $monthly_registered_users = $this->user->countDateBetween(date('Y-m-d', strtotime("-1 months")), date('Y-m-d'));
+
+            $all_published_posts = $this->post->count();
+            $today_published_posts = $this->post->countDateBetween(date('Y-m-d'), date('Y-m-d'));
+            $weekly_published_posts = $this->post->countDateBetween(date('Y-m-d', strtotime("-7 days")), date('Y-m-d'));
+            $monthly_published_posts = $this->post->countDateBetween(date('Y-m-d', strtotime("-1 months")), date('Y-m-d'));
 
             $records = 10;
             $activity_logs = $this->activity->getQuery()->orderBy('created_at', 'desc')->take($records)->get();
             $posts = $this->post->getQuery()->orderBy('created_at', 'desc')->take($records)->get();
         }
 
-        return $this->success(compact('users', 'today_registered_users', 'weekly_registered_users', 'monthly_registered_users', 'records', 'activity_logs', 'posts'));
+        return $this->success(compact(
+                'all_registered_users',
+                'today_registered_users',
+                'weekly_registered_users',
+                'monthly_registered_users',
+                'all_published_posts',
+                'today_published_posts',
+                'weekly_published_posts',
+                'monthly_published_posts',
+                'activity_logs',
+                'posts'
+            )
+        );
     }
 }

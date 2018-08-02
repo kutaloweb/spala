@@ -31,7 +31,30 @@ class PostRepository
      */
     public function getQuery()
     {
-        return $this->post->with('user', 'user.profile');
+        return $this->post->with('user', 'user.profile')->filterByIsDraft(0);
+    }
+
+    /**
+     * Count posts
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return $this->post->filterByIsDraft(0)->count();
+    }
+
+    /**
+     * Count post published between dates
+     *
+     * @param string $start_date
+     * @param string $end_date
+     *
+     * @return int
+     */
+    public function countDateBetween($start_date, $end_date)
+    {
+        return $this->post->filterByIsDraft(0)->createdAtDateBetween(['start_date' => $start_date, 'end_date' => $end_date])->count();
     }
 
     /**
