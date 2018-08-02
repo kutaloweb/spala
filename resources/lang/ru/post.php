@@ -18,6 +18,7 @@ return [
     'edit_draft' => 'Редактировать черновик',
     'edit_published' => 'Редактировать пост',
     'invalid_action' => 'Действие не валидно.',
+    'last_posts' => 'Последине посты',
     'post' => 'Пост',
     'posts' => 'Посты',
     'post_processed' => 'Пост :action',

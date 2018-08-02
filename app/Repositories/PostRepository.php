@@ -25,6 +25,16 @@ class PostRepository
     }
 
     /**
+     * Get post query.
+     *
+     * @return Post
+     */
+    public function getQuery()
+    {
+        return $this->post->with('user', 'user.profile');
+    }
+
+    /**
      * Get valid post.
      *
      * @param string $slug

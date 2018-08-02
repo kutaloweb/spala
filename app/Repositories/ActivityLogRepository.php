@@ -26,7 +26,7 @@ class ActivityLogRepository
     /**
      * Get activity log query.
      *
-     * @return ActivityLog query
+     * @return ActivityLog
      */
     public function getQuery()
     {

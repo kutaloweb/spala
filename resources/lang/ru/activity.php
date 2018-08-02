@@ -19,6 +19,7 @@ return [
     'generated' => 'Генерация: :activity.',
     'ip' => 'IP',
     'logged_in' => 'Вход: :activity.',
+    'last_activity_log' => 'Последине действия',
     'logged_out' => 'Выход: :activity.',
     'permission' => 'Разрешение',
     'published' => 'Отправка в публикации: :activity.',

@@ -18,6 +18,7 @@ return [
     'edit_draft' => 'Edit Draft',
     'edit_published' => 'Edit published post',
     'invalid_action' => 'Invalid action.',
+    'last_posts' => 'Last Posts',
     'post' => 'Post',
     'posts' => 'Posts',
     'post_processed' => 'Post :action',

@@ -57,16 +57,13 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-6"></div>
-        </div>
-        <div class="row">
+        <div class="row" v-if="hasRole('admin')">
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ trans('activity.activity_log') }}</h4>
+                        <h4 class="card-title">{{ trans('activity.last_activity_log') }}</h4>
                         <h6 class="card-subtitle" v-if="!activity_logs.length">
-                            {{trans('general.no_result_found')}}
+                            {{ trans('general.no_result_found') }}
                         </h6>
                         <div class="table-responsive" v-if="activity_logs.length">
                             <table class="table">
@@ -79,8 +76,7 @@
                                 </thead>
                                 <tbody>
                                 <tr v-for="activity_log in activity_logs">
-                                    <td v-if="hasRole('admin')"
-                                        v-text="activity_log.user.profile.first_name + ' ' + activity_log.user.profile.last_name"></td>
+                                    <td v-text="activity_log.user.profile.first_name + ' ' + activity_log.user.profile.last_name"></td>
                                     <td v-if="activity_log.sub_module == null">
                                         {{ trans('activity.' + activity_log.activity, {activity:
                                         trans(activity_log.module + '.' + activity_log.module)}) }}
@@ -90,6 +86,34 @@
                                         trans(activity_log.module + '.' + activity_log.sub_module)}) }}
                                     </td>
                                     <td class="table-option">{{ activity_log.created_at }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ trans('post.last_posts') }}</h4>
+                        <h6 class="card-subtitle" v-if="!posts.length">
+                            {{ trans('general.no_result_found') }}
+                        </h6>
+                        <div class="table-responsive" v-if="posts.length">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th v-if="hasRole('admin')">{{ trans('user.user') }}</th>
+                                    <th>{{ trans('post.title') }}</th>
+                                    <th class="table-option">{{ trans('activity.date_time') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="post in posts">
+                                    <td v-text="post.user.profile.first_name + ' ' + post.user.profile.last_name"></td>
+                                    <td v-text="post.title"></td>
+                                    <td class="table-option">{{ post.created_at }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -109,7 +133,9 @@
                 today_registered_users: 0,
                 weekly_registered_users: 0,
                 monthly_registered_users: 0,
-                activity_logs: {}
+                records: 0,
+                activity_logs: {},
+                posts: {}
             }
         },
         mounted() {
@@ -121,6 +147,7 @@
                     this.weekly_registered_users = response.weekly_registered_users;
                     this.monthly_registered_users = response.monthly_registered_users;
                     this.activity_logs = response.activity_logs;
+                    this.posts = response.posts;
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);

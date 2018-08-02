@@ -18,6 +18,7 @@ return [
     'drafted' => ':activity drafted.',
     'generated' => ':activity generated.',
     'ip' => 'IP Address',
+    'last_activity_log' => 'Last Activity Log',
     'logged_in' => ':activity logged in.',
     'logged_out' => ':activity logged out.',
     'permission' => 'Permission',
