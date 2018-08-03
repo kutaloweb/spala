@@ -3,7 +3,7 @@
         <div class="col-md-8">
             <pagination :data="records" :limit=3 v-on:pagination-change-page="getRecords"></pagination>
         </div>
-        <div class="col-md-4" v-if="records.total">
+        <div class="col-md-4" v-if="records.total && showPageLength">
             <div class="pull-right">
                 <select name="page_length" class="custom-select pagination-select form-control" :value="pageLength" @change="updateValue">
                     <option v-for="option in getConfig('pagination')" :value="option">
@@ -20,7 +20,18 @@
 
     export default {
         components: {pagination},
-        props: ['pageLength', 'records'],
+        props: {
+            pageLength: {
+                required: true
+            },
+            records: {
+                required: true
+            },
+            showPageLength: {
+                type: Boolean,
+                default: true
+            }
+        },
         methods: {
             getConfig(config) {
                 return helper.getConfig(config);

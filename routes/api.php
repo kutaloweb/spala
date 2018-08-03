@@ -12,6 +12,7 @@
 */
 
 Route::get('/configuration/variable', 'ConfigurationController@getConfigurationVariable');
+Route::get('/posts','PostController@index');
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', 'AuthController@authenticate');

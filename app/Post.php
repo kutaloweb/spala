@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $cover
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ * @property-read string|null $stripped_body
  * @property-read \App\User $user
  * @property-read \App\Category $category
  */
@@ -33,6 +34,13 @@ class Post extends Model
         'title',
         'body'
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['stripped_body'];
 
     /**
      * Get the user that owns the post.
@@ -72,6 +80,26 @@ class Post extends Model
     public function getUpdatedAtAttribute()
     {
         return Carbon::parse($this->attributes['updated_at'])->diffForHumans();
+    }
+
+    /**
+     * Get body with the stripped HTML tags.
+     *
+     * @return string
+     */
+    public function getStrippedBodyAttribute()
+    {
+        return strip_tags($this->attributes['body']);
+    }
+
+    /**
+     * Get cover image.
+     *
+     * @return string
+     */
+    public function getCoverAttribute()
+    {
+        return $this->attributes['cover'] ?: 'uploads/images/cover-default.png';
     }
 
     /**

@@ -62,7 +62,17 @@ class PostController extends Controller
         $this->activity = $activity;
         $this->user = $user;
         $this->category = $category;
-        $this->middleware('permission:access-post');
+        $this->middleware('permission:access-post')->except(['index']);
+    }
+
+    /**
+     * Display all posts
+     *
+     * @return Post[]|Collection
+     */
+    public function index()
+    {
+        return $this->repo->getPosts($this->request->all());
     }
 
     /**
@@ -200,9 +210,7 @@ class PostController extends Controller
         $filename = uniqid();
         request()->file('image')->move($image_path, $filename . "." . $extension);
         $img = \Image::make($image_path . $filename . "." . $extension);
-        $img->resize(500, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        $img->resize(600, 300);
         $img->save($image_path . $filename . "." . $extension);
         $post->cover = $image_path . $filename . "." . $extension;
         $post->save();

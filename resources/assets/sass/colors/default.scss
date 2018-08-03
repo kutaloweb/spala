@@ -42,6 +42,10 @@ a.link {
     background-color: $themecolor !important;
 }
 
+.card-img {
+    background-color: $themecolor;
+}
+
 .pagination > .active > a,
 .pagination > .active > span,
 .pagination > .active > a:hover,
@@ -50,6 +54,10 @@ a.link {
 .pagination > .active > span:focus {
     background-color: $themecolor;
     border-color: $themecolor;
+}
+
+.post-title {
+    color: $themecolor;
 }
 
 .right-sidebar {

@@ -25,6 +25,25 @@ class PostRepository
     }
 
     /**
+     * Get published posts.
+     *
+     * @param array $params
+     *
+     * @return Post[]|Collection
+     */
+    public function getPosts($params = [])
+    {
+        $page_length = isset($params['page_length']) ? $params['page_length'] : config('config.page_length');
+        $published = $this->post->with('user', 'user.profile', 'category')->filterByIsDraft(0);
+
+        if (!isset($params['page_length'])) {
+            return $published->get();
+        }
+
+        return $published->orderBy('created_at', 'desc')->paginate($page_length);
+    }
+
+    /**
      * Get post query.
      *
      * @return Post
