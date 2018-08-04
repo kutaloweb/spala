@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Category;
 use App\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -77,7 +78,7 @@ class PostRepository
     }
 
     /**
-     * Get valid post.
+     * Get valid post by slug.
      *
      * @param string $slug
      *
@@ -93,6 +94,33 @@ class PostRepository
 
         if (!$post) {
             throw ValidationException::withMessages(['message' => trans('general.invalid_link')]);
+        }
+
+        return $post;
+    }
+
+    /**
+     * Get valid post by category and slug.
+     *
+     * @param string $category
+     * @param string $slug
+     *
+     * @return Post
+     */
+    public function getByCategoryAndSlug($category, $slug)
+    {
+        $category = Category::where('name', $category)->first();
+
+        if (!$category) {
+            return null;
+        }
+
+        $post = $this->post->with('user', 'user.profile', 'category')
+            ->filterByCategoryAndSlug($category, $slug)
+            ->first();
+
+        if (!$post) {
+            return null;
         }
 
         return $post;

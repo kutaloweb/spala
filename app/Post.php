@@ -162,6 +162,20 @@ class Post extends Model
     }
 
     /**
+     * Scope a query to only include post with the given category and slug.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param Category $category
+     * @param string $slug
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilterByCategoryAndSlug($query, $category, $slug)
+    {
+        return $query->where('slug', '=', $slug)->where('category_id', '=', $category->id);
+    }
+
+    /**
      * Scope a query to only include post with the given id.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query

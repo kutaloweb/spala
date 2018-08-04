@@ -62,17 +62,32 @@ class PostController extends Controller
         $this->activity = $activity;
         $this->user = $user;
         $this->category = $category;
-        $this->middleware('permission:access-post')->except(['index']);
+        $this->middleware('permission:access-post')->except(['getPublicPosts', 'getPublicPost']);
     }
 
     /**
-     * Display all posts
+     * Display all public posts
      *
      * @return Post[]|Collection
      */
-    public function index()
+    public function getPublicPosts()
     {
         return $this->repo->getPosts($this->request->all());
+    }
+
+    /**
+     * Display a public post
+     *
+     * @param string $category
+     * @param string $slug
+     *
+     * @return JsonResponse
+     */
+    public function getPublicPost($category, $slug)
+    {
+        $post = $this->repo->getByCategoryAndSlug($category, $slug);
+
+        return $this->success(compact('post'));
     }
 
     /**

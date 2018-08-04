@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->boolean('is_draft')->default(0);
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
-            $table->text('body')->nullable();
+            $table->longText('body')->nullable();
             $table->string('cover')->nullable();
             $table->timestamps();
         });

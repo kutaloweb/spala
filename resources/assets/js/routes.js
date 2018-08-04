@@ -8,7 +8,7 @@ let routes = [
     {
         path: '/',
         component: require('./views/auth/Login.vue'),
-        meta: {title: appName + ' | ' + i18n.auth.login}
+        meta: {title: appName}
     },
     {
         path: '/',
@@ -211,6 +211,11 @@ let routes = [
                 meta: {title: appName + ' | ' + i18n.general.permission_denied}
             }
         ]
+    },
+    {
+        path: '/:category/:slug',
+        component: require('./views/post/View.vue'),
+        meta: {title: appName + ' | ' + i18n.post.view}
     },
     {
         path: '*',
