@@ -89,7 +89,10 @@ class Install extends Command
         $categories = $this->category->listName();
         foreach (config('system.default_category') as $key => $value) {
             if (!in_array($value, $categories)) {
-                Category::create(['name' => $value]);
+                Category::create([
+                    'name' => $value,
+                    'slug' => str_slug($value),
+                ]);
             }
         }
     }

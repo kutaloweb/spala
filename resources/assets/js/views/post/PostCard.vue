@@ -1,5 +1,5 @@
 <template>
-    <router-link class="card" :to="`${post.category.name}/${post.slug}`">
+    <router-link class="card" :to="`${post.category.slug}/${post.slug}`">
         <div class="card-img"
              :class="[post.cover !== 'uploads/images/cover-default.png' ? 'cover-img' : '']">
             <img class="card-img-top img-responsive" :src="post.cover" :alt="post.title">
@@ -9,7 +9,7 @@
             <h5 class="card-text">{{ limitWords(post.stripped_body, 35) }}</h5>
             <p class="card-text">
                 <small class="text-muted card-caps">
-                    {{ toWord(post.category.name) }} / {{ post.created_at }}
+                    {{ post.category.name }} / {{ post.created_at }}
                 </small>
             </p>
         </div>
@@ -36,9 +36,6 @@
                 }
 
                 return textToLimit;
-            },
-            toWord(str) {
-                return helper.toWord(str);
             }
         }
     }

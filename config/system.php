@@ -24,7 +24,7 @@ return [
         "user" => "user",
     ],
     "default_category" => [
-        "articles" => "articles",
+        "articles" => "Articles",
     ],
     "public_config" => [
         "color_theme",

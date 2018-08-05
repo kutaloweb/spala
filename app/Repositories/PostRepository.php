@@ -109,7 +109,7 @@ class PostRepository
      */
     public function getByCategoryAndSlug($category, $slug)
     {
-        $category = Category::where('name', $category)->first();
+        $category = Category::where('slug', $category)->first();
 
         if (!$category) {
             return null;

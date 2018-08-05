@@ -36,12 +36,14 @@
                                                 <thead>
                                                 <tr>
                                                     <th>{{ trans('category.name') }}</th>
+                                                    <th>{{ trans('category.slug') }}</th>
                                                     <th class="table-option">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr v-for="category in categories.data">
-                                                    <td v-text="toWord(category.name)"></td>
+                                                    <td v-text="category.name"></td>
+                                                    <td v-text="category.slug"></td>
                                                     <td class="table-option">
                                                         <div class="btn-group">
                                                             <button class="btn btn-danger btn-sm" :key="category.id"
@@ -122,9 +124,6 @@
                     .catch(error => {
                         helper.showDataErrorMsg(error);
                     });
-            },
-            toWord(str) {
-                return helper.toWord(str);
             }
         }
     }

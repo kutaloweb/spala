@@ -68,10 +68,13 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        if (Category::whereName(str_slug(request('name')))->exists()) {
+        if (Category::where('slug', str_slug(request('name')))->exists()) {
             return $this->error(['message' => trans('category.exists')]);
         }
-        $category = Category::create(['name' => str_slug(request('name'))]);
+        $category = Category::create([
+            'name' => request('name'),
+            'slug' => str_slug(request('name')),
+        ]);
 
         $this->activity->record([
             'module' => $this->module,

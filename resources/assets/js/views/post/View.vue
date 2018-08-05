@@ -11,7 +11,7 @@
                                         <div class="col-9 col-md-9">
                                             <h1 class="card-title post-title">{{ post.title }}</h1>
                                             <span class="text-muted card-caps">
-                                                {{ toWord(categoryName) }} / {{ post.created_at }}
+                                                {{ categoryName }} / {{ post.created_at }}
                                             </span>
                                             <hr>
                                             <div class="card-text" v-html="post.body"></div>
@@ -65,11 +65,6 @@
                 .catch(error => {
                     helper.showDataErrorMsg(error);
                 });
-        },
-        methods: {
-            toWord(str) {
-                return helper.toWord(str);
-            }
         }
     }
 </script>

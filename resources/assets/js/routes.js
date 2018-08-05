@@ -215,7 +215,7 @@ let routes = [
     {
         path: '/:category/:slug',
         component: require('./views/post/View.vue'),
-        meta: {title: appName + ' | ' + i18n.post.view}
+        meta: {title: appName}
     },
     {
         path: '*',

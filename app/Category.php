@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $name
+ * @property string $slug
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read string $detail
@@ -23,17 +24,8 @@ class Category extends Model
      */
     protected $fillable = [
         'name',
+        'slug'
     ];
-
-    /**
-     * Get the category name.
-     *
-     * @return string
-     */
-    public function getDetailAttribute()
-    {
-        return ucfirst($this->name);
-    }
 
     /**
      * Get the category posts.
