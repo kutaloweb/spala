@@ -34,7 +34,7 @@
                             <span class="username">{{ getAuthUser('full_name') }}</span>
                             <img :src="getAuthUser('avatar')" alt="Avatar" class="profile-pic ml-2">
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right animated bounceInDown">
                             <ul class="dropdown-user">
                                 <li>
                                     <div class="dw-user-box text-center">

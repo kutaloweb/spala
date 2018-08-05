@@ -5,7 +5,7 @@
                 <div class="form-group">
                     <label>{{ trans('post.title') }}</label>
                     <input class="form-control" type="text" value="" v-model="postForm.title" name="title"
-                           :placeholder="trans('post.title')">
+                           :placeholder="trans('post.title')" maxlength="191">
                     <show-error :form-name="postForm" prop-name="title"></show-error>
                 </div>
             </div>

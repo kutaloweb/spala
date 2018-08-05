@@ -94,6 +94,7 @@
             }
         },
         mounted() {
+            document.title = `${helper.getConfig('company_name')}`;
             this.getPosts();
         },
         methods: {
