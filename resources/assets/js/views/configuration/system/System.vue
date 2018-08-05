@@ -121,6 +121,17 @@
                                                 </show-error>
                                             </div>
                                         </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ trans('configuration.facebook_group') }}</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.facebook_group" name="facebook_group"
+                                                       :placeholder="trans('configuration.facebook_group')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="facebook_group">
+                                                </show-error>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-md-6">
@@ -205,6 +216,7 @@
                     locale: '',
                     footer_credit: '',
                     company_name: '',
+                    facebook_group: '',
                     https: 0,
                     multilingual: 0,
                     maintenance_mode: 0,

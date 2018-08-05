@@ -8,6 +8,7 @@ return [
     'config_image' => 'Изображение',
     'configuration' => 'Настройки',
     'email' => 'Email',
+    'facebook_group' => 'Группа в Фейсбуке',
     'footer_credit' => 'Надпись в подвале',
     'https' => 'HTTPS',
     'config_image_removed' => 'Изображение удалено.',

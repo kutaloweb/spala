@@ -13,44 +13,44 @@
                 <h3>{{ trans('dashboard.users') }}</h3>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card card-inverse card-info">
                     <div class="card-body">
-                        <h4 class="card-title">{{ trans('dashboard.total') }}</h4>
+                        <h4 class="card-title text-white">{{ trans('dashboard.total') }}</h4>
                         <div class="text-right">
-                            <h2 class="font-light m-b-0"><i class="fas fa-users fa-lg pull-right"></i> <span
+                            <h2 class="font-light m-b-0 text-white"><i class="fas fa-users fa-lg pull-right"></i> <span
                                     class="pull-left">{{ all_registered_users }}</span></h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card card-inverse card-primary">
                     <div class="card-body">
-                        <h4 class="card-title">{{ trans('dashboard.today') }}</h4>
+                        <h4 class="card-title text-white">{{ trans('dashboard.today') }}</h4>
                         <div class="text-right">
-                            <h2 class="font-light m-b-0"><i class="fas fa-users fa-lg pull-right"></i> <span
+                            <h2 class="font-light m-b-0 text-white"><i class="fas fa-users fa-lg pull-right"></i> <span
                                     class="pull-left">{{ today_registered_users }}</span></h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card card-inverse card-success">
                     <div class="card-body">
-                        <h4 class="card-title">{{trans('dashboard.week') }}</h4>
+                        <h4 class="card-title text-white">{{trans('dashboard.week') }}</h4>
                         <div class="text-right">
-                            <h2 class="font-light m-b-0"><i class="fas fa-users fa-lg pull-right"></i> <span
+                            <h2 class="font-light m-b-0 text-white"><i class="fas fa-users fa-lg pull-right"></i> <span
                                     class="pull-left">{{ weekly_registered_users }}</span></h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card card-inverse card-warning">
                     <div class="card-body">
-                        <h4 class="card-title">{{ trans('dashboard.month') }}</h4>
+                        <h4 class="card-title text-white">{{ trans('dashboard.month') }}</h4>
                         <div class="text-right">
-                            <h2 class="font-light m-b-0"><i class="fas fa-users fa-lg pull-right"></i> <span
+                            <h2 class="font-light m-b-0 text-white"><i class="fas fa-users fa-lg pull-right"></i> <span
                                     class="pull-left">{{ monthly_registered_users }}</span></h2>
                         </div>
                     </div>
@@ -62,44 +62,44 @@
                 <h3>{{ trans('dashboard.posts') }}</h3>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card card-inverse card-info">
                     <div class="card-body">
-                        <h4 class="card-title">{{ trans('dashboard.total') }}</h4>
+                        <h4 class="card-title text-white">{{ trans('dashboard.total') }}</h4>
                         <div class="text-right">
-                            <h2 class="font-light m-b-0"><i class="far fa-share-square fa-lg pull-right"></i> <span
+                            <h2 class="font-light m-b-0 text-white"><i class="far fa-share-square fa-lg pull-right"></i> <span
                                     class="pull-left">{{ all_published_posts }}</span></h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card card-inverse card-primary">
                     <div class="card-body">
-                        <h4 class="card-title">{{ trans('dashboard.today') }}</h4>
+                        <h4 class="card-title text-white">{{ trans('dashboard.today') }}</h4>
                         <div class="text-right">
-                            <h2 class="font-light m-b-0"><i class="far fa-share-square fa-lg pull-right"></i> <span
+                            <h2 class="font-light m-b-0 text-white"><i class="far fa-share-square fa-lg pull-right"></i> <span
                                     class="pull-left">{{ today_published_posts }}</span></h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card card-inverse card-success">
                     <div class="card-body">
-                        <h4 class="card-title">{{trans('dashboard.week') }}</h4>
+                        <h4 class="card-title text-white">{{trans('dashboard.week') }}</h4>
                         <div class="text-right">
-                            <h2 class="font-light m-b-0"><i class="far fa-share-square fa-lg pull-right"></i> <span
+                            <h2 class="font-light m-b-0 text-white"><i class="far fa-share-square fa-lg pull-right"></i> <span
                                     class="pull-left">{{ weekly_published_posts }}</span></h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card card-inverse card-warning">
                     <div class="card-body">
-                        <h4 class="card-title">{{ trans('dashboard.month') }}</h4>
+                        <h4 class="card-title text-white">{{ trans('dashboard.month') }}</h4>
                         <div class="text-right">
-                            <h2 class="font-light m-b-0"><i class="far fa-share-square fa-lg pull-right"></i> <span
+                            <h2 class="font-light m-b-0 text-white"><i class="far fa-share-square fa-lg pull-right"></i> <span
                                     class="pull-left">{{ monthly_published_posts }}</span></h2>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
             </div>
         </div>
         <div class="row" v-if="hasRole('admin')">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ trans('activity.last_activity_log') }}</h4>
@@ -142,30 +142,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ trans('post.last_posts') }}</h4>
-                        <h6 class="card-subtitle" v-if="!posts.length">
-                            {{ trans('general.no_result_found') }}
-                        </h6>
-                        <div class="table-responsive" v-if="posts.length">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th v-if="hasRole('admin')">{{ trans('user.user') }}</th>
-                                    <th>{{ trans('post.title') }}</th>
-                                    <th class="table-option">{{ trans('activity.date_time') }}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="post in posts">
-                                    <td v-text="post.user.profile.first_name + ' ' + post.user.profile.last_name"></td>
-                                    <td v-text="post.title"></td>
-                                    <td class="table-option">{{ post.created_at }}</td>
-                                </tr>
-                                </tbody>
-                            </table>
+            <div class="row" v-if="hasRole('admin')">
+                <div class="col-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ trans('post.last_posts') }}</h4>
+                            <h6 class="card-subtitle" v-if="!posts.length">
+                                {{ trans('general.no_result_found') }}
+                            </h6>
+                            <div class="table-responsive" v-if="posts.length">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th v-if="hasRole('admin')">{{ trans('user.user') }}</th>
+                                        <th>{{ trans('post.title') }}</th>
+                                        <th class="table-option">{{ trans('activity.date_time') }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="post in posts">
+                                        <td v-text="post.user.profile.first_name + ' ' + post.user.profile.last_name"></td>
+                                        <td v-text="post.title"></td>
+                                        <td class="table-option">{{ post.created_at }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

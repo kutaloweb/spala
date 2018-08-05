@@ -22,8 +22,6 @@
                 </ul>
                 <ul v-if="isAuth()" class="navbar-nav mr-0 my-lg-0">
                     <li class="nav-item">
-                    </li>
-                    <li class="nav-item">
                         <router-link class="nav-link text-muted waves-effect waves-dark" :to="'/home'">
                             <i class="fas fa-home fa-fw"></i>
                         </router-link>
@@ -70,6 +68,13 @@
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                </ul>
+                <ul v-if="getConfig('facebook_group')" class="navbar-nav mr-0 my-lg-0">
+                    <li class="nav-item">
+                        <a rel="nofollow" target="_blank" :href="getConfig('facebook_group')" class="nav-link text-muted waves-effect waves-dark">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </li>
                 </ul>
             </div>

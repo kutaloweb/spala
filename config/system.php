@@ -17,6 +17,7 @@ return [
         "footer_credit" => "Copyright © 2018 Alexey Kutalo",
         "multilingual" => 1,
         "post" => 1,
+        "facebook_group" => "",
     ],
     "default_role" => [
         "admin" => "admin",

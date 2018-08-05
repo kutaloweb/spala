@@ -8,6 +8,7 @@ return [
     'config_image' => 'Image',
     'configuration' => 'Configuration',
     'email' => 'Email',
+    'facebook_group' => 'Facebook Group',
     'footer_credit' => 'Footer Credit',
     'https' => 'HTTPS',
     'config_image_removed' => 'Image removed.',
