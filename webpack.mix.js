@@ -25,7 +25,6 @@ mix.js('resources/assets/js/app.js', 'public/js/app.js')
         plugin + 'toastr/toastr.min.js',
         plugin + 'slimscroll/jquery.slimscroll.js',
         plugin + 'waves/waves.js',
-        plugin + 'sticky-kit/sticky-kit.min.js',
         plugin + 'summernote/summernote-bs4.js',
         'resources/assets/js/custom.js'
     ], 'public/js/plugin.js')

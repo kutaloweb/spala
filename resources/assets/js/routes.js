@@ -7,19 +7,25 @@ let appName = helper.getConfig('company_name');
 let routes = [
     {
         path: '/',
-        component: require('./views/auth/Login.vue'),
-        meta: {title: appName}
+        component: require('./layouts/GuestPage.vue'),
+        children: [
+            {
+                path: '/',
+                component: require('./views/auth/Login.vue'),
+                meta: {title: appName}
+            },
+            {
+                path: '/login',
+                component: require('./views/auth/Login.vue'),
+                meta: {title: appName}
+            }
+        ]
     },
     {
         path: '/',
         component: require('./layouts/GuestPage.vue'),
         meta: {validate: ['guest']},
         children: [
-            {
-                path: '/login',
-                component: require('./views/auth/Login.vue'),
-                meta: {title: appName + ' | ' + i18n.auth.login}
-            },
             {
                 path: '/password',
                 component: require('./views/auth/Password.vue'),
@@ -213,9 +219,15 @@ let routes = [
         ]
     },
     {
-        path: '/:category/:slug',
-        component: require('./views/post/View.vue'),
-        meta: {title: appName}
+        path: '/',
+        component: require('./layouts/GuestPage.vue'),
+        children: [
+            {
+                path: '/:category/:slug',
+                component: require('./views/post/View.vue'),
+                meta: {title: appName}
+            }
+        ]
     },
     {
         path: '*',

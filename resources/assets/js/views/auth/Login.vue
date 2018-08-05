@@ -40,32 +40,28 @@
                         </div>
                     </form>
                 </div>
-                <guest-footer></guest-footer>
             </div>
         </div>
-        <div class="page-wrapper" style="margin-left:0">
-            <div class="container-fluid">
-                <div class="row" v-for="items in splitted">
-                    <div class="col-12 m-t-20 m-b-20">
-                        <div class="card-deck">
-                            <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
-                        </div>
+        <div class="container-fluid">
+            <div class="row" v-for="items in splitted">
+                <div class="col-12 m-t-20 m-b-20">
+                    <div class="card-deck">
+                        <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
                     </div>
                 </div>
-                <pagination-record
-                        :page-length.sync="filterPostForm.page_length"
-                        :records="posts"
-                        :show-page-length="false"
-                        @updateRecords="getPosts"
-                        @change.native="getPosts">
-                </pagination-record>
             </div>
+            <pagination-record
+                    :page-length.sync="filterPostForm.page_length"
+                    :records="posts"
+                    :show-page-length="false"
+                    @updateRecords="getPosts"
+                    @change.native="getPosts">
+            </pagination-record>
         </div>
     </section>
 </template>
 
 <script>
-    import guestFooter from '../../layouts/GuestFooter'
     import postCard from '../post/PostCard'
 
     export default {
@@ -86,7 +82,6 @@
             }
         },
         components: {
-            guestFooter,
             postCard
         },
         computed: {
@@ -109,7 +104,6 @@
                         axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('auth_token');
                         this.$store.dispatch('setAuthStatus');
                         this.$store.dispatch('setLastActivity');
-                        toastr.success(response.message);
                         if (helper.getConfig('two_factor_security') && response.two_factor_code) {
                             this.$store.dispatch('setTwoFactorCode', response.two_factor_code);
                             this.$router.push('/auth/security');

@@ -51,7 +51,7 @@ $(function () {
             $('.navbar-brand span').hide();
         }
     });
-    $(".fix-header .topbar").stick_in_parent();
+
     $(document).on('click', ".nav-toggler", function () {
         $("body").toggleClass("show-sidebar");
     });

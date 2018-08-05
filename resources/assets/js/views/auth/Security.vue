@@ -34,19 +34,13 @@
                         </div>
                     </form>
                 </div>
-                <guest-footer></guest-footer>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import guestFooter from '../../layouts/GuestFooter'
-
     export default {
-        components: {
-            guestFooter
-        },
         data() {
             return {
                 twoFactorForm: new Form({

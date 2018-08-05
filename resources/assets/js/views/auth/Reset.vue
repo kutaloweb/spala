@@ -45,15 +45,12 @@
                         </div>
                     </div>
                 </div>
-                <guest-footer></guest-footer>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import guestFooter from '../../layouts/GuestFooter'
-
     export default {
         data() {
             return {
@@ -67,9 +64,6 @@
                 status: true,
                 showMessage: false
             }
-        },
-        components: {
-            guestFooter
         },
         mounted() {
             if (!helper.featureAvailable('reset_password')) {

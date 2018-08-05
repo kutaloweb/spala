@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <p class="text-center">
-            <small>{{ getConfig('footer_credit') }}</small>
-        </p>
-    </div>
+    <footer class="footer d-print-none text-center" style="left:0">
+        {{ getConfig('footer_credit') }}
+    </footer>
 </template>
 
 <script>

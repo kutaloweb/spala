@@ -16,10 +16,10 @@ Global Styles
 body {
   background: $sidebar;
   font-family: $bodyfont;
-  margin: 0;
   overflow-x: hidden;
   color: $bodytext;
   font-weight: 300;
+  margin: 0 0 64px;
 }
 
 html {
@@ -2174,6 +2174,7 @@ Layouts
   }
   .page-wrapper {
     background: $light;
+    padding-top: 64px;
   }
   .left-sidebar {
     box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
@@ -2219,6 +2220,7 @@ Custom
 
 .nav-brand {
   font-size: 25px !important;
+  margin-bottom: 1px !important;
 }
 
 .filter-opened {
@@ -2226,16 +2228,16 @@ Custom
 }
 
 .topbar .top-navbar {
-  height: 60px;
+  height: 64px;
   padding: 0;
 }
 
 .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
-  line-height: 43px;
+  line-height: 47px;
 }
 
 .logo {
-  height: 50px;
+  height: 47px;
 }
 
 .list-group-item {
@@ -2563,4 +2565,16 @@ samp {
 
 .card-caps {
   text-transform: uppercase;
+}
+
+.nav-toggler {
+  top: 2px;
+}
+
+.footer {
+  padding: 25px 15px !important;
+}
+
+.card-text {
+  font-size: 1.2rem;
 }

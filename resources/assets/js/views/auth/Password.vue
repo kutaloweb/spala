@@ -29,15 +29,12 @@
                         </div>
                     </form>
                 </div>
-                <guest-footer></guest-footer>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import guestFooter from '../../layouts/GuestFooter'
-
     export default {
         data() {
             return {
@@ -45,9 +42,6 @@
                     email: ''
                 })
             }
-        },
-        components: {
-            guestFooter
         },
         mounted() {
             if (!helper.featureAvailable('reset_password')) {

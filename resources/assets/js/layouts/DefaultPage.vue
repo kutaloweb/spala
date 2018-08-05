@@ -26,7 +26,6 @@
         mounted() {
             helper.notification();
             $('body').addClass("card-no-border").trigger("resize");
-            $(".fix-header .topbar").stick_in_parent();
             $(".scroll-sidebar, .slimScrollDiv").css("overflow-x", "visible").parent().css("overflow", "visible");
             $('#sidebarnav').metisMenu();
             $('.scroll-sidebar').slimScroll({

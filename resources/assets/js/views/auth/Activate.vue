@@ -17,15 +17,12 @@
                         </div>
                     </div>
                 </div>
-                <guest-footer></guest-footer>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import guestFooter from '../../layouts/GuestFooter'
-
     export default {
         data() {
             return {
@@ -33,9 +30,6 @@
                 message: i18n.general.processing,
                 status: true
             }
-        },
-        components: {
-            guestFooter
         },
         computed: {
             getBackground() {

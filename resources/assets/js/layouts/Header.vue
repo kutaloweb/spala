@@ -1,33 +1,37 @@
 <template>
-    <header class="topbar">
+    <header class="topbar is_stuck" style="position:fixed;top:0;width:100%">
         <nav class="navbar top-navbar navbar-expand-md navbar-light">
             <div class="navbar-collapse">
-                <ul class="navbar-nav mt-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
-                           href="javascript:void(0)">
-                            <i class="fas fa-bars"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link sidebartoggler hidden-sm-down text-muted" href="javascript:void(0)">
-                            <i class="fas fa-bars fa-fw"></i>
-                        </a>
-                    </li>
-                </ul>
                 <ul class="nav navbar-nav navbar-logo mr-auto">
                     <li class="nav-item">
-                        <router-link class="nav-link nav-brand" to="/">
+                        <router-link class="nav-link nav-brand waves-effect waves-dark" to="/">
                             <img :src="getLogo()" alt="Logo" class="logo mr-2">
                             <b>{{ getConfig('company_name') }}</b>
                         </router-link>
                     </li>
+                    <li v-if="toggle" class="nav-item">
+                        <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark">
+                            <i class="fas fa-bars fa-fw"></i>
+                        </a>
+                    </li>
+                    <li v-if="toggle" class="nav-item">
+                        <a class="nav-link nav-toggler sidebartoggler hidden-sm-down text-muted waves-effect waves-dark">
+                            <i class="fas fa-bars fa-fw"></i>
+                        </a>
+                    </li>
                 </ul>
-                <ul class="navbar-nav mr-0 my-lg-0">
+                <ul v-if="isAuth()" class="navbar-nav mr-0 my-lg-0">
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link text-muted waves-effect waves-dark" :to="'/home'">
+                            <i class="fas fa-home fa-fw"></i>
+                        </router-link>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ getAuthUser('full_name') }}
+                            <span class="username">{{ getAuthUser('full_name') }}</span>
                             <img :src="getAuthUser('avatar')" alt="Avatar" class="profile-pic ml-2">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -77,6 +81,11 @@
     import {EventBus} from '../event-bus'
 
     export default {
+        props: {
+            toggle: {
+                default: true
+            }
+        },
         created() {
             EventBus.$on("config::set", () => {
                 this.$forceUpdate();
@@ -98,6 +107,9 @@
             },
             getAuthUser(name) {
                 return helper.getAuthUser(name);
+            },
+            isAuth() {
+                return helper.isAuth();
             },
             getConfig(name) {
                 return helper.getConfig(name);

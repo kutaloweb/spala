@@ -63,15 +63,12 @@
                         </div>
                     </form>
                 </div>
-                <guest-footer></guest-footer>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import guestFooter from '../../layouts/GuestFooter'
-
     export default {
         data() {
             return {
@@ -83,9 +80,6 @@
                     last_name: ''
                 })
             }
-        },
-        components: {
-            guestFooter
         },
         mounted() {
             if (!helper.featureAvailable('registration')) {

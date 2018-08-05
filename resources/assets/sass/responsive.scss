@@ -96,6 +96,9 @@ File: scss
 
 @media(max-width: 767px) {
 
+  .username {
+    display: none;
+  }
   .breadcrumb-item {
     font-size: 12px;
   }
@@ -145,7 +148,7 @@ File: scss
   /*Sidebar and wrapper*/
   .mini-sidebar .page-wrapper {
     margin-left: 0px;
-    padding-top: 40px;
+    padding-top: 64px;
   }
   .comment-text {
     .comment-footer {
