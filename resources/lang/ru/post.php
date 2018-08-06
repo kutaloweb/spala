@@ -28,6 +28,7 @@ return [
     'published_at' => 'Опубликован',
     'published_box' => 'Посты',
     'save_as_draft' => 'В черновик',
+    'search_query' => 'Заголовок или содержимое',
     'slug' => 'Слаг',
     'title' => 'Заголовок',
     'upload_cover' => 'Загрузить изображение',

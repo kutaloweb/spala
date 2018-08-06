@@ -139,6 +139,10 @@ export default {
         return store.getters.hasPermission(permission);
     },
 
+    getSearchQuery() {
+        return store.getters.getSearchQuery;
+    },
+
     hasAdminRole() {
         if (this.hasRole('admin')) {
             return 1;

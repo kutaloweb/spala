@@ -210,6 +210,44 @@ class Post extends Model
     }
 
     /**
+     * Scope a query to only include posts with the given title.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $search_query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilterBySearchQuery($query, $search_query = null)
+    {
+        if (!$search_query) {
+            return $query;
+        }
+
+        $search = "%" . str_replace(" ", "%", $search_query) . "%";
+
+        return $query->where(function ($q) use ($search) {
+            $q->where('title', 'like', "%{$search}%")->orWhere('body', 'like', "%{$search}%");
+        });
+    }
+
+    /**
+     * Scope a query to only include category posts.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param int|null $category_id
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilterByCategoryId($query, $category_id = null)
+    {
+        if (!$category_id) {
+            return $query;
+        }
+
+        return $query->whereCategoryId($category_id);
+    }
+
+    /**
      * Scope a query to only include posts between dates.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query

@@ -20,6 +20,30 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="navbar-nav mr-0 my-lg-0">
+                    <li v-if="getConfig('facebook_group')" class="nav-item">
+                        <a rel="nofollow" target="_blank" :href="getConfig('facebook_group')" class="nav-link text-muted waves-effect waves-dark">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li v-if="$route.name !=='search'" class="nav-item dropdown" ref="li">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" ref="div">
+                            <ul>
+                                <li>
+                                    <div class="drop-title">
+                                        <form class="custom-app-search" @keydown.enter.prevent="search()">
+                                            <input type="text" class="form-control" v-model="search_query" :placeholder="trans('general.search_for')">
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
                 <ul v-if="isAuth()" class="navbar-nav mr-0 my-lg-0">
                     <li class="nav-item">
                         <router-link class="nav-link text-muted waves-effect waves-dark" :to="'/home'">
@@ -70,13 +94,6 @@
                         </div>
                     </li>
                 </ul>
-                <ul v-if="getConfig('facebook_group')" class="navbar-nav mr-0 my-lg-0">
-                    <li class="nav-item">
-                        <a rel="nofollow" target="_blank" :href="getConfig('facebook_group')" class="nav-link text-muted waves-effect waves-dark">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </nav>
     </header>
@@ -89,6 +106,11 @@
         props: {
             toggle: {
                 default: true
+            }
+        },
+        data() {
+            return {
+                search_query: '',
             }
         },
         created() {
@@ -118,6 +140,12 @@
             },
             getConfig(name) {
                 return helper.getConfig(name);
+            },
+            search() {
+                this.$store.dispatch('setSearchQuery', this.search_query);
+                this.$refs.li.classList.remove("show");
+                this.$refs.div.classList.remove("show");
+                this.$router.push('/search');
             }
         }
     }

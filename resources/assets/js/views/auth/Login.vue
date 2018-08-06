@@ -42,39 +42,16 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row" v-for="items in splitted">
-                <div class="col-12 m-t-20 m-b-20">
-                    <div class="card-deck">
-                        <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
-                    </div>
-                </div>
-            </div>
-            <pagination-record
-                    :page-length.sync="filterPostForm.page_length"
-                    :records="posts"
-                    :show-page-length="false"
-                    @updateRecords="getPosts"
-                    @change.native="getPosts">
-            </pagination-record>
-        </div>
+        <post-list></post-list>
     </section>
 </template>
 
 <script>
-    import postCard from '../post/PostCard'
+    import postList from '../post/List'
 
     export default {
         data() {
             return {
-                posts: {
-                    total: 0,
-                    data: []
-                },
-                splitted: [],
-                filterPostForm: {
-                    page_length: 9
-                },
                 loginForm: new Form({
                     email: '',
                     password: ''
@@ -82,7 +59,7 @@
             }
         },
         components: {
-            postCard
+            postList
         },
         computed: {
             getBackground() {
@@ -95,7 +72,6 @@
         },
         mounted() {
             document.title = `${helper.getConfig('company_name')}`;
-            this.getPosts();
         },
         methods: {
             submit() {
@@ -119,30 +95,6 @@
             },
             getConfig(config) {
                 return helper.getConfig(config);
-            },
-            getPosts(page) {
-                if (typeof page !== 'number') {
-                    page = 1;
-                }
-                let url = helper.getFilterURL(this.filterPostForm);
-                axios.get('/api/posts?page=' + page + url)
-                    .then(response => response.data)
-                    .then(response => {
-                        this.posts = response;
-                        this.splitted = this.chunk(response.data, 3);
-                    })
-                    .catch(error => {
-                        helper.showDataErrorMsg(error);
-                    });
-            },
-            chunk(arr, len) {
-                let chunks = [];
-                let i = 0;
-                let n = arr.length;
-                while (i < n) {
-                    chunks.push(arr.slice(i, i += len));
-                }
-                return chunks;
             }
         }
     }

@@ -48,6 +48,7 @@ return [
     'processing' => 'Processing....',
     'remove' => 'Remove',
     'save' => 'Save',
+    'search_for' => 'Search for...',
     'select_one' => 'Select One',
     'sidebar' => 'Sidebar',
     'something_wrong' => 'There is something wrong. Please try again after sometime.',

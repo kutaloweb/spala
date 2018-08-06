@@ -18,6 +18,12 @@ let routes = [
                 path: '/login',
                 component: require('./views/auth/Login.vue'),
                 meta: {title: appName}
+            },
+            {
+                path: '/search',
+                component: require('./views/post/Search.vue'),
+                name: 'search',
+                meta: {title: appName}
             }
         ]
     },

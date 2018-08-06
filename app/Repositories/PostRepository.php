@@ -35,7 +35,20 @@ class PostRepository
     public function getPosts($params = [])
     {
         $page_length = isset($params['page_length']) ? $params['page_length'] : config('config.page_length');
-        $published = $this->post->with('user', 'user.profile', 'category')->filterByIsDraft(0);
+        $search_query = isset($params['search_query']) ? $params['search_query'] : null;
+        $category_id = isset($params['category_id']) ? $params['category_id'] : null;
+        $created_at_start_date = isset($params['created_at_start_date']) ? $params['created_at_start_date'] : null;
+        $created_at_end_date = isset($params['created_at_end_date']) ? $params['created_at_end_date'] : null;
+
+        $published = $this->post
+            ->with('user', 'user.profile', 'category')
+            ->filterByIsDraft(0)
+            ->filterBySearchQuery($search_query)
+            ->filterByCategoryId($category_id)
+            ->createdAtDateBetween([
+                'start_date' => $created_at_start_date,
+                'end_date' => $created_at_end_date
+            ]);
 
         if (!isset($params['page_length'])) {
             return $published->get();

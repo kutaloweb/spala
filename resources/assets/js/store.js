@@ -22,7 +22,8 @@ const store = new Vuex.Store({
         default_role: {
             admin: '',
             user: ''
-        }
+        },
+        search_query: ''
     },
     mutations: {
         setAuthStatus(state) {
@@ -72,7 +73,10 @@ const store = new Vuex.Store({
         },
         setDefaultRole(state, data) {
             state.default_role = data;
-        }
+        },
+        setSearchQuery(state, data) {
+            state.search_query = data;
+        },
     },
     actions: {
         setAuthStatus({commit}) {
@@ -104,6 +108,9 @@ const store = new Vuex.Store({
         },
         setDefaultRole({commit}, data) {
             commit('setDefaultRole', data)
+        },
+        setSearchQuery({commit}, data) {
+            commit('setSearchQuery', data)
         }
     },
     getters: {
@@ -133,6 +140,9 @@ const store = new Vuex.Store({
         },
         getDefaultRole: (state) => (name) => {
             return state.default_role[name];
+        },
+        getSearchQuery: (state) => {
+            return state.search_query;
         }
     },
     plugins: [

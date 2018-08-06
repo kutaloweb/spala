@@ -2,7 +2,7 @@
     <aside class="left-sidebar d-print-none">
         <div class="scroll-sidebar">
             <div class="user-profile">
-                <div class="profile-img"><img :src="getAuthUser('avatar')" alt="Avatar"></div>
+                <div class="profile-img mt-2"><img :src="getAuthUser('avatar')" alt="Avatar"></div>
             </div>
             <nav class="sidebar-nav m-t-20">
                 <div class="text-center" v-if="getConfig('maintenance_mode')">
@@ -51,6 +51,10 @@
         <div class="sidebar-footer">
             <router-link v-if="hasPermission('access-configuration')" to="/configuration" class="link"
                          v-tooltip="trans('configuration.configuration')">
+                <i class="fas fa-cogs"></i>
+            </router-link>
+            <router-link v-else to="/change-password" class="link"
+                         v-tooltip="trans('user.change_password')">
                 <i class="fas fa-cogs"></i>
             </router-link>
             <router-link to="/profile" class="link" v-tooltip="trans('user.profile')">

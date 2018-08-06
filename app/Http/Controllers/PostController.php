@@ -68,11 +68,15 @@ class PostController extends Controller
     /**
      * Display all public posts
      *
-     * @return Post[]|Collection
+     * @return JsonResponse
      */
     public function getPublicPosts()
     {
-        return $this->repo->getPosts($this->request->all());
+        $categories = $this->category->getAll();
+
+        $posts = $this->repo->getPosts($this->request->all());
+
+        return $this->success(compact('categories', 'posts'));
     }
 
     /**
