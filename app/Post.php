@@ -99,7 +99,7 @@ class Post extends Model
      */
     public function getCoverAttribute()
     {
-        return $this->attributes['cover'] ?: 'uploads/images/cover-default.png';
+        return $this->attributes['cover'] ?: config('config.default_cover');
     }
 
     /**

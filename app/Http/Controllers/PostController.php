@@ -225,7 +225,7 @@ class PostController extends Controller
         $image_path = config('system.upload_path.images') . '/';
         $image = $post->cover;
 
-        if ($image && File::exists($image)) {
+        if ($image && File::exists($image) && $image != config('config.default_cover')) {
             File::delete($image);
         }
 
@@ -265,7 +265,7 @@ class PostController extends Controller
 
         $image = $post->cover;
 
-        if ($image && File::exists($image)) {
+        if ($image && File::exists($image) && $image != config('config.default_cover')) {
             File::delete($image);
         }
 
@@ -306,7 +306,7 @@ class PostController extends Controller
 
         $image = $post->cover;
 
-        if ($image && File::exists($image)) {
+        if ($image && File::exists($image) && $image != config('config.default_cover')) {
             File::delete($image);
         }
 

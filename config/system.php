@@ -18,6 +18,7 @@ return [
         "multilingual" => 1,
         "post" => 1,
         "facebook_group" => "",
+        "default_cover" => "uploads/images/cover-default.png"
     ],
     "default_role" => [
         "admin" => "admin",
@@ -41,11 +42,12 @@ return [
         "two_factor_security",
         "https",
         "email_verification",
+        "default_cover",
     ],
     "upload_path" => [
         "config" => "uploads/config",
         "avatar" => "uploads/avatar",
-        "images" => "uploads/images",
+        "images" => "uploads/images"
     ],
     "pagination" => [
         "5",

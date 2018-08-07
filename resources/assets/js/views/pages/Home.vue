@@ -142,32 +142,32 @@
                     </div>
                 </div>
             </div>
-            <div class="row" v-if="hasRole('admin')">
-                <div class="col-12 col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ trans('post.last_posts') }}</h4>
-                            <h6 class="card-subtitle" v-if="!posts.length">
-                                {{ trans('general.no_result_found') }}
-                            </h6>
-                            <div class="table-responsive" v-if="posts.length">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th v-if="hasRole('admin')">{{ trans('user.user') }}</th>
-                                        <th>{{ trans('post.title') }}</th>
-                                        <th class="table-option">{{ trans('activity.date_time') }}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr v-for="post in posts">
-                                        <td v-text="post.user.profile.first_name + ' ' + post.user.profile.last_name"></td>
-                                        <td v-text="post.title"></td>
-                                        <td class="table-option">{{ post.created_at }}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+        </div>
+        <div class="row" v-if="hasRole('admin')">
+            <div class="col-12 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ trans('post.last_posts') }}</h4>
+                        <h6 class="card-subtitle" v-if="!posts.length">
+                            {{ trans('general.no_result_found') }}
+                        </h6>
+                        <div class="table-responsive" v-if="posts.length">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th v-if="hasRole('admin')">{{ trans('user.user') }}</th>
+                                    <th>{{ trans('post.title') }}</th>
+                                    <th class="table-option">{{ trans('activity.date_time') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="post in posts">
+                                    <td v-text="post.user.profile.first_name + ' ' + post.user.profile.last_name"></td>
+                                    <td v-text="post.title"></td>
+                                    <td class="table-option">{{ post.created_at }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
