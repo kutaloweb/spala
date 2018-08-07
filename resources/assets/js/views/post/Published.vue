@@ -21,6 +21,40 @@
                         <div class="row">
                             <post-sidebar menu="published" :statistics="statistics"></post-sidebar>
                             <div class="col-10 col-lg-10 col-md-10">
+                                <transition name="fade">
+                                    <div v-if="showFilterPanel">
+                                        <button class="btn btn-info btn-sm pull-right filter-opened" v-if="showFilterPanel"
+                                                @click="showFilterPanel = !showFilterPanel">
+                                            <i class="fas fa-filter"></i>
+                                            {{ trans('general.filter') }}
+                                        </button>
+                                        <h4 class="card-title">{{ trans('general.filter') }}</h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>{{ trans('post.search_query') }}</label>
+                                                    <input class="form-control" name="search_query"
+                                                           v-model="filterPostForm.search_query">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <date-range-picker
+                                                            :start-date.sync="filterPostForm.created_at_start_date"
+                                                            :end-date.sync="filterPostForm.created_at_end_date">
+                                                    </date-range-picker>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition>
+                                <div v-if="!showFilterPanel">
+                                    <button class="btn btn-info btn-sm pull-right"
+                                            @click="showFilterPanel = !showFilterPanel">
+                                        <i class="fas fa-filter"></i>
+                                        {{ trans('general.filter') }}
+                                    </button>
+                                </div>
                                 <h4 class="card-title">{{ trans('post.published_box') }}</h4>
                                 <h6 class="card-subtitle" v-if="posts">
                                     {{ trans('general.total_result_found',{'count': posts.total}) }}</h6>
@@ -79,9 +113,10 @@
 
 <script>
     import postSidebar from './PostSidebar'
+    import dateRangePicker from '../../components/DateRangePicker'
 
     export default {
-        components: {postSidebar},
+        components: {postSidebar, dateRangePicker},
         data() {
             return {
                 posts: {
@@ -89,8 +124,13 @@
                     data: []
                 },
                 filterPostForm: {
+                    search_query: '',
+                    category_id: '',
+                    created_at_start_date: '',
+                    created_at_end_date: '',
                     page_length: helper.getConfig('page_length')
                 },
+                showFilterPanel: false,
                 statistics: {
                     published: 0,
                     draft: 0
@@ -124,7 +164,9 @@
                 let url = helper.getFilterURL(this.filterPostForm);
                 axios.get('/api/post/published?page=' + page + url)
                     .then(response => response.data)
-                    .then(response => this.posts = response)
+                    .then(response => {
+                        this.posts = response.posts;
+                    })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
                     });
@@ -143,6 +185,14 @@
                     .catch(error => {
                         helper.showDataErrorMsg(error);
                     });
+            }
+        },
+        watch: {
+            filterPostForm: {
+                handler(val) {
+                    this.getPosts();
+                },
+                deep: true
             }
         }
     }

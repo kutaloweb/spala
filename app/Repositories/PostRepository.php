@@ -227,7 +227,20 @@ class PostRepository
     public function getDraftList($params = [])
     {
         $page_length = isset($params['page_length']) ? $params['page_length'] : config('config.page_length');
-        $draft = $this->post->with('user', 'user.profile', 'category')->filterByUserId(\Auth::user()->id)->filterByIsDraft(1);
+        $search_query = isset($params['search_query']) ? $params['search_query'] : null;
+        $created_at_start_date = isset($params['created_at_start_date']) ? $params['created_at_start_date'] : null;
+        $created_at_end_date = isset($params['created_at_end_date']) ? $params['created_at_end_date'] : null;
+
+        $draft = $this->post
+            ->with('user', 'user.profile', 'category')
+            ->filterByUserId(\Auth::user()->id)
+            ->filterByIsDraft(1)
+            ->filterBySearchQuery($search_query)
+            ->createdAtDateBetween([
+                'start_date' => $created_at_start_date,
+                'end_date' => $created_at_end_date
+            ]);
+
         if (!isset($params['page_length'])) {
             return $draft->get();
         }
@@ -245,7 +258,19 @@ class PostRepository
     public function getPublishedList($params = [])
     {
         $page_length = isset($params['page_length']) ? $params['page_length'] : config('config.page_length');
-        $published = $this->post->with('user', 'user.profile', 'category')->filterByUserId(\Auth::user()->id)->filterByIsDraft(0);
+        $search_query = isset($params['search_query']) ? $params['search_query'] : null;
+        $created_at_start_date = isset($params['created_at_start_date']) ? $params['created_at_start_date'] : null;
+        $created_at_end_date = isset($params['created_at_end_date']) ? $params['created_at_end_date'] : null;
+
+        $published = $this->post
+            ->with('user', 'user.profile', 'category')
+            ->filterByUserId(\Auth::user()->id)
+            ->filterByIsDraft(0)
+            ->filterBySearchQuery($search_query)
+            ->createdAtDateBetween([
+                'start_date' => $created_at_start_date,
+                'end_date' => $created_at_end_date
+            ]);
 
         if (!isset($params['page_length'])) {
             return $published->get();

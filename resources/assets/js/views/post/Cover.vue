@@ -80,7 +80,9 @@
                 .then(response => {
                     this.id = response.post.id;
                     this.post = response.post;
-                    this.cover.post = response.post.cover;
+                    if (response.post.cover !== 'uploads/images/cover-default.png') {
+                        this.cover.post = response.post.cover;
+                    }
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);

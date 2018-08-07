@@ -168,21 +168,25 @@ class PostController extends Controller
     /**
      * Get all draft posts
      *
-     * @return Post[]|Collection
+     * @return JsonResponse
      */
     public function getDraftList()
     {
-        return $this->repo->getDraftList($this->request->all());
+        $posts = $this->repo->getDraftList($this->request->all());
+
+        return $this->success(compact('posts'));
     }
 
     /**
      * Get all published posts
      *
-     * @return Post[]|Collection
+     * @return JsonResponse
      */
     public function getPublishedList()
     {
-        return $this->repo->getPublishedList($this->request->all());
+        $posts = $this->repo->getPublishedList($this->request->all());
+
+        return $this->success(compact('posts'));
     }
 
     /**
