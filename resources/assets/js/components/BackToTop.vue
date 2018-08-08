@@ -51,7 +51,7 @@
     }
     .scroll-to-top {
         position: fixed;
-        bottom: 40px;
+        bottom: 70px;
         right: 70px;
         line-height: 40px;
         width: 40px;

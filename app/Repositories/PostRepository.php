@@ -189,9 +189,6 @@ class PostRepository
         }
         $post->is_draft = $is_draft;
 
-        if (!$is_draft) {
-            $post->created_at = Carbon::now();
-        }
         $post->save();
 
         return $post;

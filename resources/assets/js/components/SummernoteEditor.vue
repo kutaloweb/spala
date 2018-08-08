@@ -32,6 +32,11 @@
             let config = {
                 height: this.height,
                 disableResizeEditor: true,
+                popover: {
+                    image: [],
+                    link: [],
+                    air: []
+                },
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'italic', 'underline', 'clear']],

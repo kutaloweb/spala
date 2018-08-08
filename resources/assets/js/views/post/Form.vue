@@ -134,8 +134,8 @@
                 return helper.toWord(str);
             },
             addAttributes(bodyHtml) {
-                bodyHtml = bodyHtml.replace(new RegExp('<a ', 'g'), '<a target="_blank" rel="nofollow" ');
-                bodyHtml = bodyHtml.replace(new RegExp('<img ', 'g'), '<img class="img-fluid" ');
+                bodyHtml = bodyHtml.replace(new RegExp('<a href', 'g'), '<a target="_blank" rel="nofollow" href');
+                bodyHtml = bodyHtml.replace(new RegExp('<img src', 'g'), '<img class="img-fluid" src');
 
                 return bodyHtml;
             }
