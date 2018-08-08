@@ -7,11 +7,10 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-9 col-md-9">
-                                    <h1 class="card-title post-title">{{ post.title }}</h1>
                                     <span class="text-muted card-caps">
-                                                {{ categoryName }} / {{ post.created_at }}
-                                            </span>
-                                    <hr>
+                                        {{ categoryName }} / {{ post.created_at }}
+                                    </span>
+                                    <h1 class="card-title post-title">{{ post.title }}</h1>
                                     <div class="card-text" v-html="post.body"></div>
                                 </div>
                                 <div class="col-3 col-md-3">

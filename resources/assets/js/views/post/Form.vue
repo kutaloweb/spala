@@ -108,6 +108,7 @@
         methods: {
             submit() {
                 this.postForm.is_draft = 0;
+                this.postForm.body = this.addAttributes(this.postForm.body);
                 this.postForm.post('/api/post/new')
                     .then(response => {
                         toastr.success(response.post);
@@ -119,6 +120,7 @@
             },
             saveAsDraft() {
                 this.postForm.is_draft = 1;
+                this.postForm.body = this.addAttributes(this.postForm.body);
                 this.postForm.post('/api/post/new')
                     .then(response => {
                         toastr.success(response.post);
@@ -130,6 +132,12 @@
             },
             toWord(str) {
                 return helper.toWord(str);
+            },
+            addAttributes(bodyHtml) {
+                bodyHtml = bodyHtml.replace(new RegExp('<a ', 'g'), '<a target="_blank" rel="nofollow" ');
+                bodyHtml = bodyHtml.replace(new RegExp('<img ', 'g'), '<img class="img-fluid" ');
+
+                return bodyHtml;
             }
         }
     }
