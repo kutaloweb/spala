@@ -265,8 +265,9 @@ router.beforeEach((to, from, next) => {
     helper.authCheck()
         .then(response => {
             helper.notification();
-            if (helper.isAuth() && !helper.hasRole('admin') && helper.getConfig('maintenance_mode') && to.fullPath !== '/maintenance')
+            if (!helper.hasRole('admin') && helper.getConfig('maintenance_mode') && to.fullPath !== '/maintenance' && to.fullPath !== '/login') {
                 return next({path: '/maintenance'});
+            }
             if (to.matched.some(m => m.meta.validate)) {
                 const m = to.matched.find(m => m.meta.validate);
                 if (m.meta.validate.indexOf('auth') > -1) {

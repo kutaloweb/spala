@@ -18,7 +18,8 @@ return [
         "multilingual" => 1,
         "post" => 1,
         "facebook_group" => "",
-        "default_cover" => "uploads/images/cover-default.png"
+        "default_cover" => "uploads/images/cover-default.png",
+        "maintenance_mode_message"  => "Briefly unavailable for scheduled maintenance. Check back in a minute.",
     ],
     "default_role" => [
         "admin" => "admin",
@@ -44,6 +45,7 @@ return [
         "email_verification",
         "facebook_group",
         "default_cover",
+        "maintenance_mode_message"
     ],
     "upload_path" => [
         "config" => "uploads/config",
