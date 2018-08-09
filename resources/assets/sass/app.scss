@@ -2230,6 +2230,10 @@ Custom
   opacity: 0.7;
 }
 
+.topbar {
+  z-index: 100000 !important;
+}
+
 .topbar .top-navbar {
   height: 64px;
   padding: 0;

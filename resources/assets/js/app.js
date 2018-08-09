@@ -12,7 +12,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Form from './services/form'
 import helper from './services/helper'
-import VTooltip from 'v-tooltip'
 import VueMask from 'v-mask'
 import VuejsDialog from "vuejs-dialog"
 import Sortable from 'vue-sortable'
@@ -40,7 +39,6 @@ Vue.prototype.$last = function (item, list) {
 };
 
 Vue.use(VueRouter);
-Vue.use(VTooltip);
 Vue.use(VueMask);
 Vue.use(VuejsDialog, {
     message: i18n.general.proceed_with_request,
@@ -49,6 +47,14 @@ Vue.use(VuejsDialog, {
     animation: 'bounce',
 });
 Vue.use(Sortable);
+
+Vue.directive('tooltip', function(el, binding){
+    $(el).tooltip({
+        title: binding.value,
+        placement: 'top',
+        trigger: 'hover focus'
+    })
+});
 
 Vue.component('pagination-record', paginationRecord);
 Vue.component('show-error', showError);

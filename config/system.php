@@ -42,6 +42,7 @@ return [
         "two_factor_security",
         "https",
         "email_verification",
+        "facebook_group",
         "default_cover",
     ],
     "upload_path" => [
