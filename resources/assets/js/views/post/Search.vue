@@ -52,8 +52,17 @@
             <div v-if="splitted.length !== 0">
                 <div class="row" v-for="items in splitted">
                     <div class="col-12 m-t-20 m-b-20">
-                        <div class="card-deck">
+                        <div v-if="items.length === 3" class="card-deck">
                             <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
+                        </div>
+                        <div v-if="items.length === 2" class="card-deck">
+                            <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
+                            <div class="card card-hidden"></div>
+                        </div>
+                        <div v-if="items.length === 1" class="card-deck">
+                            <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
+                            <div class="card card-hidden"></div>
+                            <div class="card card-hidden"></div>
                         </div>
                     </div>
                 </div>
