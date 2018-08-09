@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router'
-import store from './store'
+import store from './vuex/store'
 import helper from './services/helper'
 
 let appName = helper.getConfig('company_name');
@@ -265,7 +265,14 @@ router.beforeEach((to, from, next) => {
     helper.authCheck()
         .then(response => {
             helper.notification();
-            if (!helper.hasRole('admin') && helper.getConfig('maintenance_mode') && to.fullPath !== '/maintenance' && to.fullPath !== '/login') {
+            if (
+                !helper.hasRole('admin') &&
+                helper.getConfig('maintenance_mode') &&
+                to.fullPath !== '/maintenance' &&
+                to.fullPath !== '/login' &&
+                to.fullPath !== '/auth/security' &&
+                to.fullPath !== '/auth/lock'
+            ) {
                 return next({path: '/maintenance'});
             }
             if (to.matched.some(m => m.meta.validate)) {

@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import getters from './getters'
+import actions from './actions'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex);
@@ -78,73 +80,8 @@ const store = new Vuex.Store({
             state.search_query = data;
         },
     },
-    actions: {
-        setAuthStatus({commit}) {
-            commit('setAuthStatus');
-        },
-        setAuthUserDetail({commit}, auth) {
-            commit('setAuthUserDetail', auth);
-        },
-        resetAuthUserDetail({commit}) {
-            commit('resetAuthUserDetail');
-        },
-        setConfig({commit}, data) {
-            commit('setConfig', data);
-        },
-        setPermission({commit}, data) {
-            commit('setPermission', data);
-        },
-        resetConfig({commit}) {
-            commit('resetConfig', data);
-        },
-        setTwoFactorCode({commit}, data) {
-            commit('setTwoFactorCode', data);
-        },
-        resetTwoFactorCode({commit}) {
-            commit('resetTwoFactorCode');
-        },
-        setLastActivity({commit}) {
-            commit('setLastActivity');
-        },
-        setDefaultRole({commit}, data) {
-            commit('setDefaultRole', data)
-        },
-        setSearchQuery({commit}, data) {
-            commit('setSearchQuery', data)
-        }
-    },
-    getters: {
-        getAuthUser: (state) => (name) => {
-            return state.auth[name];
-        },
-        getAuthUserFullName: (state) => {
-            return state.auth['first_name'] + ' ' + state.auth['last_name'];
-        },
-        getAuthStatus: (state) => {
-            return state.is_auth;
-        },
-        hasRole: (state) => (name) => {
-            return state.auth.roles.indexOf(name) >= 0
-        },
-        getConfig: (state) => (name) => {
-            return state.config[name];
-        },
-        hasPermission: (state) => (name) => {
-            return state.permissions.indexOf(name) > -1;
-        },
-        getTwoFactorCode: (state) => {
-            return state.two_factor_code;
-        },
-        getLastActivity: (state) => {
-            return state.last_activity;
-        },
-        getDefaultRole: (state) => (name) => {
-            return state.default_role[name];
-        },
-        getSearchQuery: (state) => {
-            return state.search_query;
-        }
-    },
+    actions,
+    getters,
     plugins: [
         createPersistedState({storage: window.sessionStorage})
     ]

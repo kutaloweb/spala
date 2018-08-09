@@ -44,7 +44,7 @@
                         </div>
                     </li>
                 </ul>
-                <ul v-if="isAuth()" class="navbar-nav mr-0 my-lg-0">
+                <ul v-if="isAuth() && !getTwoFactorCode() && !isScreenLocked()" class="navbar-nav mr-0 my-lg-0">
                     <li class="nav-item">
                         <router-link class="nav-link text-muted waves-effect waves-dark" :to="'/home'">
                             <i class="fas fa-home fa-fw"></i>
@@ -134,6 +134,12 @@
             },
             getAuthUser(name) {
                 return helper.getAuthUser(name);
+            },
+            getTwoFactorCode() {
+                return helper.getTwoFactorCode();
+            },
+            isScreenLocked() {
+                return helper.isScreenLocked();
             },
             isAuth() {
                 return helper.isAuth();

@@ -49,11 +49,9 @@
             }
         },
         mounted() {
-            if (!helper.getConfig('two_factor_security') || !helper.getTwoFactorCode())
+            if (!helper.getConfig('two_factor_security') || !helper.getTwoFactorCode()) {
                 this.$router.push('/home');
-
-            if (!helper.getConfig('mode'))
-                this.twoFactorForm.two_factor_code = helper.getTwoFactorCode();
+            }
         },
         computed: {
             getBackground() {

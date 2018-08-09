@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 
-import store from './store'
+import store from './vuex/store'
 import router from './routes'
 import Vue from 'vue'
 import VueRouter from 'vue-router'

@@ -1,4 +1,4 @@
-import store from '../store'
+import store from '../vuex/store'
 import router from '../routes'
 
 export default {
@@ -6,17 +6,6 @@ export default {
     logout() {
         return axios.post('/api/auth/logout')
             .then(response => response.data)
-            .catch(error => {
-                this.showDataErrorMsg(error);
-            });
-    },
-
-    authUser() {
-        return axios.get('/api/auth/user')
-            .then(response => response.data)
-            .then(response => {
-                return response;
-            })
             .catch(error => {
                 this.showDataErrorMsg(error);
             });
@@ -143,13 +132,6 @@ export default {
         return store.getters.getSearchQuery;
     },
 
-    hasAdminRole() {
-        if (this.hasRole('admin')) {
-            return 1;
-        }
-        return 0;
-    },
-
     userHasRole(user, roleName) {
         if (!user.roles) {
             return false;
@@ -195,14 +177,6 @@ export default {
         }
 
         return form;
-    },
-
-    ucword(value) {
-        if (!value) return;
-
-        return value.toLowerCase().replace(/\b[a-z]/g, function (value) {
-            return value.toUpperCase();
-        });
     },
 
     toWord(value) {
