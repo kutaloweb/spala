@@ -32,6 +32,24 @@
     import pageNotFound from '../errors/PageNotFound'
 
     export default {
+        metaInfo() {
+            return {
+                title: `${this.documentTitle}`,
+                meta: [
+                    {name: 'description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
+                    {name: 'twitter:card', content: 'summary_large_image'},
+                    {name: 'twitter:title', content: this.post ? this.post.title : ''},
+                    {name: 'twitter:description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
+                    {name: 'twitter:image', content: this.post ? `${this.getConfig('app_url')}/${this.post.cover}` : ''},
+                    {property: 'og:locale', content: this.getConfig('locale')},
+                    {property: 'og:site_name', content: this.getConfig('company_name')},
+                    {property: 'og:url', content: this.getConfig('app_url')},
+                    {property: 'og:title', content: this.post ? this.post.title : ''},
+                    {property: 'og:description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
+                    {property: 'og:image', content: this.post ? `${this.getConfig('app_url')}/${this.post.cover}` : ''}
+        ]
+            }
+        },
         components: {
             pageNotFound,
         },
@@ -40,7 +58,8 @@
                 category: '',
                 categoryName: '',
                 slug: '',
-                post: {}
+                post: {},
+                documentTitle: ''
             };
         },
         mounted() {
@@ -50,16 +69,24 @@
                 .then(response => response.data)
                 .then(response => {
                     this.post = response.post;
-                    this.categoryName = response.post.category.name;
+                    this.categoryName = this.post ? response.post.category.name : '';
                     if (this.post) {
-                        document.title = `${helper.getConfig('company_name')} | ${this.post.title}`;
+                        this.documentTitle = `${helper.getConfig('company_name')} | ${this.post.title}`;
                     } else {
-                        document.title = `${helper.getConfig('company_name')} | ${i18n.general.page_not_found_heading}`;
+                        this.documentTitle = `${helper.getConfig('company_name')} | ${i18n.general.page_not_found_heading}`;
                     }
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
                 });
+        },
+        methods: {
+            getConfig(name) {
+                return helper.getConfig(name);
+            },
+            limitWords(str) {
+                return helper.limitWords(str, 35);
+            }
         }
     }
 </script>

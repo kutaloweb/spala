@@ -12,7 +12,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Form from './services/form'
 import helper from './services/helper'
-import VueMask from 'v-mask'
+import Meta from 'vue-meta'
 import VuejsDialog from "vuejs-dialog"
 import Sortable from 'vue-sortable'
 import paginationRecord from './components/PaginationRecord'
@@ -39,7 +39,7 @@ Vue.prototype.$last = function (item, list) {
 };
 
 Vue.use(VueRouter);
-Vue.use(VueMask);
+Vue.use(Meta);
 Vue.use(VuejsDialog, {
     message: i18n.general.proceed_with_request,
     okText: i18n.general.yes,

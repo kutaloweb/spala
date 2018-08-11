@@ -20,6 +20,7 @@ return [
         "facebook_group" => "",
         "default_cover" => "uploads/images/cover-default.png",
         "maintenance_mode_message"  => "Briefly unavailable for scheduled maintenance. Check back in a minute.",
+        "app_url" => config('app.url'),
     ],
     "default_role" => [
         "admin" => "admin",
@@ -45,7 +46,8 @@ return [
         "email_verification",
         "facebook_group",
         "default_cover",
-        "maintenance_mode_message"
+        "maintenance_mode_message",
+        "app_url"
     ],
     "upload_path" => [
         "config" => "uploads/config",

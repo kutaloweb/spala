@@ -102,8 +102,8 @@
                 let stringStripper = /(\n|\r| class=(")?Mso[a-zA-Z]+(")?)/g;
                 let output = input.replace(stringStripper, ' ');
 
-                let commentSripper = new RegExp('<!--(.*?)-->', 'g');
-                output = output.replace(commentSripper, '');
+                let commentStripper = new RegExp('<!--(.*?)-->', 'g');
+                output = output.replace(commentStripper, '');
 
                 let allowedTags = [
                     '<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>', '<br>', '<blockquote>', '<code>',
@@ -120,6 +120,8 @@
                     let attributeStripper = new RegExp(' ' + badAttributes[i] + '="(.*?)"', 'gi');
                     output = output.replace(attributeStripper, '');
                 }
+
+                output = output.replace(/[&]nbsp[;]/gi," ");
 
                 return output;
             },

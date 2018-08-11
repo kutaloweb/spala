@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Configuration;
 use Carbon\Carbon;
+use File;
 
 class ConfigurationRepository
 {
@@ -111,6 +112,8 @@ class ConfigurationRepository
             $config->text_value = !is_numeric($value) ? $value : null;
             $config->save();
         }
+
+        $this->setDefaultCover($params);
         $this->setLocale($params);
     }
 
@@ -157,5 +160,38 @@ class ConfigurationRepository
         date_default_timezone_set(config('config.timezone'));
         \App::setLocale(config('config.locale') ?: 'en');
         Carbon::setLocale(config('config.locale') ?: 'en');
+    }
+
+    /**
+     * @param array $params
+     */
+    protected function setDefaultCover($params)
+    {
+        switch ($params['color_theme']) {
+            case "blue":
+            case "blue-dark":
+            case "default":
+            case "default-dark":
+                File::copy(public_path() . '/images/cover-default-blue.png', public_path() . '/uploads/images/cover-default.png');
+                break;
+            case "green":
+            case "green-dark":
+                File::copy(public_path() . '/images/cover-default-green.png', public_path() . '/uploads/images/cover-default.png');
+                break;
+            case "megna":
+            case "megna-dark":
+                File::copy(public_path() . '/images/cover-default-megna.png', public_path() . '/uploads/images/cover-default.png');
+                break;
+            case "purple":
+            case "purple-dark":
+                File::copy(public_path() . '/images/cover-default-purple.png', public_path() . '/uploads/images/cover-default.png');
+                break;
+            case "red":
+            case "red-dark":
+                File::copy(public_path() . '/images/cover-default-red.png', public_path() . '/uploads/images/cover-default.png');
+                break;
+            default:
+                File::copy(public_path() . '/images/cover-default-red.png', public_path() . '/uploads/images/cover-default.png');
+        }
     }
 }
