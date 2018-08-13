@@ -30,6 +30,24 @@
     import postCard from './PostCard'
 
     export default {
+        metaInfo() {
+            return {
+                title: `${this.getConfig('company_name')}`,
+                meta: [
+                    {name: 'description', content: ''},
+                    {name: 'twitter:card', content: 'summary_large_image'},
+                    {name: 'twitter:title', content: this.getConfig('company_name')},
+                    {name: 'twitter:description', content: ''},
+                    {name: 'twitter:image', content: `${this.getConfig('app_url')}/uploads/images/cover-default.png`},
+                    {property: 'og:type', content: 'website'},
+                    {property: 'og:site_name', content: this.getConfig('company_name')},
+                    {property: 'og:url', content: `${this.getConfig('app_url')}`},
+                    {property: 'og:title', content: this.getConfig('company_name')},
+                    {property: 'og:description', content: ''},
+                    {property: 'og:image', content: `${this.getConfig('app_url')}/uploads/images/cover-default.png`}
+                ]
+            }
+        },
         data() {
             return {
                 posts: {
@@ -72,6 +90,9 @@
                     chunks.push(arr.slice(i, i += len));
                 }
                 return chunks;
+            },
+            getConfig(name) {
+                return helper.getConfig(name);
             }
         },
         watch: {

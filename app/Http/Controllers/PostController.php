@@ -6,7 +6,6 @@ use App\Post;
 use App\Repositories\CategoryRepository;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
@@ -54,6 +53,7 @@ class PostController extends Controller
      * @param PostRepository $repo
      * @param ActivityLogRepository $activity
      * @param UserRepository $user
+     * @param CategoryRepository $category
      */
     public function __construct(Request $request, PostRepository $repo, ActivityLogRepository $activity, UserRepository $user, CategoryRepository $category)
     {

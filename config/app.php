@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Nutsweb\LaravelPrerender\LaravelPrerenderServiceProvider::class,
 
         /*
          * Application Service Providers...

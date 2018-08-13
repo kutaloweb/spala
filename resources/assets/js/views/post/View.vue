@@ -41,13 +41,13 @@
                     {name: 'twitter:title', content: this.post ? this.post.title : ''},
                     {name: 'twitter:description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
                     {name: 'twitter:image', content: this.post ? `${this.getConfig('app_url')}/${this.post.cover}` : ''},
-                    {property: 'og:locale', content: this.getConfig('locale')},
+                    {property: 'og:type', content: 'website'},
                     {property: 'og:site_name', content: this.getConfig('company_name')},
-                    {property: 'og:url', content: this.getConfig('app_url')},
+                    {property: 'og:url', content: `${this.getConfig('app_url')}/${this.categorySlug}/${this.post.slug}`},
                     {property: 'og:title', content: this.post ? this.post.title : ''},
                     {property: 'og:description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
                     {property: 'og:image', content: this.post ? `${this.getConfig('app_url')}/${this.post.cover}` : ''}
-        ]
+                ]
             }
         },
         components: {
@@ -70,6 +70,7 @@
                 .then(response => {
                     this.post = response.post;
                     this.categoryName = this.post ? response.post.category.name : '';
+                    this.categorySlug = this.post ? response.post.category.slug : '';
                     if (this.post) {
                         this.documentTitle = `${helper.getConfig('company_name')} | ${this.post.title}`;
                     } else {
