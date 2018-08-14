@@ -244,5 +244,13 @@ export default {
         }
 
         return textToLimit;
+    },
+
+    showSpinner() {
+        document.getElementsByClassName("preloader")[0].style.display = "block";
+    },
+
+    hideSpinner() {
+        document.getElementsByClassName("preloader")[0].style.display = "none";
     }
 }

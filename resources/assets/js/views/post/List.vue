@@ -72,11 +72,14 @@
                     page = 1;
                 }
                 let url = helper.getFilterURL(this.filterPostForm);
+                helper.showSpinner();
                 axios.get('/api/posts?page=' + page + url)
                     .then(response => response.data)
                     .then(response => {
                         this.posts = response.posts;
                         this.splitted = this.chunk(response.posts.data, 3);
+                        window.scrollTo(0, 0);
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
