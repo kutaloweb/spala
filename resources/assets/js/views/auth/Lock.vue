@@ -15,10 +15,12 @@
                             <show-error :form-name="lockScreenForm" prop-name="password"></show-error>
                         </div>
                         <div class="form-group text-center m-t-20">
-                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
-                                    type="submit">
-                                {{ trans('auth.confirm') }}
-                            </button>
+                            <button-spinner
+                                    :btn-text="trans('auth.confirm')"
+                                    :class="'btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light'"
+                                    :is-loading="isLoading"
+                                    :disabled="isLoading">
+                            </button-spinner>
                         </div>
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
@@ -38,13 +40,19 @@
 </template>
 
 <script>
+    import buttonSpinner from '../../components/ButtonSpinner';
+
     export default {
         data() {
             return {
                 lockScreenForm: new Form({
                     password: '',
-                })
+                }),
+                isLoading: false
             }
+        },
+        components: {
+            buttonSpinner
         },
         mounted() {
             if (!helper.getConfig('lock_screen') || !helper.isScreenLocked())
@@ -67,6 +75,7 @@
                 })
             },
             submit() {
+                this.isLoading = true;
                 this.lockScreenForm.post('/api/auth/lock')
                     .then(response => {
                         this.$store.dispatch('setLastActivity');
@@ -75,6 +84,7 @@
                     })
                     .catch(error => {
                         helper.showErrorMsg(error);
+                        this.isLoading = false;
                     });
             },
             getAuthUser(name) {

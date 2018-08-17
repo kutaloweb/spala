@@ -73,9 +73,9 @@
                     this.categoryName = this.post ? response.post.category.name : '';
                     this.categorySlug = this.post ? response.post.category.slug : '';
                     if (this.post) {
-                        this.documentTitle = `${helper.getConfig('company_name')} | ${this.post.title}`;
+                        this.documentTitle = `${this.post.title} | ${helper.getConfig('company_name')}`;
                     } else {
-                        this.documentTitle = `${helper.getConfig('company_name')} | ${i18n.general.page_not_found_heading}`;
+                        this.documentTitle = `${i18n.general.page_not_found_heading} | ${helper.getConfig('company_name')}`;
                     }
                     helper.hideSpinner();
                 })

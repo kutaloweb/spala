@@ -130,6 +130,7 @@
                         this.categories = response.categories;
                         window.scrollTo(0, 0);
                         helper.hideSpinner();
+                        document.title = `${i18n.general.search_for} | ${helper.getConfig('company_name')}`;
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);

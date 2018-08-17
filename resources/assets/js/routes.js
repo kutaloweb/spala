@@ -23,7 +23,7 @@ let routes = [
                 path: '/search',
                 component: require('./views/post/Search.vue'),
                 name: 'search',
-                meta: {title: appName}
+                meta: {title: i18n.general.search_for + ' | ' + appName}
             }
         ]
     },
@@ -35,22 +35,22 @@ let routes = [
             {
                 path: '/password',
                 component: require('./views/auth/Password.vue'),
-                meta: {title: appName + ' | ' + i18n.user.reset_password}
+                meta: {title: i18n.user.reset_password + ' | ' + appName}
             },
             {
                 path: '/register',
                 component: require('./views/auth/Register.vue'),
-                meta: {title: appName + ' | ' + i18n.auth.register}
+                meta: {title: i18n.auth.register + ' | ' + appName}
             },
             {
                 path: '/auth/:token/activate',
                 component: require('./views/auth/Activate.vue'),
-                meta: {title: appName + ' | ' + i18n.auth.two_factor_code}
+                meta: {title: i18n.auth.two_factor_code + ' | ' + appName}
             },
             {
                 path: '/password/reset/:token',
                 component: require('./views/auth/Reset.vue'),
-                meta: {title: appName + ' | ' + i18n.passwords.reset_password}
+                meta: {title: i18n.passwords.reset_password + ' | ' + appName}
             }
         ]
     },
@@ -62,12 +62,12 @@ let routes = [
             {
                 path: '/auth/security',
                 component: require('./views/auth/Security.vue'),
-                meta: {title: appName + ' | ' + i18n.auth.two_factor_code}
+                meta: {title: i18n.auth.two_factor_code + ' | ' + appName}
             },
             {
                 path: '/auth/lock',
                 component: require('./views/auth/Lock.vue'),
-                meta: {title: appName + ' | ' + i18n.auth.lock_screen}
+                meta: {title: i18n.auth.lock_screen + ' | ' + appName}
             },
         ]
     },
@@ -79,137 +79,137 @@ let routes = [
             {
                 path: '/',
                 component: require('./views/pages/Home.vue'),
-                meta: {title: appName + ' | ' + i18n.general.home}
+                meta: {title: i18n.general.home + ' | ' + appName}
             },
             {
                 path: '/home',
                 component: require('./views/pages/Home.vue'),
-                meta: {title: appName + ' | ' + i18n.general.home}
+                meta: {title: i18n.general.home + ' | ' + appName}
             },
             {
                 path: '/profile',
                 component: require('./views/pages/Profile.vue'),
-                meta: {title: appName + ' | ' + i18n.user.profile}
+                meta: {title: i18n.user.profile + ' | ' + appName}
             },
             {
                 path: '/change-password',
                 component: require('./views/pages/ChangePassword.vue'),
-                meta: {title: appName + ' | ' + i18n.auth.change_password}
+                meta: {title: i18n.auth.change_password + ' | ' + appName}
             },
             {
                 path: '/configuration',
                 component: require('./views/configuration/system/System.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.system}
+                meta: {title: i18n.configuration.system + ' | ' + appName}
             },
             {
                 path: '/configuration/image',
                 component: require('./views/configuration/image/Image.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.configuration + ' - ' + i18n.general.image}
+                meta: {title: i18n.configuration.configuration + ' - ' + appName}
             },
             {
                 path: '/configuration/system',
                 component: require('./views/configuration/system/System.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.system}
+                meta: {title: i18n.configuration.system + ' | ' + appName}
             },
             {
                 path: '/configuration/role',
                 component: require('./views/configuration/role/Role.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.configuration + ' - ' + i18n.role.role}
+                meta: {title: i18n.configuration.configuration + ' - ' + i18n.role.role + ' | ' + appName}
             },
             {
                 path: '/configuration/authentication',
                 component: require('./views/configuration/authentication/Auth.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.configuration + ' - ' + i18n.auth.authentication}
+                meta: {title: i18n.configuration.configuration + ' - ' + i18n.auth.authentication + ' | ' + appName}
             },
             {
                 path: '/configuration/permission',
                 component: require('./views/configuration/permission/Permission.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.configuration + ' - ' + i18n.permission.permission}
+                meta: {title: i18n.configuration.configuration + ' - ' + i18n.permission.permission + ' | ' + appName}
             },
             {
                 path: '/configuration/permission/assign',
                 component: require('./views/configuration/permission/Assign.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.configuration + ' - ' + i18n.permission.assign_permission}
+                meta: {title: i18n.configuration.configuration + ' - ' + i18n.permission.assign_permission + ' | ' + appName}
             },
             {
                 path: '/configuration/locale',
                 component: require('./views/configuration/locale/Locale.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.configuration + ' - ' + i18n.locale.locale}
+                meta: {title: i18n.configuration.configuration + ' - ' + i18n.locale.locale + ' | ' + appName}
             },
             {
                 path: '/configuration/locale/:id/edit',
                 component: require('./views/configuration/locale/Edit.vue'),
-                meta: {title: appName + ' | ' + i18n.configuration.configuration + ' - ' + i18n.locale.edit_locale}
+                meta: {title: i18n.configuration.configuration + ' - ' + i18n.locale.edit_locale + ' | ' + appName}
             },
             {
                 path: '/activity-log',
                 component: require('./views/activity-log/ActivityLog.vue'),
-                meta: {title: appName + ' | ' + i18n.activity.activity_log}
+                meta: {title: i18n.activity.activity_log + ' | ' + appName}
             },
             {
                 path: '/user',
                 component: require('./views/user/User.vue'),
-                meta: {title: appName + ' | ' + i18n.user.user}
+                meta: {title: i18n.user.users + ' | ' + appName}
             },
             {
                 path: '/user/:id',
                 component: require('./views/user/Basic.vue'),
-                meta: {title: appName + ' | ' + i18n.user.user + ' - ' + i18n.general.basic}
+                meta: {title: i18n.user.users + ' - ' + i18n.general.basic + ' | ' + appName}
             },
             {
                 path: '/user/:id/basic',
                 component: require('./views/user/Basic.vue'),
-                meta: {title: appName + ' | ' + i18n.user.user + ' - ' + i18n.general.basic}
+                meta: {title: i18n.user.users + ' - ' + i18n.general.basic + ' | ' + appName}
             },
             {
                 path: '/user/:id/contact',
                 component: require('./views/user/Contact.vue'),
-                meta: {title: appName + ' | ' + i18n.user.user + ' - ' + i18n.user.contact}
+                meta: {title: i18n.user.users + ' - ' + i18n.user.contact + ' | ' + appName}
             },
             {
                 path: '/user/:id/avatar',
                 component: require('./views/user/Avatar.vue'),
-                meta: {title: appName + ' | ' + i18n.user.user + ' - ' + i18n.user.avatar}
+                meta: {title: i18n.user.users + ' - ' + i18n.user.avatar + ' | ' + appName}
             },
             {
                 path: '/user/:id/password',
                 component: require('./views/user/Password.vue'),
-                meta: {title: appName + ' | ' + i18n.user.user + ' - ' + i18n.user.password}
+                meta: {title: i18n.user.users + ' - ' + i18n.user.password + ' | ' + appName}
             },
             {
                 path: '/post',
                 component: require('./views/post/Index.vue'),
-                meta: {title: appName + ' | ' + i18n.post.new}
+                meta: {title: i18n.post.new + ' | ' + appName}
             },
             {
                 path: '/post/new',
                 component: require('./views/post/Index.vue'),
-                meta: {title: appName + ' | ' + i18n.post.new}
+                meta: {title: i18n.post.new + ' | ' + appName}
             },
             {
                 path: '/post/published',
                 component: require('./views/post/Published.vue'),
-                meta: {title: appName + ' | ' + i18n.post.published_box}
+                meta: {title: i18n.post.published_box + ' | ' + appName}
             },
             {
                 path: '/post/draft',
                 component: require('./views/post/Draft.vue'),
-                meta: {title: appName + ' | ' + i18n.post.drafts}
+                meta: {title: i18n.post.drafts + ' | ' + appName}
             },
             {
                 path: '/post/:slug/edit',
                 component: require('./views/post/Edit'),
-                meta: {title: appName + ' | ' + i18n.post.edit}
+                meta: {title: i18n.post.edit + ' | ' + appName}
             },
             {
                 path: '/post/:slug/cover',
                 component: require('./views/post/Cover'),
-                meta: {title: appName + ' | ' + i18n.post.cover}
+                meta: {title: i18n.post.cover + ' | ' + appName}
             },
             {
                 path: '/category',
                 component: require('./views/category/Category'),
-                meta: {title: appName + ' | ' + i18n.category.categories}
+                meta: {title: i18n.category.categories + ' | ' + appName}
             }
         ]
     },
@@ -220,7 +220,7 @@ let routes = [
             {
                 path: '/maintenance',
                 component: require('./views/errors/Maintenance.vue'),
-                meta: {title: appName + ' | ' + i18n.general.permission_denied}
+                meta: {title: i18n.general.permission_denied + ' | ' + appName}
             }
         ]
     },
@@ -242,7 +242,7 @@ let routes = [
             {
                 path: '*',
                 component: require('./views/errors/PageNotFound.vue'),
-                meta: {title: appName + ' | ' + i18n.general.page_not_found_heading}
+                meta: {title: i18n.general.page_not_found_heading + ' | ' + appName}
             }
         ]
     }
