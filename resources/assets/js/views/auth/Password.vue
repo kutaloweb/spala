@@ -7,15 +7,17 @@
                           @keydown="passwordForm.errors.clear($event.target.name)">
                         <h3 class="box-title m-b-20">{{ trans('passwords.reset_password') }}</h3>
                         <div class="form-group ">
-                            <input type="email" name="email" class="form-control" :placeholder="trans('auth.email')"
+                            <input type="text" name="email" class="form-control" :placeholder="trans('auth.email')"
                                    v-model="passwordForm.email" autocapitalize="none">
                             <show-error :form-name="passwordForm" prop-name="email"></show-error>
                         </div>
                         <div class="form-group text-center m-t-20">
-                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
-                                    type="submit">
-                                {{ trans('passwords.reset_password') }}
-                            </button>
+                            <button-spinner
+                                    :btn-text="trans('passwords.reset_password')"
+                                    :class="'btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light'"
+                                    :is-loading="isLoading"
+                                    :disabled="isLoading">
+                            </button-spinner>
                         </div>
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
@@ -35,13 +37,19 @@
 </template>
 
 <script>
+    import buttonSpinner from '../../components/ButtonSpinner';
+
     export default {
         data() {
             return {
                 passwordForm: new Form({
                     email: ''
-                })
+                }),
+                isLoading: false
             }
+        },
+        components: {
+            buttonSpinner
         },
         mounted() {
             if (!helper.featureAvailable('reset_password')) {
@@ -60,6 +68,7 @@
         },
         methods: {
             submit() {
+                this.isLoading = true;
                 this.passwordForm.post('/api/auth/password')
                     .then(response => {
                         toastr.success(response.message);
@@ -67,6 +76,7 @@
                     })
                     .catch(error => {
                         helper.showErrorMsg(error);
+                        this.isLoading = false;
                     });
             },
             getConfig(config) {

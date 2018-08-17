@@ -8,7 +8,7 @@
                         <form class="form-horizontal form-material" id="resetform" @submit.prevent="submit"
                               @keydown="resetForm.errors.clear($event.target.name)">
                             <div class="form-group ">
-                                <input type="email" name="email" class="form-control" :placeholder="trans('auth.email')"
+                                <input type="text" name="email" class="form-control" :placeholder="trans('auth.email')"
                                        v-model="resetForm.email" autocapitalize="none">
                                 <show-error :form-name="resetForm" prop-name="email"></show-error>
                             </div>
@@ -24,10 +24,12 @@
                                 <show-error :form-name="resetForm" prop-name="password_confirmation"></show-error>
                             </div>
                             <div class="form-group text-center m-t-20">
-                                <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
-                                        type="submit">
-                                    {{ trans('passwords.reset_password') }}
-                                </button>
+                                <button-spinner
+                                        :btn-text="trans('passwords.reset_password')"
+                                        :class="'btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light'"
+                                        :is-loading="isLoading"
+                                        :disabled="isLoading">
+                                </button-spinner>
                             </div>
                         </form>
                     </div>
@@ -51,6 +53,8 @@
 </template>
 
 <script>
+    import buttonSpinner from '../../components/ButtonSpinner';
+
     export default {
         data() {
             return {
@@ -62,8 +66,12 @@
                 }),
                 message: '',
                 status: true,
-                showMessage: false
+                showMessage: false,
+                isLoading: false
             }
+        },
+        components: {
+            buttonSpinner
         },
         mounted() {
             if (!helper.featureAvailable('reset_password')) {
@@ -92,6 +100,7 @@
         },
         methods: {
             submit() {
+                this.isLoading = true;
                 this.resetForm.post('/api/auth/reset')
                     .then(response => {
                         this.message = response.message;
@@ -100,6 +109,7 @@
                     })
                     .catch(error => {
                         helper.showErrorMsg(error);
+                        this.isLoading = false;
                     });
             }
         }

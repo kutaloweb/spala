@@ -7,7 +7,7 @@
                           @keydown="loginForm.errors.clear($event.target.name)">
                         <h3 class="box-title m-b-20">{{ trans('auth.login') }}</h3>
                         <div class="form-group ">
-                            <input type="email" name="email" class="form-control" :placeholder="trans('auth.email')"
+                            <input type="text" name="email" class="form-control" :placeholder="trans('auth.email')"
                                    v-model="loginForm.email" autocapitalize="none">
                             <show-error :form-name="loginForm" prop-name="email"></show-error>
                         </div>
@@ -17,10 +17,12 @@
                             <show-error :form-name="loginForm" prop-name="password"></show-error>
                         </div>
                         <div class="form-group text-center m-t-20">
-                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
-                                    type="submit">
-                                {{ trans('auth.sign_in') }}
-                            </button>
+                            <button-spinner
+                                    :btn-text="trans('auth.sign_in')"
+                                    :class="'btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light'"
+                                    :is-loading="isLoading"
+                                    :disabled="isLoading">
+                            </button-spinner>
                         </div>
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
@@ -48,6 +50,7 @@
 
 <script>
     import postList from '../post/List'
+    import buttonSpinner from '../../components/ButtonSpinner';
 
     export default {
         data() {
@@ -55,11 +58,13 @@
                 loginForm: new Form({
                     email: '',
                     password: ''
-                })
+                }),
+                isLoading: false
             }
         },
         components: {
-            postList
+            postList,
+            buttonSpinner
         },
         computed: {
             getBackground() {
@@ -75,6 +80,7 @@
         },
         methods: {
             submit() {
+                this.isLoading = true;
                 this.loginForm.post('/api/auth/login')
                     .then(response => {
                         localStorage.setItem('auth_token', response.token);
@@ -91,6 +97,7 @@
                     })
                     .catch(error => {
                         helper.showErrorMsg(error);
+                        this.isLoading = false;
                     });
             },
             getConfig(config) {

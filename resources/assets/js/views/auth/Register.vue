@@ -48,9 +48,12 @@
                             </div>
                         </div>
                         <div class="form-group text-center m-t-20">
-                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
-                                    type="submit">{{ trans('auth.register') }}
-                            </button>
+                            <button-spinner
+                                    :btn-text="trans('auth.register')"
+                                    :class="'btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light'"
+                                    :is-loading="isLoading"
+                                    :disabled="isLoading">
+                            </button-spinner>
                         </div>
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
@@ -69,6 +72,8 @@
 </template>
 
 <script>
+    import buttonSpinner from '../../components/ButtonSpinner';
+
     export default {
         data() {
             return {
@@ -78,8 +83,12 @@
                     password_confirmation: '',
                     first_name: '',
                     last_name: ''
-                })
+                }),
+                isLoading: false
             }
+        },
+        components: {
+            buttonSpinner
         },
         mounted() {
             if (!helper.featureAvailable('registration')) {
@@ -98,6 +107,7 @@
         },
         methods: {
             submit() {
+                this.isLoading = true;
                 this.registerForm.post('/api/auth/register')
                     .then(response => {
                         toastr.success(response.message);
@@ -105,6 +115,7 @@
                     })
                     .catch(error => {
                         helper.showErrorMsg(error);
+                        this.isLoading = false;
                     });
             },
             getConfig(config) {

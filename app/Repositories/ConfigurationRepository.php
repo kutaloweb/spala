@@ -113,7 +113,7 @@ class ConfigurationRepository
             $config->save();
         }
 
-        $this->setDefaultCover($params);
+        if (!empty($params['color_theme'])) $this->setDefaultCover($params['color_theme']);
         $this->setLocale($params);
     }
 
@@ -163,11 +163,13 @@ class ConfigurationRepository
     }
 
     /**
-     * @param array $params
+     * Set default cover color when changing theme.
+     *
+     * @param string $color_theme
      */
-    protected function setDefaultCover($params)
+    protected function setDefaultCover($color_theme)
     {
-        switch ($params['color_theme']) {
+        switch ($color_theme) {
             case "blue":
             case "blue-dark":
             case "default":

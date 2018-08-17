@@ -17,10 +17,12 @@
                         </div>
                         <div class="form-group text-center m-t-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
-                                        type="submit">
-                                    {{ trans('auth.confirm') }}
-                                </button>
+                                <button-spinner
+                                        :btn-text="trans('auth.confirm')"
+                                        :class="'btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light'"
+                                        :is-loading="isLoading"
+                                        :disabled="isLoading">
+                                </button-spinner>
                             </div>
                         </div>
                         <div class="form-group m-b-0">
@@ -40,13 +42,19 @@
 </template>
 
 <script>
+    import buttonSpinner from '../../components/ButtonSpinner';
+
     export default {
         data() {
             return {
                 twoFactorForm: new Form({
                     two_factor_code: '',
-                })
+                }),
+                isLoading: false
             }
+        },
+        components: {
+            buttonSpinner
         },
         mounted() {
             if (!helper.getConfig('two_factor_security') || !helper.getTwoFactorCode()) {
@@ -70,12 +78,14 @@
                 })
             },
             submit() {
+                this.isLoading = true;
                 if (this.twoFactorForm.two_factor_code == helper.getTwoFactorCode()) {
                     this.$store.dispatch('resetTwoFactorCode');
                     toastr.success(i18n.auth.two_factor_security_verified);
                     this.$router.push('/home');
                 } else {
                     toastr.error(i18n.auth.invalid_two_factor_code);
+                    this.isLoading = false;
                 }
             },
             getAuthUser(name) {
