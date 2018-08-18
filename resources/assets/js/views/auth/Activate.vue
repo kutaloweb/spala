@@ -1,7 +1,7 @@
 <template>
     <section id="wrapper">
-        <div class="login-register" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
-            <div class="login-box card">
+        <div class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
+            <div class="login-box card row justify-content-center align-self-center">
                 <div class="card-body">
                     <h3 class="box-title m-b-20 text-center">{{ trans('auth.account_activation') }}</h3>
                     <h4 v-text="message" class="text-center m-t-20 m-b-20 alert alert-success" v-if="status"></h4>

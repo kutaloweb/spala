@@ -1,7 +1,7 @@
 <template>
     <section id="wrapper">
-        <div class="login-register" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
-            <div class="login-box card">
+        <div class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
+            <div class="login-box card row justify-content-center align-self-center">
                 <div class="card-body">
                     <h3 class="box-title m-b-20 text-center">{{ trans('passwords.reset_password') }}</h3>
                     <div v-if="!showMessage">

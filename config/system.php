@@ -8,6 +8,7 @@ return [
         "notification_position" => "toast-bottom-right",
         "page_length" => 50,
         "company_name" => "Spala",
+        "company_description" => "A modern lightweight CMS for Laravel and Vue developers",
         "reset_password_token_lifetime" => 30,
         "lock_screen" => 0,
         "lock_screen_timeout" => 60,
@@ -21,6 +22,7 @@ return [
         "default_cover" => "uploads/images/cover-default.png",
         "maintenance_mode_message"  => "Briefly unavailable for scheduled maintenance. Check back in a minute.",
         "app_url" => config('app.url'),
+        "public_login" => 1
     ],
     "default_role" => [
         "admin" => "admin",
@@ -37,6 +39,7 @@ return [
         "notification_position",
         "page_length",
         "company_name",
+        "company_description",
         "maintenance_mode",
         "reset_password",
         "registration",
@@ -47,7 +50,8 @@ return [
         "facebook_group",
         "default_cover",
         "maintenance_mode_message",
-        "app_url"
+        "app_url",
+        "public_login"
     ],
     "upload_path" => [
         "config" => "uploads/config",

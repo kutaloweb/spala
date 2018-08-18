@@ -1,7 +1,7 @@
 <template>
     <section id="wrapper">
-        <div class="login-register" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
-            <div class="login-box card">
+        <div class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
+            <div class="login-box card row justify-content-center align-self-center">
                 <div class="card-body">
                     <form class="form-horizontal form-material" id="registerform" @submit.prevent="submit"
                           @keydown="registerForm.errors.clear($event.target.name)">

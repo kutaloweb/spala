@@ -1,7 +1,7 @@
 <template>
     <section id="wrapper">
-        <div class="login-register" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
-            <div class="login-box card">
+        <div class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
+            <div class="login-box card row justify-content-center align-self-center">
                 <div class="card-body">
                     <div class="m-t-30 text-center">
                         <img :src="getAuthUser('avatar')" class="img-circle" width="100">

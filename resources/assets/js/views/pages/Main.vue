@@ -1,6 +1,6 @@
 <template>
     <section id="wrapper">
-        <div class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
+        <div v-if="getConfig('public_login')" class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
             <div class="login-box card row justify-content-center align-self-center">
                 <div class="card-body">
                     <form class="form-horizontal form-material" id="loginform" @submit.prevent="submit"
@@ -44,10 +44,23 @@
                 </div>
             </div>
         </div>
+        <div v-else>
+            <div class="d-flex align-items-center justify-content-center hero" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
+                <div class="d-flex flex-column">
+                    <div class="flex-container-main">
+                        <div class="flex-container-child text-center">
+                            <h1 class="text align-self-center">{{ getConfig('company_description') }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <post-list></post-list>
     </section>
 </template>
 
 <script>
+    import postList from '../post/List'
     import buttonSpinner from '../../components/ButtonSpinner';
 
     export default {
@@ -61,6 +74,7 @@
             }
         },
         components: {
+            postList,
             buttonSpinner
         },
         computed: {
@@ -71,6 +85,9 @@
 
                 return '/uploads/config/background/background.jpg'
             }
+        },
+        mounted() {
+            document.title = `${helper.getConfig('company_name')}`;
         },
         methods: {
             submit() {

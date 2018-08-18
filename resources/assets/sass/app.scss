@@ -2576,7 +2576,7 @@ samp {
 }
 
 .footer {
-  padding: 25px 15px !important;
+  padding: 50px 15px !important;
 }
 
 .card-text {
@@ -2589,4 +2589,63 @@ samp {
 
 .card-hidden {
   background: $light;
+}
+
+.hero {
+  width: 100%;
+  display: table;
+  max-width: none;
+  background-size: cover;
+  height: 100vh;
+  margin-top: -64px;
+
+  .hero-description {
+    margin: 0 auto;
+    opacity: 0.8;
+    width: 50%;
+  }
+
+  h1 {
+    font-weight: 800;
+    color: white;
+  }
+}
+
+.hero {
+  h1 {
+    /* Extra small devices (phones, less than 768px) */
+    font-size: 40px !important;
+    line-height: 40px !important;
+
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: 768px) {
+      font-size: 60px !important;
+      line-height: 60px !important;
+    }
+
+    /* Medium devices (desktops, 992px and up) */
+    @media (min-width: 992px) {
+      font-size: 80px !important;
+      line-height: 80px !important;
+    }
+
+    /* Large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {
+      font-size: 100px !important;
+      line-height: 100px !important;
+    }
+  }
+}
+
+.flex-container-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-container-child {
+  display: flex;
+  align-items: center;
+  width: 75%;
+  margin: 10px;
 }

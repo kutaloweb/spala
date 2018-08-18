@@ -11,7 +11,7 @@ let routes = [
         children: [
             {
                 path: '/',
-                component: require('./views/auth/Login.vue'),
+                component: require('./views/pages/Main.vue'),
                 name: 'main',
                 meta: {title: appName}
             },
@@ -19,7 +19,7 @@ let routes = [
                 path: '/login',
                 component: require('./views/auth/Login.vue'),
                 name: 'login',
-                meta: {title: appName}
+                meta: {title: i18n.auth.login + ' | ' + appName}
             },
             {
                 path: '/search',
