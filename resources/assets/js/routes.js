@@ -12,11 +12,13 @@ let routes = [
             {
                 path: '/',
                 component: require('./views/auth/Login.vue'),
+                name: 'main',
                 meta: {title: appName}
             },
             {
                 path: '/login',
                 component: require('./views/auth/Login.vue'),
+                name: 'login',
                 meta: {title: appName}
             },
             {

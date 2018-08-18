@@ -81,6 +81,7 @@
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
+                    helper.hideSpinner();
                 });
         },
         methods: {

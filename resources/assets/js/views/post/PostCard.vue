@@ -1,5 +1,5 @@
 <template>
-    <router-link class="card" :to="`${post.category.slug}/${post.slug}`">
+    <router-link @click.native="showSpinner" class="card" :to="`${post.category.slug}/${post.slug}`">
         <div class="card-img"
              :class="[post.cover !== 'uploads/images/cover-default.png' ? 'cover-img' : '']">
             <img class="card-img-top img-responsive" :src="post.cover" :alt="post.title">
@@ -22,6 +22,9 @@
         methods: {
             limitWords(str) {
                 return helper.limitWords(str, 35);
+            },
+            showSpinner() {
+                return helper.showSpinner();
             }
         }
     }

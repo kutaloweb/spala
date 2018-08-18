@@ -4,7 +4,7 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-logo mr-auto">
                     <li class="nav-item">
-                        <router-link class="nav-link nav-brand waves-effect waves-dark" to="/">
+                        <router-link @click.native="showSpinner" class="nav-link nav-brand waves-effect waves-dark" to="/">
                             <img :src="getLogo()" alt="Logo" class="logo mr-2">
                             <b>{{ getConfig('company_name') }}</b>
                         </router-link>
@@ -148,10 +148,14 @@
                 return helper.getConfig(name);
             },
             search() {
+                this.showSpinner();
                 this.$store.dispatch('setSearchQuery', this.search_query);
                 this.$refs.li.classList.remove("show");
                 this.$refs.div.classList.remove("show");
                 this.$router.push('/search');
+            },
+            showSpinner() {
+                if (this.$route.name !=='main') return helper.showSpinner();
             }
         }
     }
