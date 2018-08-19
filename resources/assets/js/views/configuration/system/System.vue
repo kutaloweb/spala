@@ -132,15 +132,26 @@
                                                 </show-error>
                                             </div>
                                         </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ trans('configuration.company_description') }}</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.company_description" name="company_description"
+                                                       :placeholder="trans('configuration.company_description')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="company_description">
+                                                </show-error>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
                                                 <label>
-                                                    {{ trans('configuration.https') }}
+                                                    {{ trans('configuration.public_login') }}
                                                 </label>
                                                 <div>
-                                                    <switches class="" v-model="configForm.https"
+                                                    <switches class="" v-model="configForm.public_login"
                                                               theme="bootstrap" color="success">
                                                     </switches>
                                                 </div>
@@ -165,6 +176,18 @@
                                                 </label>
                                                 <div>
                                                     <switches class="" v-model="configForm.maintenance_mode"
+                                                              theme="bootstrap" color="success">
+                                                    </switches>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>
+                                                    {{ trans('configuration.https') }}
+                                                </label>
+                                                <div>
+                                                    <switches class="" v-model="configForm.https"
                                                               theme="bootstrap" color="success">
                                                     </switches>
                                                 </div>
@@ -216,10 +239,12 @@
                     locale: '',
                     footer_credit: '',
                     company_name: '',
+                    company_description: '',
                     facebook_group: '',
                     https: 0,
                     multilingual: 0,
                     maintenance_mode: 0,
+                    public_login: 0,
                     maintenance_mode_message: '',
                     config_type: ''
                 }, false),
@@ -264,6 +289,7 @@
                 this.configForm.https = (this.configForm.https) ? 1 : 0;
                 this.configForm.multilingual = (this.configForm.multilingual) ? 1 : 0;
                 this.configForm.maintenance_mode = (this.configForm.maintenance_mode) ? 1 : 0;
+                this.configForm.public_login = (this.configForm.public_login) ? 1 : 0;
                 this.configForm.post('/api/configuration')
                     .then(response => {
                         this.$store.dispatch('setConfig', this.configForm);
