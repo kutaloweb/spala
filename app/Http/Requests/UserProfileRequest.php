@@ -29,7 +29,6 @@ class UserProfileRequest extends FormRequest
             'date_of_birth' => 'date_format:Y-m-d|nullable',
             'role_id' => 'sometimes|required',
             'country_id' => 'sometimes|required',
-            'phone' => 'sometimes|required'
         ];
     }
 
@@ -46,7 +45,6 @@ class UserProfileRequest extends FormRequest
             'date_of_birth' => trans('user.date_of_birth'),
             'role_id' => trans('role.role'),
             'country_id' => trans('user.country'),
-            'phone' => trans('user.phone')
         ];
     }
 }
