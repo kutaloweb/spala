@@ -16,12 +16,6 @@ let routes = [
                 meta: {title: appName}
             },
             {
-                path: '/login',
-                component: require('./views/auth/Login.vue'),
-                name: 'login',
-                meta: {title: i18n.auth.login + ' | ' + appName}
-            },
-            {
                 path: '/search',
                 component: require('./views/post/Search.vue'),
                 name: 'search',
@@ -34,6 +28,12 @@ let routes = [
         component: require('./layouts/GuestPage.vue'),
         meta: {validate: ['guest']},
         children: [
+            {
+                path: '/login',
+                component: require('./views/auth/Login.vue'),
+                name: 'login',
+                meta: {title: i18n.auth.login + ' | ' + appName}
+            },
             {
                 path: '/password',
                 component: require('./views/auth/Password.vue'),

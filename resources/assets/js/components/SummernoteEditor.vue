@@ -115,7 +115,7 @@
                     return allowedTags.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : ''
                 });
 
-                let badAttributes = ['style', 'class'];
+                let badAttributes = ['style', 'class', 'align'];
                 for (let i = 0; i < badAttributes.length; i++) {
                     let attributeStripper = new RegExp(' ' + badAttributes[i] + '="(.*?)"', 'gi');
                     output = output.replace(attributeStripper, '');

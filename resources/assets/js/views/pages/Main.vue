@@ -1,6 +1,6 @@
 <template>
     <section id="wrapper">
-        <div v-if="getConfig('public_login')" class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
+        <div v-if="getConfig('public_login') && !isAuth" class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
             <div class="login-box card row justify-content-center align-self-center">
                 <div class="card-body">
                     <form class="form-horizontal form-material" id="loginform" @submit.prevent="submit"
@@ -113,6 +113,9 @@
             },
             getConfig(config) {
                 return helper.getConfig(config);
+            },
+            isAuth() {
+                return helper.isAuth();
             }
         }
     }
