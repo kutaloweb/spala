@@ -51,7 +51,9 @@ return [
         "default_cover",
         "maintenance_mode_message",
         "app_url",
-        "public_login"
+        "public_login",
+        "background",
+        "logo",
     ],
     "upload_path" => [
         "config" => "uploads/config",
