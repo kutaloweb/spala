@@ -233,7 +233,10 @@ class PostController extends Controller
         $filename = uniqid();
         request()->file('image')->move($image_path, $filename . "." . $extension);
         $img = \Image::make($image_path . $filename . "." . $extension);
-        $img->resize(600, 300);
+        $img->resize(500, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->crop(500, 250);
         $img->save($image_path . $filename . "." . $extension);
         $post->cover = $image_path . $filename . "." . $extension;
         $post->save();
