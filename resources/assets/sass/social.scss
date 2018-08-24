@@ -1,0 +1,83 @@
+.social-icons {
+  margin-top: 10px;
+  vertical-align: top;
+  display: inline;
+  height: 100px;
+  color: #fff;
+  text-decoration: none;
+
+  .social-icon {
+    color: #fff;
+    font-size: 22px
+  }
+
+  .fa-facebook-f {
+    padding: 10px 17px;
+    -o-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+    margin-bottom: 4px;
+  }
+
+  .fa-facebook-f:hover {
+    background-color: #3d5b99;
+  }
+
+  .fa-twitter {
+    padding: 10px 12px;
+    -o-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+    margin-bottom: 4px;
+  }
+
+  .fa-twitter:hover {
+    background-color: #00aced;
+  }
+
+  .fa-whatsapp {
+    padding: 10px 13px;
+    -o-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+    margin-bottom: 4px;
+  }
+
+  .fa-whatsapp:hover {
+    background-color: #25d366;
+  }
+
+  .fa-telegram {
+    padding: 10px 12px;
+    -o-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+    margin-bottom: 4px;
+  }
+
+  .fa-telegram:hover {
+    background-color: #2ca5e0;
+  }
+
+  .fa-envelope {
+    padding: 10px 12px;
+    -o-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #322f30;
+    margin-bottom: 4px;
+  }
+
+  .fa-envelope:hover {
+    background-color: #d14836;
+  }
+}

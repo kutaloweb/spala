@@ -51,6 +51,7 @@ return [
     'search_for' => 'Search for...',
     'select_one' => 'Select One',
     'sidebar' => 'Sidebar',
+    'share' => 'Share',
     'something_wrong' => 'There is something wrong. Please try again after sometime.',
     'sort_by' => 'Sort By',
     'start_date' => 'Start Date',
