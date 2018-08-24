@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * App\Profile
@@ -202,7 +203,7 @@ class Post extends Model
      */
     public function scopeFilterByUserId($query, $user_id = null)
     {
-        if (!$user_id) {
+        if (!$user_id || Auth::user()->hasRole('admin')) {
             return $query;
         }
 

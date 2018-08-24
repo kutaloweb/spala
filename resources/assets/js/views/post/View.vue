@@ -13,7 +13,7 @@
                                     <h1 class="card-title post-title">{{ post.title }}</h1>
                                     <div class="card-text" v-html="post.body"></div>
                                 </div>
-                                <div class="col-3 col-md-3 mt-1">
+                                <div class="col-3 col-md-3 mt-1" v-if="post.body">
                                     <social-sharing
                                             :url="`${getConfig('app_url')}/${categorySlug}/${post.slug}`"
                                             :title="`${post.title}`">

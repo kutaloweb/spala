@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\User;
 use App\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class PostPolicy
 {
@@ -57,7 +58,7 @@ class PostPolicy
      */
     public function show(User $user, Post $post)
     {
-        return $post->user_id === $user->id;
+        return $post->user_id === $user->id || Auth::user()->hasRole('admin');
     }
 
     /**
@@ -70,7 +71,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $post->user_id === $user->id;
+        return $post->user_id === $user->id || Auth::user()->hasRole('admin');
     }
 
     /**
@@ -83,6 +84,6 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $post->user_id === $user->id;
+        return $post->user_id === $user->id || Auth::user()->hasRole('admin');
     }
 }

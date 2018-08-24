@@ -16,7 +16,7 @@
                             v-model="postForm.category_id">
                         <option value="">{{ trans('category.select_category') }}</option>
                         <option v-for="category in categories" :value="category.value">
-                            {{ toWord(category.text) }}
+                            {{ category.text }}
                         </option>
                     </select>
                     <show-error :form-name="postForm" prop-name="category_id"></show-error>
@@ -129,9 +129,6 @@
                     .catch(error => {
                         helper.showErrorMsg(error);
                     })
-            },
-            toWord(str) {
-                return helper.toWord(str);
             },
             addAttributes(bodyHtml) {
                 bodyHtml = bodyHtml.replace(new RegExp('<a href', 'g'), '<a target="_blank" rel="nofollow" href');
