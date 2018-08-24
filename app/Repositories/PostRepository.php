@@ -186,6 +186,7 @@ class PostRepository
 
         if (!$id) {
             $post->user_id = \Auth::user()->id;
+            $post->setUniqueSlug($params['title']);
         }
         $post->is_draft = $is_draft;
 

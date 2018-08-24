@@ -111,8 +111,6 @@ class Post extends Model
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
-
-        $this->setUniqueSlug($value);
     }
 
     /**
