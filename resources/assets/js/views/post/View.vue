@@ -6,18 +6,19 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-9 col-md-9">
+                                <div class="col-md-9">
                                     <span class="text-muted card-caps">
                                         {{ categoryName }} <span v-if="categoryName">/</span> {{ post.created_at }}
                                     </span>
                                     <h1 class="card-title post-title">{{ post.title }}</h1>
                                     <div class="card-text" v-html="post.body"></div>
                                 </div>
-                                <div class="col-3 col-md-3 mt-1" v-if="post.body">
+                                <div class="col-md-3" v-if="post.body">
                                     <social-sharing
                                             :url="`${getConfig('app_url')}/${categorySlug}/${post.slug}`"
                                             :title="`${post.title}`">
                                     </social-sharing>
+                                    <div class="text-muted card-caps mt-3 mb-1">{{ trans('general.contact_info') }}</div>
                                 </div>
                             </div>
                         </div>

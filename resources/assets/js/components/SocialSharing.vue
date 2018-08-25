@@ -1,7 +1,7 @@
 <template>
     <social-sharing :url="url" :title="title" inline-template>
         <div>
-            <div class="parallel-label">{{ trans('general.share') }}</div>
+            <div class="text-muted card-caps mb-1">{{ trans('general.share') }}</div>
             <div class="social-icons">
                 <a href="#" class="social-icon">
                     <network network="facebook">

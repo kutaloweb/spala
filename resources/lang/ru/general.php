@@ -14,6 +14,7 @@ return [
     'cancel_upload' => 'Сбросить загрузку',
     'choose_image' => 'Выбрать',
     'close' => 'Закрыть',
+    'contact_info' => 'Контакты',
     'date_range' => 'Интервал дат',
     'delete' => 'Удалить',
     'descending' => 'По убыванию',

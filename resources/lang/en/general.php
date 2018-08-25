@@ -14,6 +14,7 @@ return [
     'cancel_upload' => 'Cancel Upload',
     'choose_image' => 'Choose',
     'close' => 'Close',
+    'contact_info' => 'Contact Info',
     'date_between' => 'Date Between',
     'date_range' => 'Date Range',
     'delete' => 'Delete',

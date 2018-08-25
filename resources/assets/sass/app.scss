@@ -2650,21 +2650,10 @@ samp {
   margin: 10px;
 }
 
-.parallel-label, .parallel-label b {
-  color: #a1a1a1;
+.list-title {
+  line-height: 25px;
 }
 
-.parallel-label {
-  position: absolute;
-  top: 0;
-  left: 3px;
-  transform-origin: top left;
-  -webkit-transform-origin: top left;
-  transform: translateX(0) rotate(90deg);
-  -webkit-transform: translateX(0) rotate(90deg);
-  font-size: .9rem;
-  letter-spacing: .2em;
-  line-height: 1em;
-  text-transform: uppercase;
-  white-space: nowrap;
+.list-text {
+  line-height: 22px;
 }
