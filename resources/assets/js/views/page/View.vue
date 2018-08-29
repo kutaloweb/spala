@@ -1,5 +1,5 @@
 <template>
-    <div v-if="post">
+    <div v-if="page">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 m-t-30">
@@ -7,16 +7,13 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-9">
-                                    <span class="text-muted card-caps">
-                                        {{ categoryName }} <span v-if="categoryName">/</span> {{ post.created_at }}
-                                    </span>
-                                    <h1 class="card-title post-title">{{ post.title }}</h1>
-                                    <div class="card-text" v-html="post.body"></div>
+                                    <h1 class="card-title post-title">{{ page.title }}</h1>
+                                    <div class="card-text" v-html="page.body"></div>
                                 </div>
-                                <div class="col-md-3" v-if="post.body">
+                                <div class="col-md-3" v-if="page.body">
                                     <social-sharing
-                                            :url="`${getConfig('app_url')}/${categorySlug}/${post.slug}`"
-                                            :title="`${post.title}`">
+                                            :url="`${getConfig('app_url')}/${page.slug}`"
+                                            :title="`${page.title}`">
                                     </social-sharing>
                                     <div class="text-muted card-caps mt-3 mb-1">{{ trans('general.contact_info') }}</div>
                                 </div>
@@ -41,17 +38,17 @@
             return {
                 title: `${this.documentTitle}`,
                 meta: [
-                    {name: 'description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
+                    {name: 'description', content: this.page ? this.limitWords(this.page.stripped_body) : ''},
                     {name: 'twitter:card', content: 'summary_large_image'},
-                    {name: 'twitter:title', content: this.post ? this.post.title : ''},
-                    {name: 'twitter:description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
-                    {name: 'twitter:image', content: this.post ? `${this.getConfig('app_url')}/${this.post.cover}` : ''},
+                    {name: 'twitter:title', content: this.page ? this.page.title : ''},
+                    {name: 'twitter:description', content: this.page ? this.limitWords(this.page.stripped_body) : ''},
+                    {name: 'twitter:image', content: `${this.getConfig('app_url')}/uploads/images/cover-default.png`},
                     {property: 'og:type', content: 'website'},
                     {property: 'og:site_name', content: this.getConfig('company_name')},
-                    {property: 'og:url', content: this.post ? `${this.getConfig('app_url')}/${this.categorySlug}/${this.post.slug}` : ''},
-                    {property: 'og:title', content: this.post ? this.post.title : ''},
-                    {property: 'og:description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
-                    {property: 'og:image', content: this.post ? `${this.getConfig('app_url')}/${this.post.cover}` : ''}
+                    {property: 'og:url', content: this.page ? `${this.getConfig('app_url')}/${this.page.slug}` : ''},
+                    {property: 'og:title', content: this.page ? this.page.title : ''},
+                    {property: 'og:description', content: this.page ? this.limitWords(this.page.stripped_body) : ''},
+                    {property: 'og:image', content: `${this.getConfig('app_url')}/uploads/images/cover-default.png`}
                 ]
             }
         },
@@ -60,26 +57,20 @@
         },
         data() {
             return {
-                category: '',
-                categoryName: '',
-                categorySlug: '',
                 slug: '',
-                post: {},
+                page: {},
                 documentTitle: ''
             };
         },
         mounted() {
-            this.category = this.$route.params.category;
             this.slug = this.$route.params.slug;
             helper.showSpinner();
-            axios.get('/api/posts/' + this.category + '/' + this.slug)
+            axios.get('/api/pages/' + this.slug)
                 .then(response => response.data)
                 .then(response => {
-                    this.post = response.post;
-                    this.categoryName = this.post ? response.post.category.name : '';
-                    this.categorySlug = this.post ? response.post.category.slug : '';
-                    if (this.post) {
-                        this.documentTitle = `${this.post.title} | ${helper.getConfig('company_name')}`;
+                    this.page = response.page;
+                    if (this.page) {
+                        this.documentTitle = `${this.page.title} | ${helper.getConfig('company_name')}`;
                     } else {
                         this.documentTitle = `${i18n.general.page_not_found_heading} | ${helper.getConfig('company_name')}`;
                     }

@@ -39,6 +39,12 @@
                             <span class="hide-menu">{{ trans('category.categories') }}</span>
                         </router-link>
                     </li>
+                    <li v-if="hasPermission('access-page')">
+                        <router-link to="/page" exact>
+                            <i class="fas fa-columns fa-fw"></i>
+                            <span class="hide-menu">{{ trans('page.pages') }}</span>
+                        </router-link>
+                    </li>
                     <li v-if="hasPermission('access-configuration')">
                         <router-link to="/activity-log" exact>
                             <i class="fas fa-bars fa-fw"></i>

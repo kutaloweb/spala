@@ -77,7 +77,8 @@ return [
         "change-status-user",
         "access-post",
         "enable-login",
-        "access-category"
+        "access-category",
+        "access-page"
     ],
     "color_themes" => [
         [

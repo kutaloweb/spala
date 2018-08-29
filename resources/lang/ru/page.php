@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'body' => 'Содержание',
+    'cancel' => 'Отменить',
+    'could_not_find' => 'Не удалось найти :type',
+    'delete_published' => 'Удалить страницу',
+    'deleted' => ':type удалена.',
+    'edit' => 'Редактировать',
+    'edit_published' => 'Редактировать страницу',
+    'invalid_action' => 'Действие не валидно.',
+    'last_pages' => 'Последине страницы',
+    'page' => 'Страница',
+    'pages' => 'Страницы',
+    'page_processed' => 'Страница :action',
+    'new' => 'Новая',
+    'publish' => 'Опубликовать',
+    'published' => 'опубликована.',
+    'published_at' => 'Опубликована',
+    'published_box' => 'Страницы',
+    'slug' => 'Слаг',
+    'slug_exists' => 'Такой слаг уже сущесвует',
+    'title' => 'Заголовок',
+    'view' => 'Просмотр',
+];

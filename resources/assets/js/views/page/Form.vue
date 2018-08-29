@@ -1,0 +1,97 @@
+<template>
+    <form @submit.prevent="submit" @keydown="pageForm.errors.clear($event.target.name)">
+        <div class="row">
+            <div class="col-12 col-md-12">
+                <div class="form-group">
+                    <label>{{ trans('page.title') }}</label>
+                    <input class="form-control" type="text" value="" v-model="pageForm.title" name="title"
+                           :placeholder="trans('page.title')" maxlength="191">
+                    <show-error :form-name="pageForm" prop-name="title"></show-error>
+                </div>
+            </div>
+            <div class="col-12 col-md-12">
+                <div class="form-group">
+                    <label>{{ trans('page.body') }}</label>
+                    <summernote-editor
+                            type="page"
+                            :model.sync="pageForm.body"
+                            :isUpdate="slug ? true : false"
+                            @clearErrors="pageForm.errors.clear('body')">
+                    </summernote-editor>
+                    <show-error :form-name="pageForm" prop-name="body"></show-error>
+                </div>
+            </div>
+        </div>
+        <div class="form-group pull-right">
+            <router-link to="/page/published" v-if="pageForm.id" class="btn btn-warning waves-effect waves-light">
+                <i class="fas fa-times"></i> {{ trans('page.cancel') }}
+            </router-link>
+            <button type="submit" class="btn btn-success waves-effect waves-light">
+                <i class="far fa-share-square"></i> {{ trans('page.publish') }}
+            </button>
+        </div>
+    </form>
+</template>
+
+<script>
+    import summernoteEditor from '../../components/SummernoteEditor'
+
+    export default {
+        components: {summernoteEditor},
+        props: ['slug'],
+        data() {
+            return {
+                pageForm: new Form({
+                    id: '',
+                    title: '',
+                    body: '',
+                }),
+                statistics: {
+                    published: 0
+                }
+            };
+        },
+        mounted() {
+            axios.post('/api/page/statistics')
+                .then(response => response.data)
+                .then(response => {
+                    this.statistics.published = response.published;
+                })
+                .catch(error => {
+                    helper.showDataErrorMsg(error);
+                });
+
+            if (this.slug) {
+                axios.get('/api/page/' + this.slug)
+                    .then(response => response.data)
+                    .then(response => {
+                        this.pageForm.title = response.page.title;
+                        this.pageForm.body = response.page.body;
+                        this.pageForm.id = response.page.id;
+                    })
+                    .catch(error => {
+                        helper.showDataErrorMsg(error);
+                    });
+            }
+        },
+        methods: {
+            submit() {
+                this.pageForm.body = this.addAttributes(this.pageForm.body);
+                this.pageForm.post('/api/page/new')
+                    .then(response => {
+                        toastr.success(response.page);
+                        this.$router.push('/page/published');
+                    })
+                    .catch(error => {
+                        helper.showErrorMsg(error);
+                    })
+            },
+            addAttributes(bodyHtml) {
+                bodyHtml = bodyHtml.replace(new RegExp('<a href', 'g'), '<a target="_blank" rel="nofollow" href');
+                bodyHtml = bodyHtml.replace(new RegExp('<img src', 'g'), '<img class="img-fluid" src');
+
+                return bodyHtml;
+            }
+        }
+    }
+</script>

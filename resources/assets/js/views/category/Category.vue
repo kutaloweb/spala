@@ -7,9 +7,6 @@
                     <li class="breadcrumb-item">
                         <router-link to="/home">{{ trans('general.home') }}</router-link>
                     </li>
-                    <li class="breadcrumb-item">
-                        <router-link to="/configuration">{{ trans('configuration.configuration') }}</router-link>
-                    </li>
                     <li class="breadcrumb-item active">{{ trans('category.categories') }}</li>
                 </ol>
             </div>

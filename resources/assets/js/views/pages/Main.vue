@@ -55,12 +55,14 @@
                 </div>
             </div>
         </div>
+        <page-list></page-list>
         <post-list></post-list>
     </section>
 </template>
 
 <script>
     import postList from '../post/List'
+    import pageList from '../page/List'
     import buttonSpinner from '../../components/ButtonSpinner';
 
     export default {
@@ -75,6 +77,7 @@
         },
         components: {
             postList,
+            pageList,
             buttonSpinner
         },
         computed: {

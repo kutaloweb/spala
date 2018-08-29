@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'body' => 'Body',
+    'cancel' => 'Cancel',
+    'could_not_find' => 'Could not find :type',
+    'delete_published' => 'Delete published page',
+    'deleted' => ':type deleted.',
+    'edit' => 'Edit',
+    'edit_published' => 'Edit published page',
+    'invalid_action' => 'Invalid action.',
+    'last_pages' => 'Last Pages',
+    'page' => 'Page',
+    'pages' => 'Pages',
+    'page_processed' => 'Page :action',
+    'new' => 'New',
+    'publish' => 'Publish',
+    'published' => 'published.',
+    'published_at' => 'Published at',
+    'published_box' => 'Published',
+    'slug' => 'Slug',
+    'slug_exists' => 'This slug already exists',
+    'title' => 'Title',
+    'view' => 'View',
+];

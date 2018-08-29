@@ -212,6 +212,26 @@ let routes = [
                 path: '/category',
                 component: require('./views/category/Category'),
                 meta: {title: i18n.category.categories + ' | ' + appName}
+            },
+            {
+                path: '/page',
+                component: require('./views/page/Index.vue'),
+                meta: {title: i18n.page.new + ' | ' + appName}
+            },
+            {
+                path: '/page/new',
+                component: require('./views/page/Index.vue'),
+                meta: {title: i18n.page.new + ' | ' + appName}
+            },
+            {
+                path: '/page/published',
+                component: require('./views/page/Published.vue'),
+                meta: {title: i18n.page.published_box + ' | ' + appName}
+            },
+            {
+                path: '/page/:slug/edit',
+                component: require('./views/page/Edit'),
+                meta: {title: i18n.page.edit + ' | ' + appName}
             }
         ]
     },
@@ -233,6 +253,11 @@ let routes = [
             {
                 path: '/:category/:slug',
                 component: require('./views/post/View.vue'),
+                meta: {title: appName}
+            },
+            {
+                path: '/:slug',
+                component: require('./views/page/View.vue'),
                 meta: {title: appName}
             }
         ]

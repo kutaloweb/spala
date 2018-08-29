@@ -18,6 +18,11 @@ Route::group(['prefix' => 'posts'], function () {
     Route::get('/{category}/{slug}','PostController@getPublicPost');
 });
 
+Route::group(['prefix' => 'pages'], function () {
+    Route::get('/','PageController@getPublicPages');
+    Route::get('/{slug}','PageController@getPublicPage');
+});
+
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', 'AuthController@authenticate');
     Route::post('/check', 'AuthController@check');
@@ -93,4 +98,11 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::get('/category/{id}', 'CategoryController@show');
     Route::post('/category', 'CategoryController@store');
     Route::delete('/category/{id}', 'CategoryController@destroy');
+
+    Route::post('/page/statistics','PageController@statistics');
+    Route::post('/page/new','PageController@store');
+    Route::get('/page/published','PageController@getPublishedList');
+    Route::delete('/page/{slug}','PageController@destroy');
+    Route::get('/page/{slug}','PageController@show');
+    Route::post('/page/upload/image','PageController@uploadImage');
 });

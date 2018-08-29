@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="row" v-for="items in splitted">
-            <div class="col-12 m-t-20 m-b-20">
+            <div class="col-12 m-b-20">
                 <div v-if="items.length === 3" class="card-deck">
                     <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
                 </div>
