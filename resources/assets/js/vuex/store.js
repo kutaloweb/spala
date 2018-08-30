@@ -25,7 +25,8 @@ const store = new Vuex.Store({
             admin: '',
             user: ''
         },
-        search_query: ''
+        search_query: '',
+        search_category_id: ''
     },
     mutations: {
         setAuthStatus(state) {
@@ -79,6 +80,9 @@ const store = new Vuex.Store({
         setSearchQuery(state, data) {
             state.search_query = data;
         },
+        setSearchCategory(state, data) {
+            state.search_category_id = data;
+        }
     },
     actions,
     getters,

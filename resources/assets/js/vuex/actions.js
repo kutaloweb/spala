@@ -31,6 +31,9 @@ export const setDefaultRole = ({commit}, data) => {
 export const setSearchQuery = ({commit}, data) => {
     commit('setSearchQuery', data)
 };
+export const setSearchCategory = ({commit}, data) => {
+    commit('setSearchCategory', data)
+};
 
 export default {
     setAuthStatus,
@@ -43,5 +46,6 @@ export default {
     resetTwoFactorCode,
     setLastActivity,
     setDefaultRole,
-    setSearchQuery
+    setSearchQuery,
+    setSearchCategory
 };

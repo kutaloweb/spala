@@ -132,6 +132,10 @@ export default {
         return store.getters.getSearchQuery;
     },
 
+    getSearchCategory() {
+        return store.getters.getSearchCategory;
+    },
+
     userHasRole(user, roleName) {
         if (!user.roles) {
             return false;

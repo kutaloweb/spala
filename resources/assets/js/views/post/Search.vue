@@ -113,7 +113,12 @@
         },
         mounted() {
             this.filterPostForm.search_query = helper.getSearchQuery();
+            this.filterPostForm.category_id = helper.getSearchCategory();
             this.getPosts();
+        },
+        beforeDestroy () {
+            this.$store.dispatch('setSearchQuery', '');
+            this.$store.dispatch('setSearchCategory', '');
         },
         methods: {
             getPosts(page) {

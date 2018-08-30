@@ -34,6 +34,10 @@ export const getSearchQuery = (state) => {
     return state.search_query;
 };
 
+export const getSearchCategory = (state) => {
+    return state.search_category_id;
+};
+
 export default {
     getAuthUser,
     getAuthStatus,
@@ -44,4 +48,5 @@ export default {
     getLastActivity,
     getDefaultRole,
     getSearchQuery,
+    getSearchCategory
 };

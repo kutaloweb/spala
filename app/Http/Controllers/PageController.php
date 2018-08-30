@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
@@ -27,6 +28,11 @@ class PageController extends Controller
     protected $activity;
 
     /**
+     * @var CategoryRepository
+     */
+    protected $category;
+
+    /**
      * @var string
      */
     protected $module = 'page';
@@ -37,12 +43,14 @@ class PageController extends Controller
      * @param Request $request
      * @param PageRepository $repo
      * @param ActivityLogRepository $activity
+     * @param CategoryRepository $category
      */
-    public function __construct(Request $request, PageRepository $repo, ActivityLogRepository $activity)
+    public function __construct(Request $request, PageRepository $repo, ActivityLogRepository $activity, CategoryRepository $category)
     {
         $this->request = $request;
         $this->repo = $repo;
         $this->activity = $activity;
+        $this->category = $category;
         $this->middleware('permission:access-page')->except(['getPublicPages', 'getPublicPage']);
     }
 
@@ -67,9 +75,11 @@ class PageController extends Controller
      */
     public function getPublicPage($slug)
     {
+        $categories = $this->category->getAll();
+
         $page = $this->repo->getBySlugForGuests($slug);
 
-        return $this->success(compact('page'));
+        return $this->success(compact('categories', 'page'));
     }
 
     /**

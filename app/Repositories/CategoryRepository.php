@@ -31,7 +31,7 @@ class CategoryRepository
      */
     public function getAll()
     {
-        return $this->category->all();
+        return $this->category->withCount('posts')->get();
     }
 
     /**

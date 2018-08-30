@@ -89,9 +89,11 @@ class PostController extends Controller
      */
     public function getPublicPost($category, $slug)
     {
+        $categories = $this->category->getAll();
+
         $post = $this->repo->getByCategoryAndSlug($category, $slug);
 
-        return $this->success(compact('post'));
+        return $this->success(compact('categories', 'post'));
     }
 
     /**

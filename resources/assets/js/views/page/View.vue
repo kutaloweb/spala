@@ -15,6 +15,13 @@
                                             :url="`${getConfig('app_url')}/${page.slug}`"
                                             :title="`${page.title}`">
                                     </social-sharing>
+                                    <div class="text-muted card-caps mt-3 mb-1">{{ trans('category.categories') }}</div>
+                                    <div class="list-group">
+                                        <a href="#" @click="searchCategory(category.id)" v-for="category in categories" class="list-group-item ist-group-item-action d-flex justify-content-between align-items-center">
+                                            {{ category.name }}
+                                            <span class="badge badge-primary badge-pill">{{ category.posts_count }}</span>
+                                        </a>
+                                    </div>
                                     <div class="text-muted card-caps mt-3 mb-1">{{ trans('general.contact_info') }}</div>
                                 </div>
                             </div>
@@ -59,7 +66,8 @@
             return {
                 slug: '',
                 page: {},
-                documentTitle: ''
+                documentTitle: '',
+                categories: []
             };
         },
         mounted() {
@@ -69,6 +77,7 @@
                 .then(response => response.data)
                 .then(response => {
                     this.page = response.page;
+                    this.categories = response.categories;
                     if (this.page) {
                         this.documentTitle = `${this.page.title} | ${helper.getConfig('company_name')}`;
                     } else {
@@ -87,6 +96,11 @@
             },
             limitWords(str) {
                 return helper.limitWords(str, 35);
+            },
+            searchCategory(categoryId) {
+                helper.showSpinner();
+                this.$store.dispatch('setSearchCategory', categoryId);
+                this.$router.push('/search');
             }
         }
     }

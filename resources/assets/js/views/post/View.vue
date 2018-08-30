@@ -14,10 +14,18 @@
                                     <div class="card-text" v-html="post.body"></div>
                                 </div>
                                 <div class="col-md-3" v-if="post.body">
+                                    <div class="text-muted card-caps mb-1">{{ trans('general.share') }}</div>
                                     <social-sharing
                                             :url="`${getConfig('app_url')}/${categorySlug}/${post.slug}`"
                                             :title="`${post.title}`">
                                     </social-sharing>
+                                    <div class="text-muted card-caps mt-3 mb-1">{{ trans('category.categories') }}</div>
+                                    <div class="list-group">
+                                        <a href="#" @click="searchCategory(category.id)" v-for="category in categories" class="list-group-item ist-group-item-action d-flex justify-content-between align-items-center">
+                                            {{ category.name }}
+                                            <span class="badge badge-primary badge-pill">{{ category.posts_count }}</span>
+                                        </a>
+                                    </div>
                                     <div class="text-muted card-caps mt-3 mb-1">{{ trans('general.contact_info') }}</div>
                                 </div>
                             </div>
@@ -65,7 +73,8 @@
                 categorySlug: '',
                 slug: '',
                 post: {},
-                documentTitle: ''
+                documentTitle: '',
+                categories: []
             };
         },
         mounted() {
@@ -76,6 +85,7 @@
                 .then(response => response.data)
                 .then(response => {
                     this.post = response.post;
+                    this.categories = response.categories;
                     this.categoryName = this.post ? response.post.category.name : '';
                     this.categorySlug = this.post ? response.post.category.slug : '';
                     if (this.post) {
@@ -96,6 +106,11 @@
             },
             limitWords(str) {
                 return helper.limitWords(str, 35);
+            },
+            searchCategory(categoryId) {
+                helper.showSpinner();
+                this.$store.dispatch('setSearchCategory', categoryId);
+                this.$router.push('/search');
             }
         }
     }

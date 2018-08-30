@@ -1,33 +1,35 @@
 <template>
     <social-sharing :url="url" :title="title" inline-template>
         <div>
-            <div class="text-muted card-caps mb-1">{{ trans('general.share') }}</div>
-            <div class="social-icons">
-                <a href="#" class="social-icon">
+            <div class="social-icons row">
+                <div class="col-md-3">
                     <network network="facebook">
-                        <i class="fab fa-facebook-f"></i>
+                        <button class="btn btn-lg btn-block btn-sm social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
                     </network>
-                </a>
-                <a href="#" class="social-icon">
+                </div>
+                <div class="col-md-3">
                     <network network="twitter">
-                        <i class="fab fa-twitter"></i>
+                        <button class="btn btn-lg btn-block btn-sm social-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                        </button>
                     </network>
-                </a>
-                <a href="#" class="social-icon">
+                </div>
+                <div class="col-md-3">
                     <network network="whatsapp">
-                        <i class="fab fa-whatsapp"></i>
+                        <button class="btn btn-lg btn-block btn-sm social-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
                     </network>
-                </a>
-                <a href="#" class="social-icon">
+                </div>
+                <div class="col-md-3">
                     <network network="telegram">
-                        <i class="fab fa-telegram"></i>
+                        <button class="btn btn-lg btn-block btn-sm social-icon telegram">
+                            <i class="fab fa-telegram"></i>
+                        </button>
                     </network>
-                </a>
-                <a href="#" class="social-icon">
-                    <network network="email">
-                        <i class="fas fa-envelope"></i>
-                    </network>
-                </a>
+                </div>
             </div>
         </div>
     </social-sharing>
