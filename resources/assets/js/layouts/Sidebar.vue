@@ -28,7 +28,7 @@
                         </router-link>
                     </li>
                     <li v-if="hasPermission('access-post')">
-                        <router-link to="/post" exact>
+                        <router-link to="/post/published" exact>
                             <i class="far fa-share-square fa-fw"></i>
                             <span class="hide-menu">{{ trans('post.posts') }}</span>
                         </router-link>
@@ -40,7 +40,7 @@
                         </router-link>
                     </li>
                     <li v-if="hasPermission('access-page')">
-                        <router-link to="/page" exact>
+                        <router-link to="/page/published" exact>
                             <i class="fas fa-columns fa-fw"></i>
                             <span class="hide-menu">{{ trans('page.pages') }}</span>
                         </router-link>

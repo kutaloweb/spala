@@ -262,13 +262,16 @@
                 helper.notAccessibleMsg();
                 this.$router.push('/home');
             }
+            helper.showSpinner();
             axios.get('/api/configuration')
                 .then(response => response.data)
                 .then(response => {
+                    helper.hideSpinner();
                     this.configForm = helper.formAssign(this.configForm, response);
                     this.locale = response.locale;
                 })
                 .catch(error => {
+                    helper.hideSpinner();
                     helper.showDataErrorMsg(error);
             });
             axios.get('/api/configuration/variable?type=system')

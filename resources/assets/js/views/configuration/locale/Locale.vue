@@ -115,14 +115,17 @@
                     page = 1;
                 }
                 let url = helper.getFilterURL(this.filterLocaleForm);
+                helper.showSpinner();
                 axios.get('/api/locale?page=' + page + url)
                     .then(response => response.data)
                     .then(response => {
                         this.locales = response.locales;
                         this.modules = response.modules;
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
             },
             editLocale(locale) {

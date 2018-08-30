@@ -61,16 +61,18 @@
                 helper.notAccessibleMsg();
                 this.$router.push('/home');
             }
-
+            helper.showSpinner();
             axios.get('/api/user/' + this.id)
                 .then(response => response.data)
                 .then(response => {
                     this.user = response.user;
                     this.avatar.user = response.user.profile.avatar;
+                    helper.hideSpinner();
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
                     this.$router.push('/user');
+                    helper.hideSpinner();
                 })
         },
         methods: {

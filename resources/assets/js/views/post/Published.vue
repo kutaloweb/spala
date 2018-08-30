@@ -176,14 +176,17 @@
                     page = 1;
                 }
                 let url = helper.getFilterURL(this.filterPostForm);
+                helper.showSpinner();
                 axios.get('/api/post/published?page=' + page + url)
                     .then(response => response.data)
                     .then(response => {
                         this.posts = response.posts;
                         this.categories = response.categories;
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
             },
             confirmDelete(published) {

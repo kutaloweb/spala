@@ -106,11 +106,16 @@
                     page = 1;
                 }
                 let url = helper.getFilterURL(this.filterPermissionForm);
+                helper.showSpinner();
                 axios.get('/api/permission?page=' + page + url)
                     .then(response => response.data)
-                    .then(response => this.permissions = response)
+                    .then(response => {
+                        this.permissions = response;
+                        helper.hideSpinner();
+                    })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
             },
             confirmDelete(permission) {

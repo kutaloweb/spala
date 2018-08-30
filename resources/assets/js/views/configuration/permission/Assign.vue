@@ -80,15 +80,18 @@
                 helper.notAccessibleMsg();
                 this.$router.push('/home');
             }
+            helper.showSpinner();
             axios.get('/api/permission/assign/pre-requisite')
                 .then(response => response.data)
                 .then(response => {
                     this.permissions = response.permissions;
                     this.roles = response.roles;
                     this.assignPermissionForm.data = response.data;
+                    helper.hideSpinner();
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
+                    helper.hideSpinner();
                 });
         },
         methods: {

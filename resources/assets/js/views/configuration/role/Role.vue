@@ -104,11 +104,16 @@
                     page = 1;
                 }
                 let url = helper.getFilterURL(this.filterRoleForm);
+                helper.showSpinner();
                 axios.get('/api/role?page=' + page + url)
                     .then(response => response.data)
-                    .then(response => this.roles = response)
+                    .then(response => {
+                        this.roles = response;
+                        helper.hideSpinner();
+                    })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
             },
             confirmDelete(role) {

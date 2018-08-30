@@ -193,6 +193,7 @@
             }
         },
         mounted() {
+            helper.showSpinner();
             axios.get('/api/dashboard')
                 .then(response => response.data)
                 .then(response => {
@@ -208,9 +209,11 @@
 
                     this.activity_logs = response.activity_logs;
                     this.posts = response.posts;
+                    helper.hideSpinner();
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
+                    helper.hideSpinner();
                 })
         },
         methods: {

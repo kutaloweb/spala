@@ -101,11 +101,16 @@
                     page = 1;
                 }
                 let url = helper.getFilterURL(this.filterRoleForm);
+                helper.showSpinner();
                 axios.get('/api/category?page=' + page + url)
                     .then(response => response.data)
-                    .then(response => this.categories = response)
+                    .then(response => {
+                        this.categories = response;
+                        helper.hideSpinner();
+                    })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
             },
             confirmDelete(category) {

@@ -138,14 +138,17 @@
                     page = 1;
                 }
                 let url = helper.getFilterURL(this.filterActivityLogForm);
+                helper.showSpinner();
                 axios.get('/api/activity-log?page=' + page + url)
                     .then(response => response.data)
                     .then(response => {
                         this.users = response.users;
                         this.activity_logs = response.activity_logs;
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
 
             }

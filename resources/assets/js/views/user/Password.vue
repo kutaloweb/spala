@@ -88,14 +88,16 @@
                 helper.notAccessibleMsg();
                 this.$router.push('/home');
             }
-
+            helper.showSpinner();
             axios.get('/api/user/' + this.id)
                 .then(response => response.data)
                 .then(response => {
                     this.user = response.user;
+                    helper.hideSpinner();
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
+                    helper.hideSpinner();
                 });
         },
         methods: {

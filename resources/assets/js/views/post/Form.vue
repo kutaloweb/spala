@@ -92,6 +92,7 @@
                 });
 
             if (this.slug) {
+                helper.showSpinner();
                 axios.get('/api/post/' + this.slug)
                     .then(response => response.data)
                     .then(response => {
@@ -99,9 +100,11 @@
                         this.postForm.body = response.post.body;
                         this.postForm.id = response.post.id;
                         this.postForm.category_id = response.post.category_id;
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
             }
         },

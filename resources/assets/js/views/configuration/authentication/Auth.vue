@@ -169,13 +169,16 @@
                 helper.notAccessibleMsg();
                 this.$router.push('/home');
             }
+            helper.showSpinner();
             axios.get('/api/configuration')
                 .then(response => response.data)
                 .then(response => {
                     this.configForm = helper.formAssign(this.configForm, response);
+                    helper.hideSpinner();
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
+                    helper.hideSpinner();
                 });
         },
         methods: {

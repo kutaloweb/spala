@@ -144,6 +144,7 @@
                 .catch(error => {
                     helper.showDataErrorMsg(error);
                 });
+            helper.showSpinner();
             axios.get('/api/user/' + this.id)
                 .then(response => response.data)
                 .then(response => {
@@ -155,10 +156,12 @@
                     this.userForm.state = response.user.profile.state;
                     this.userForm.zipcode = response.user.profile.zipcode;
                     this.userForm.country_id = response.user.profile.country_id || '';
+                    helper.hideSpinner();
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
                     this.$router.push('/user');
+                    helper.hideSpinner();
                 })
         },
         methods: {

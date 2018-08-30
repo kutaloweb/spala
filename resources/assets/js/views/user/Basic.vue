@@ -165,6 +165,7 @@
         },
         methods: {
             fetchUserData() {
+                helper.showSpinner();
                 axios.get('/api/user/' + this.id)
                     .then(response => response.data)
                     .then(response => {
@@ -176,10 +177,12 @@
                         this.userForm.date_of_birth = response.user.profile.date_of_birth;
                         this.userForm.role_id = response.roles;
                         this.selected_roles = response.selected_roles;
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
                         this.$router.push('/user');
+                        helper.hideSpinner();
                     })
             },
             fetchPreRequisites() {

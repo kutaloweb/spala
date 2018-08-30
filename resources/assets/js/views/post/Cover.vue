@@ -75,6 +75,7 @@
                 .catch(error => {
                     helper.showDataErrorMsg(error);
                 });
+            helper.showSpinner();
             axios.get('/api/post/' + this.slug)
                 .then(response => response.data)
                 .then(response => {
@@ -83,10 +84,12 @@
                     if (response.post.cover !== 'uploads/images/cover-default.png') {
                         this.cover.post = response.post.cover;
                     }
+                    helper.hideSpinner();
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
                     this.$router.push('/post');
+                    helper.hideSpinner();
                 })
         }
     }

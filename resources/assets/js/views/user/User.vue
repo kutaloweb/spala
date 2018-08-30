@@ -366,13 +366,16 @@
                 return helper.hasPermission(permission);
             },
             fetchPreRequisites() {
+                helper.showSpinner();
                 axios.get('/api/user/pre-requisite')
                     .then(response => response.data)
                     .then(response => {
+                        helper.hideSpinner();
                         this.countries = response.countries;
                         this.roles = response.roles;
                     })
                     .catch(error => {
+                        helper.hideSpinner();
                         helper.showDataErrorMsg(error)
                     });
             },

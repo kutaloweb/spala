@@ -200,6 +200,7 @@
                 .catch(error => {
                     helper.showDataErrorMsg(error);
                 });
+            helper.showSpinner();
             axios.get('/api/user/detail')
                 .then(response => response.data)
                 .then(response => {
@@ -215,9 +216,11 @@
                     this.userForm.state = response.profile.state;
                     this.userForm.zipcode = response.profile.zipcode;
                     this.userForm.country_id = response.profile.country_id || '';
+                    helper.hideSpinner();
                 })
                 .catch(error => {
                     helper.showDataErrorMsg(error);
+                    helper.hideSpinner();
                 });
         },
         methods: {

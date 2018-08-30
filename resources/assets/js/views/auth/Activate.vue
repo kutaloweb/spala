@@ -46,14 +46,17 @@
 
                 return this.$router.push('/home');
             }
+            helper.showSpinner();
             axios.get('/api/auth/activate/' + this.token)
                 .then(response => response.data)
                 .then(response => {
                     this.message = response.message;
+                    helper.hideSpinner();
                 })
                 .catch(error => {
-                helper.showDataErrorMsg(error);
-                this.status = false;
+                    helper.showDataErrorMsg(error);
+                    this.status = false;
+                    helper.hideSpinner();
             });
         }
     }

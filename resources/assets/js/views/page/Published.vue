@@ -111,13 +111,16 @@
                     page = 1;
                 }
                 let url = helper.getFilterURL(this.filterPageForm);
+                helper.showSpinner();
                 axios.get('/api/page/published?page=' + page + url)
                     .then(response => response.data)
                     .then(response => {
                         this.pages = response.pages;
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
             },
             confirmDelete(published) {

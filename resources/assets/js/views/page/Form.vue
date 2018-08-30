@@ -62,15 +62,18 @@
                 });
 
             if (this.slug) {
+                helper.showSpinner();
                 axios.get('/api/page/' + this.slug)
                     .then(response => response.data)
                     .then(response => {
                         this.pageForm.title = response.page.title;
                         this.pageForm.body = response.page.body;
                         this.pageForm.id = response.page.id;
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
+                        helper.hideSpinner();
                     });
             }
         },

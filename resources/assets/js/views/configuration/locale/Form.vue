@@ -56,15 +56,18 @@
                     });
             },
             getLocale() {
+                helper.showSpinner();
                 axios.get('/api/locale/' + this.id)
                     .then(response => response.data)
                     .then(response => {
                         this.localeForm.name = response.name;
                         this.localeForm.locale = response.locale;
+                        helper.hideSpinner();
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);
                         this.$router.push('/configuration/locale');
+                        helper.hideSpinner();
                     });
             },
             updateLocale() {
