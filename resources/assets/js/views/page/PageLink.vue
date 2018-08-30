@@ -1,7 +1,9 @@
 <template>
-    <router-link @click.native="showSpinner" :to="`${page.slug}`">
-        <b class="mr-5 ml-5 page-title">{{ page.title }}</b>
-    </router-link>
+        <li class="page-nav-item">
+            <router-link @click.native="showSpinner" :to="`${page.slug}`">
+                {{ page.title }}
+            </router-link>
+        </li>
 </template>
 
 <script>

@@ -1,10 +1,8 @@
 <template>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 m-t-20 text-center">
-                <page-link v-for="page in items" :page="page" :key="page.id"></page-link>
-            </div>
-        </div>
+    <div class="page-nav-items">
+        <ul>
+            <page-link v-for="page in items" :page="page" :key="page.id"></page-link>
+        </ul>
     </div>
 </template>
 

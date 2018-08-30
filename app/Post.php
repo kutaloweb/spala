@@ -90,7 +90,7 @@ class Post extends Model
      */
     public function getStrippedBodyAttribute()
     {
-        return strip_tags($this->attributes['body']);
+        return strip_tags($this->attributes['body'], '<p>');
     }
 
     /**

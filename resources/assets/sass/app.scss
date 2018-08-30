@@ -2658,6 +2658,18 @@ samp {
   line-height: 22px;
 }
 
-.page-title {
-  font-size: 21px;
+.page-nav-items {
+  text-align: center;
+  margin-top: 40px;
+  margin-right: 10px;
+}
+
+.page-nav-item {
+  display: inline-block;
+  margin-right: 30px;
+  font-size: 1.2rem;
+}
+
+.topbar ul.dropdown-user li.divider {
+  margin: 0;
 }

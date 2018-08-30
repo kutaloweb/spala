@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <h3 class="card-title post-title list-title">{{ post.title }}</h3>
-            <h5 class="card-text list-text">{{ limitWords(post.stripped_body) }}</h5>
+            <h5 class="card-text list-text" v-html="limitWords(post.stripped_body)"></h5>
             <p class="card-text">
                 <small class="text-muted card-caps">
                     {{ post.category.name }} / {{ post.created_at }}
