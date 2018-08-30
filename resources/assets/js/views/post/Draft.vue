@@ -30,14 +30,25 @@
                                         </button>
                                         <h4 class="card-title">{{ trans('general.filter') }}</h4>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-12 col-md-3">
                                                 <div class="form-group">
                                                     <label>{{ trans('post.search_query') }}</label>
                                                     <input class="form-control" name="search_query"
                                                            v-model="filterPostForm.search_query">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label>{{ trans('category.category') }}</label>
+                                                    <select v-model="filterPostForm.category_id" class="custom-select col-12 form-control">
+                                                        <option value="">{{ trans('general.select_one') }}</option>
+                                                        <option v-for="category in categories" v-bind:value="category.id">
+                                                            {{ category.name }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
                                                 <div class="form-group">
                                                     <date-range-picker
                                                             :start-date.sync="filterPostForm.created_at_start_date"
@@ -65,6 +76,7 @@
                                         <thead>
                                         <tr>
                                             <th>{{ trans('post.user') }}</th>
+                                            <th>{{ trans('category.category') }}</th>
                                             <th>{{ trans('post.title') }}</th>
                                             <th>{{ trans('post.drafted_at') }}</th>
                                             <th class="table-option">{{ trans('general.action') }}</th>
@@ -73,6 +85,7 @@
                                         <tbody>
                                         <tr v-for="draft in posts.data">
                                             <td v-text="draft.user.name"></td>
+                                            <td v-text="draft.category.name"></td>
                                             <td v-text="draft.title"></td>
                                             <td>{{ draft.updated_at }}</td>
                                             <td class="table-option">
@@ -132,6 +145,7 @@
                     page_length: helper.getConfig('page_length')
                 },
                 showFilterPanel: false,
+                categories: [],
                 statistics: {
                     published: 0,
                     draft: 0
@@ -173,6 +187,7 @@
                     .then(response => response.data)
                     .then(response => {
                         this.posts = response.posts;
+                        this.categories = response.categories;
                     })
                     .catch(error => {
                         helper.showDataErrorMsg(error);

@@ -172,9 +172,11 @@ class PostController extends Controller
      */
     public function getDraftList()
     {
+        $categories = $this->category->getAll();
+
         $posts = $this->repo->getDraftList($this->request->all());
 
-        return $this->success(compact('posts'));
+        return $this->success(compact('categories', 'posts'));
     }
 
     /**
@@ -184,9 +186,11 @@ class PostController extends Controller
      */
     public function getPublishedList()
     {
+        $categories = $this->category->getAll();
+
         $posts = $this->repo->getPublishedList($this->request->all());
 
-        return $this->success(compact('posts'));
+        return $this->success(compact('categories', 'posts'));
     }
 
     /**

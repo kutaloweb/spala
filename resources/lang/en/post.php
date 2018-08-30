@@ -28,7 +28,7 @@ return [
     'published_at' => 'Published at',
     'published_box' => 'Published',
     'save_as_draft' => 'Save as Draft',
-    'search_query' => 'Title or Content',
+    'search_query' => 'Title/Content',
     'slug' => 'Slug',
     'title' => 'Title',
     'user' => 'User',
