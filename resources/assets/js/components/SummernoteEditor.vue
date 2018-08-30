@@ -60,11 +60,6 @@
                 },
                 onImageUpload: function (files) {
                     vm.sendFile(files[0]);
-                },
-                onPaste: function () {
-                    setTimeout(function () {
-                        vm.updatePastedText();
-                    }, 1000);
                 }
             };
             $(this.$el).summernote(config);
@@ -97,38 +92,6 @@
                             toastr.error(i18n.general.no_file_uploaded);
                         }
                     })
-            },
-            cleanPastedHTML(input) {
-                let stringStripper = /(\n|\r| class=(")?Mso[a-zA-Z]+(")?)/g;
-                let output = input.replace(stringStripper, ' ');
-
-                let commentStripper = new RegExp('<!--(.*?)-->', 'g');
-                output = output.replace(commentStripper, '');
-
-                let allowedTags = [
-                    '<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>', '<br>', '<blockquote>', '<code>',
-                    '<ul>', '<ol>', '<li>', '<b>', '<strong>', '<i>', '<u>', '<a>', '<img>', '<iframe>', '<hr>'
-                ];
-                allowedTags = (((allowedTags||'') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
-                let tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
-                output = output.replace(tags, function($0, $1) {
-                    return allowedTags.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : ''
-                });
-
-                let badAttributes = ['style', 'class', 'align'];
-                for (let i = 0; i < badAttributes.length; i++) {
-                    let attributeStripper = new RegExp(' ' + badAttributes[i] + '="(.*?)"', 'gi');
-                    output = output.replace(attributeStripper, '');
-                }
-
-                output = output.replace(/[&]nbsp[;]/gi," ");
-
-                return output;
-            },
-            updatePastedText() {
-                let original = this.model;
-                let cleanedModel = this.cleanPastedHTML(original);
-                $(this.$el).summernote("code", cleanedModel);
             }
         }
     }
