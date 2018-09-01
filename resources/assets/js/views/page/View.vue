@@ -11,6 +11,7 @@
                                     <div class="card-text" v-html="page.body"></div>
                                 </div>
                                 <div class="col-md-3" v-if="page.body">
+                                    <div class="text-muted card-caps mb-1">{{ trans('general.share') }}</div>
                                     <social-sharing
                                             :url="`${getConfig('app_url')}/${page.slug}`"
                                             :title="`${page.title}`">

@@ -25,20 +25,20 @@
                                 <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('user.first_name') }}</label>
-                                        <input class="form-control" name="first_name"
+                                        <input @keydown.enter.prevent="getUsers()" class="form-control" name="first_name"
                                                v-model="filterUserForm.first_name">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('user.last_name') }}</label>
-                                        <input class="form-control" name="last_name" v-model="filterUserForm.last_name">
+                                        <input @keydown.enter.prevent="getUsers()" class="form-control" name="last_name" v-model="filterUserForm.last_name">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <div class="form-group">
                                         <label>{{ trans('user.email') }}</label>
-                                        <input class="form-control" name="email" v-model="filterUserForm.email">
+                                        <input @keydown.enter.prevent="getUsers()" class="form-control" name="email" v-model="filterUserForm.email">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-3">
@@ -423,11 +423,29 @@
             }
         },
         watch: {
-            filterUserForm: {
-                handler(val) {
-                    this.getUsers();
-                },
-                deep: true
+            'filterUserForm.role_id': function (newVal, oldVal) {
+                this.getUsers();
+            },
+            'filterUserForm.status': function (newVal, oldVal) {
+                this.getUsers();
+            },
+            'filterUserForm.category_id': function (newVal, oldVal) {
+                this.getUsers();
+            },
+            'filterUserForm.created_at_start_date': function (newVal, oldVal) {
+                this.getUsers();
+            },
+            'filterUserForm.created_at_end_date': function (newVal, oldVal) {
+                this.getUsers();
+            },
+            'filterUserForm.sort_by': function (newVal, oldVal) {
+                this.getUsers();
+            },
+            'filterUserForm.order': function (newVal, oldVal) {
+                this.getUsers();
+            },
+            'filterUserForm.page_length': function (newVal, oldVal) {
+                this.getUsers();
             }
         }
     }

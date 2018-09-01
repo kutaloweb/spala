@@ -11,7 +11,7 @@
                                     <div class="col-12 col-md-3">
                                         <div class="form-group">
                                             <label>{{ trans('post.search_query') }}</label>
-                                            <input class="form-control" name="search_query"
+                                            <input @keydown.enter.prevent="getPosts()" class="form-control" name="search_query"
                                                    v-model="filterPostForm.search_query">
                                         </div>
                                     </div>
@@ -153,11 +153,17 @@
             }
         },
         watch: {
-            filterPostForm: {
-                handler(val) {
-                    this.getPosts();
-                },
-                deep: true
+            'filterPostForm.category_id': function (newVal, oldVal) {
+                this.getPosts();
+            },
+            'filterPostForm.created_at_start_date': function (newVal, oldVal) {
+                this.getPosts();
+            },
+            'filterPostForm.created_at_end_date': function (newVal, oldVal) {
+                this.getPosts();
+            },
+            'filterPostForm.page_length': function (newVal, oldVal) {
+                this.getPosts();
             }
         }
 
