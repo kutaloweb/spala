@@ -33,8 +33,13 @@
                 height: this.height,
                 disableResizeEditor: true,
                 popover: {
-                    image: [],
-                    link: [],
+                    image: [
+                        ['remove', ['removeMedia']]
+                    ],
+                    link: [
+                        ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [],
                     air: []
                 },
                 toolbar: [

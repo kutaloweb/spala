@@ -2464,18 +2464,17 @@ samp {
 }
 
 .note-editor.note-frame {
-  padding: 0.375rem 0;
+  padding: 3px 0;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
 
-.note-toolbar {
-  background-color: #ffffff;
+.card-header.note-toolbar {
+  padding: 0 5px 8px 5px;
 }
 
-.note-btn {
+.note-toolbar {
   background-color: #ffffff;
-  border-color: #ffffff;
 }
 
 .note-btn-group {
