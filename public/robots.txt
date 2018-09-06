@@ -1,2 +1,6 @@
 User-agent: *
-Disallow:
+
+Disallow: /search
+Disallow: /register
+Disallow: /login
+Disallow: /storage
