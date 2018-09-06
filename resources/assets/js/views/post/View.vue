@@ -27,6 +27,7 @@
                                         </a>
                                     </div>
                                     <div class="text-muted card-caps mt-3 mb-1">{{ trans('general.contact_info') }}</div>
+                                    <b>{{ getConfig('contact_info') }}</b>
                                 </div>
                             </div>
                         </div>

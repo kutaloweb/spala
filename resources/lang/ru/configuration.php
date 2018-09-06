@@ -14,6 +14,7 @@ return [
     'https' => 'HTTPS',
     'config_image_removed' => 'Изображение удалено.',
     'config_image_uploaded' => 'Изображение загружено.',
+    'contact_info' => 'Контакты',
     'maintenance_mode' => 'Сайт временно недоступен',
     'maintenance_mode_message' => 'Сообщение о технических работах',
     'multilingual' => 'Мультиязычный сайт',

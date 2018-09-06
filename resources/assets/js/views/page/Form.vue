@@ -79,6 +79,7 @@
         },
         methods: {
             submit() {
+                this.pageForm.body = this.cleanHTML(this.pageForm.body);
                 this.pageForm.body = this.addAttributes(this.pageForm.body);
                 this.pageForm.post('/api/page/new')
                     .then(response => {
@@ -88,6 +89,29 @@
                     .catch(error => {
                         helper.showErrorMsg(error);
                     })
+            },
+            cleanHTML(bodyHtml) {
+                let stringStripper = /(\n|\r| class=(")?Mso[a-zA-Z]+(")?)/g;
+                let output = bodyHtml.replace(stringStripper, ' ');
+                let commentStripper = new RegExp('<!--(.*?)-->', 'g');
+                output = output.replace(commentStripper, '');
+                let allowedTags = [
+                    '<h1>', '<h2>', '<h3>', '<h4>', '<h5>', '<h6>', '<p>', '<br>', '<blockquote>', '<code>',
+                    '<ul>', '<ol>', '<li>', '<b>', '<strong>', '<i>', '<u>', '<a>', '<img>', '<iframe>', '<hr>'
+                ];
+                allowedTags = (((allowedTags||'') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+                let tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
+                output = output.replace(tags, function($0, $1) {
+                    return allowedTags.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : ''
+                });
+                let badAttributes = ['style', 'class', 'align'];
+                for (let i = 0; i < badAttributes.length; i++) {
+                    let attributeStripper = new RegExp(' ' + badAttributes[i] + '="(.*?)"', 'gi');
+                    output = output.replace(attributeStripper, '');
+                }
+                output = output.replace(/[&]nbsp[;]/gi," ");
+
+                return output;
             },
             addAttributes(bodyHtml) {
                 bodyHtml = bodyHtml.replace(new RegExp('<a href', 'g'), '<a target="_blank" rel="nofollow" href');

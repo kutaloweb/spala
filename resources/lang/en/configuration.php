@@ -14,6 +14,7 @@ return [
     'https' => 'HTTPS',
     'config_image_removed' => 'Image removed.',
     'config_image_uploaded' => 'Image uploaded.',
+    'contact_info' => 'Contact Info',
     'maintenance_mode' => 'Maintenance Mode',
     'maintenance_mode_message' => 'Maintenance Mode Message',
     'multilingual' => 'Multilingual',

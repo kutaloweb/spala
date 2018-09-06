@@ -143,6 +143,17 @@
                                                 </show-error>
                                             </div>
                                         </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ trans('configuration.contact_info') }}</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.contact_info" name="contact_info"
+                                                       :placeholder="trans('configuration.contact_info')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="contact_info">
+                                                </show-error>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-md-6">
@@ -240,6 +251,7 @@
                     footer_credit: '',
                     company_name: '',
                     company_description: '',
+                    contact_info: '',
                     facebook_group: '',
                     https: 0,
                     multilingual: 0,
