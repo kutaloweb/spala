@@ -41,7 +41,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $appends = ['stripped_body'];
+    protected $appends = ['stripped_body', 'totally_stripped_body'];
 
     /**
      * Get the user that owns the post.
@@ -84,13 +84,31 @@ class Post extends Model
     }
 
     /**
-     * Get body with the stripped HTML tags.
+     * Get body with the stripped HTML tags allowing only <p> tag.
      *
      * @return string
      */
     public function getStrippedBodyAttribute()
     {
-        return strip_tags($this->attributes['body'], '<p>');
+        $string = $this->attributes['body'];
+        $doubleSpace = strip_tags(str_replace('<', ' <', $string), '<p>');
+        $singleSpace = str_replace('  ', ' ', $doubleSpace);
+
+        return trim($singleSpace);
+    }
+
+    /**
+     * Get body with the stripped HTML tags.
+     *
+     * @return string
+     */
+    public function getTotallyStrippedBodyAttribute()
+    {
+        $string = $this->attributes['body'];
+        $doubleSpace = strip_tags(str_replace('<', ' <', $string));
+        $singleSpace = str_replace('  ', ' ', $doubleSpace);
+
+        return trim($singleSpace);
     }
 
     /**

@@ -50,16 +50,16 @@
             return {
                 title: `${this.documentTitle}`,
                 meta: [
-                    {name: 'description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
+                    {name: 'description', content: this.post ? this.limitWords(this.post.totally_stripped_body) : ''},
                     {name: 'twitter:card', content: 'summary_large_image'},
                     {name: 'twitter:title', content: this.post ? this.post.title : ''},
-                    {name: 'twitter:description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
+                    {name: 'twitter:description', content: this.post ? this.limitWords(this.post.totally_stripped_body) : ''},
                     {name: 'twitter:image', content: this.post ? `${this.getConfig('app_url')}/${this.post.cover}` : ''},
                     {property: 'og:type', content: 'website'},
                     {property: 'og:site_name', content: this.getConfig('company_name')},
                     {property: 'og:url', content: this.post ? `${this.getConfig('app_url')}/${this.categorySlug}/${this.post.slug}` : ''},
                     {property: 'og:title', content: this.post ? this.post.title : ''},
-                    {property: 'og:description', content: this.post ? this.limitWords(this.post.stripped_body) : ''},
+                    {property: 'og:description', content: this.post ? this.limitWords(this.post.totally_stripped_body) : ''},
                     {property: 'og:image', content: this.post ? `${this.getConfig('app_url')}/${this.post.cover}` : ''}
                 ]
             }

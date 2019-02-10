@@ -34,7 +34,7 @@ class Page extends Model
      *
      * @var array
      */
-    protected $appends = ['stripped_body'];
+    protected $appends = ['totally_stripped_body'];
 
     /**
      * Get created at in a human readable format.
@@ -61,9 +61,13 @@ class Page extends Model
      *
      * @return string
      */
-    public function getStrippedBodyAttribute()
+    public function getTotallyStrippedBodyAttribute()
     {
-        return strip_tags($this->attributes['body']);
+        $string = $this->attributes['body'];
+        $doubleSpace = strip_tags(str_replace('<', ' <', $string));
+        $singleSpace = str_replace('  ', ' ', $doubleSpace);
+
+        return trim($singleSpace);
     }
 
     /**
