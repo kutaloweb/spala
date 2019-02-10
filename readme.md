@@ -4,7 +4,7 @@ Content Management System based on [Laravel 5.6](https://laravel.com), [Vue 2.5]
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local linux machine.
+These instructions will get you a copy of the project up and running on your local Linux or Mac OS X machine.
 
 ### Installing
 
@@ -58,7 +58,7 @@ Execute the NPM script
 npm run dev
 ```
 
-Change the group ownership of the storage and cache directories and grant them all permissions
+Change the group ownership of the storage and cache directories and grant them all permissions (for Mac type `_www` instead of `www-data`).
 
 ```
 sudo chgrp -R www-data storage bootstrap/cache
@@ -70,6 +70,8 @@ Install the application (create default roles, permissions, etc.)
 ```
 php artisan install
 ```
+
+Go to the page `/register`. The first registered user will get the admin role.
 
 If you need own prerender server for SEO purposes
 
