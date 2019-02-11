@@ -1,10 +1,10 @@
 # Spala
 
-Content Management System based on [Laravel 5.6](https://laravel.com), [Vue 2.5](https://vuejs.org), [Bootstrap 4](https://getbootstrap.com/) and [Monster Admin Template](https://wrappixel.com/demos/admin-templates/monster-admin/Documentation/document.html).
+Content Management System based on [Laravel 5.6](https://laravel.com), [Vue 2.5](https://vuejs.org), [Bootstrap 4](https://getbootstrap.com/) and [Monster Admin Template](https://wrappixel.com/demos/admin-templates/monster-admin/Documentation/document.html)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local Linux or Mac OS X machine.
+These instructions will get you a copy of the project up and running on your local Linux or Mac OS X machine
 
 ### Installing
 
@@ -58,7 +58,7 @@ Execute the NPM script
 npm run dev
 ```
 
-Change the group ownership of the storage and cache directories and grant them all permissions (for Mac type `_www` instead of `www-data`).
+Change the group ownership of the storage and cache directories and grant them all permissions (for Mac type `_www` instead of `www-data`)
 
 ```
 sudo chgrp -R www-data storage bootstrap/cache
@@ -71,21 +71,13 @@ Install the application (create default roles, permissions, etc.)
 php artisan install
 ```
 
-Go to the page `/register`. The first registered user will get the admin role.
+Go to the page `/register`. The first registered user will get the admin role
 
-If you need own prerender server for SEO purposes
-
-```
-git clone https://github.com/prerender/prerender.git
-cd prerender
-npm install
-npm install -g forever
-forever start server.js
-```
+By default server-side rendering is used for the SEO purposes but if you need your own prerender server you can use [prerender.io](https://prerender.io/)
 
 ## Contributing
 
-As an open project, I welcome contributions from everybody. Please, feel free to fork the repository and submit pull requests.
+As an open project, I welcome contributions from everybody. Please, feel free to fork the repository and submit pull requests
 
 ## License
 

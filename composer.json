@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.4",
+        "jaybizzle/laravel-crawler-detect": "1.*",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "mews/purifier": "^2.0",

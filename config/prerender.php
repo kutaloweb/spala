@@ -9,7 +9,7 @@
     | prerender on your local machine.
     |
     */
-    'enable' => env('PRERENDER_ENABLE', true),
+    'enable' => env('PRERENDER_ENABLE', false),
     /*
     |--------------------------------------------------------------------------
     | Prerender URL

@@ -47,16 +47,16 @@
             return {
                 title: `${this.documentTitle}`,
                 meta: [
-                    {name: 'description', content: this.page ? this.limitWords(this.page.totally_stripped_body) : ''},
+                    {name: 'description', content: this.page ? this.page.totally_stripped_body : ''},
                     {name: 'twitter:card', content: 'summary_large_image'},
                     {name: 'twitter:title', content: this.page ? this.page.title : ''},
-                    {name: 'twitter:description', content: this.page ? this.limitWords(this.page.totally_stripped_body) : ''},
+                    {name: 'twitter:description', content: this.page ? this.page.totally_stripped_body : ''},
                     {name: 'twitter:image', content: `${this.getConfig('app_url')}/uploads/images/cover-default.png`},
                     {property: 'og:type', content: 'website'},
                     {property: 'og:site_name', content: this.getConfig('company_name')},
                     {property: 'og:url', content: this.page ? `${this.getConfig('app_url')}/${this.page.slug}` : ''},
                     {property: 'og:title', content: this.page ? this.page.title : ''},
-                    {property: 'og:description', content: this.page ? this.limitWords(this.page.totally_stripped_body) : ''},
+                    {property: 'og:description', content: this.page ? this.page.totally_stripped_body : ''},
                     {property: 'og:image', content: `${this.getConfig('app_url')}/uploads/images/cover-default.png`}
                 ]
             }
@@ -95,9 +95,6 @@
         methods: {
             getConfig(name) {
                 return helper.getConfig(name);
-            },
-            limitWords(str) {
-                return helper.limitWords(str, 35);
             },
             searchCategory(categoryId) {
                 helper.showSpinner();

@@ -107,8 +107,11 @@ class Post extends Model
         $string = $this->attributes['body'];
         $doubleSpace = strip_tags(str_replace('<', ' <', $string));
         $singleSpace = str_replace('  ', ' ', $doubleSpace);
-
-        return trim($singleSpace);
+        $string = trim($singleSpace);
+        if (mb_strlen($string, "utf-8") > 150) {
+            $string = mb_substr($string, 0, 150, "utf-8") . '...';
+        }
+        return $string;
     }
 
     /**

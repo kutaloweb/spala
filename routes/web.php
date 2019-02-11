@@ -30,5 +30,11 @@ Route::get('/js/lang', function () {
 })->name('assets.lang');
 
 Route::get('/{vue?}', function () {
+    if(Crawler::isCrawler()) {
+        $category = App\Category::where('slug', Request::segment(1))->first();
+        if (empty($category)) return view('seo')->with('article', null);
+        $article = App\Post::filterByCategoryAndSlug($category, Request::segment(2))->first();
+        return view('seo')->with('article', $article);
+    }
     return view('home');
 })->where('vue', '[\/\w\.-]*')->name('home');
