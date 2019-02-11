@@ -17,6 +17,7 @@ import VuejsDialog from "vuejs-dialog"
 import Sortable from 'vue-sortable'
 import paginationRecord from './components/PaginationRecord'
 import showError from './components/ShowError'
+import { VTooltip } from 'v-tooltip'
 
 window._get = require('lodash/get');
 window._eachRight = require('lodash/eachRight');
@@ -48,13 +49,7 @@ Vue.use(VuejsDialog, {
 });
 Vue.use(Sortable);
 
-Vue.directive('tooltip', function(el, binding){
-    $(el).tooltip({
-        title: binding.value,
-        placement: 'top',
-        trigger: 'hover focus'
-    })
-});
+Vue.directive('tooltip', VTooltip);
 
 Vue.component('pagination-record', paginationRecord);
 Vue.component('show-error', showError);
