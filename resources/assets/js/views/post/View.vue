@@ -12,6 +12,13 @@
                                     </span>
                                     <h1 class="card-title post-title">{{ post.title }}</h1>
                                     <div class="card-text" v-html="post.body"></div>
+                                    <div class="card-text" v-if="hasRole('admin')">
+                                        <router-link :to="`/post/${post.slug}/edit`"
+                                                     class="btn btn-info btn-sm"
+                                                     v-tooltip="trans('post.edit_published')">
+                                            <i class="fas fa-edit"></i>
+                                        </router-link>
+                                    </div>
                                 </div>
                                 <div class="col-md-3" v-if="post.body">
                                     <div class="text-muted card-caps mb-1">{{ trans('general.share') }}</div>
@@ -109,6 +116,9 @@
                 helper.showSpinner();
                 this.$store.dispatch('setSearchCategory', categoryId);
                 this.$router.push('/search');
+            },
+            hasRole(role) {
+                return helper.hasRole(role);
             }
         }
     }
