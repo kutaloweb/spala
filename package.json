@@ -1,5 +1,6 @@
 {
   "name": "spala",
+  "version": "1.0.0",
   "author": "Alexey Kutalo <kutalo84@gmail.com>",
   "license": "MIT",
   "description": "A modern lightweight CMS for Laravel and Vue developers",
