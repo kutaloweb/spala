@@ -1,6 +1,13 @@
 # Spala
 
-Content Management System based on [Laravel 5.6](https://laravel.com), [Vue 2.5](https://vuejs.org), [Bootstrap 4](https://getbootstrap.com/) and [Monster Admin Template](https://wrappixel.com/demos/admin-templates/monster-admin/Documentation/document.html)
+<p align="center">
+<a href="https://packagist.org/packages/spala/spala"><img src="https://poser.pugx.org/spala/spala/v/stable" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/spala/spala"><img src="https://poser.pugx.org/spala/spala/license.svg" alt="License"></a>
+</p>
+
+SPA Content Management System based on [Laravel 5.6](https://laravel.com), [Vue 2.5](https://vuejs.org), [Bootstrap 4](https://getbootstrap.com/) and [Monster Admin Template](https://wrappixel.com/demos/admin-templates/monster-admin/Documentation/document.html)
+
+![Screen](https://user-images.githubusercontent.com/17153568/53791966-80bcd980-3edf-11e9-9425-12fd7a789ad7.png "Dashboard")
 
 ## Getting Started
 
