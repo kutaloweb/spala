@@ -32,7 +32,7 @@ Install the application dependencies
 
 ```
 composer install
-npm instal
+npm install
 ```
 
 Create the environment configuration file and edit it with your favorite IDE
