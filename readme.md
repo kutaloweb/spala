@@ -5,7 +5,7 @@
 <a href="https://packagist.org/packages/spala/spala"><img src="https://poser.pugx.org/spala/spala/license.svg" alt="License"></a>
 </p>
 
-SPA Content Management System based on [Laravel 5.6](https://laravel.com), [Vue 2.5](https://vuejs.org), [Bootstrap 4](https://getbootstrap.com/) and [Monster Admin Template](https://wrappixel.com/demos/admin-templates/monster-admin/Documentation/document.html)
+SPA Content Management System based on [Laravel 5.8](https://laravel.com), [Vue 2.5](https://vuejs.org), [Bootstrap 4](https://getbootstrap.com/) and [Monster Admin Template](https://wrappixel.com/demos/admin-templates/monster-admin/Documentation/document.html)
 
 ![Screen](https://user-images.githubusercontent.com/17153568/53791966-80bcd980-3edf-11e9-9425-12fd7a789ad7.png "Dashboard")
 
@@ -78,9 +78,13 @@ Install the application (create default roles, permissions, etc.)
 php artisan install
 ```
 
+By default server-side rendering is used for the SEO purposes but if you need your own prerender server you can use [prerender.io](https://prerender.io/)
+
+## First steps
+
 Go to the page `/register`. The first registered user will get the admin role
 
-By default server-side rendering is used for the SEO purposes but if you need your own prerender server you can use [prerender.io](https://prerender.io/)
+If you need enable login and give other permissions to user role on the page `/configuration/permission/assign`
 
 ## Contributing
 

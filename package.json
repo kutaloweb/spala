@@ -5,7 +5,10 @@
   "license": "MIT",
   "description": "A modern lightweight CMS for Laravel and Vue developers",
   "keywords": [
-    "spala", "cms" ,"vue", "laravel"
+    "spala",
+    "cms",
+    "vue",
+    "laravel"
   ],
   "repository": {
     "type": "git",
@@ -23,9 +26,9 @@
   "devDependencies": {
     "axios": "^0.18",
     "browser-sync": "^2.18.13",
-    "browser-sync-webpack-plugin": "^1.2.0",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "cross-env": "^5.1",
-    "laravel-mix": "^2.0",
+    "laravel-mix": "^4.0.7",
     "normalize-scss": "^7.0.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "codemirror": "^5.30.0",
