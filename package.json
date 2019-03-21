@@ -1,11 +1,14 @@
 {
   "name": "spala",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Alexey Kutalo <kutalo84@gmail.com>",
   "license": "MIT",
   "description": "A modern lightweight CMS for Laravel and Vue developers",
   "keywords": [
-    "spala", "cms" ,"vue", "laravel"
+    "spala",
+    "cms",
+    "vue",
+    "laravel"
   ],
   "repository": {
     "type": "git",
@@ -21,16 +24,21 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
+    "acorn": "^6.0.0",
     "axios": "^0.18",
     "browser-sync": "^2.18.13",
-    "browser-sync-webpack-plugin": "^1.2.0",
-    "cross-env": "^5.1",
-    "laravel-mix": "^2.0",
-    "normalize-scss": "^7.0.0",
-    "webpack-bundle-analyzer": "^2.9.0",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "codemirror": "^5.30.0",
     "compression-webpack-plugin": "^1.0.1",
-    "lodash": "^4.17.4"
+    "cross-env": "^5.1",
+    "laravel-mix": "^4.0.7",
+    "lodash": "^4.17.4",
+    "normalize-scss": "^7.0.0",
+    "resolve-url-loader": "^2.3.1",
+    "sass": "^1.17.3",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack-bundle-analyzer": "^2.9.0"
   },
   "dependencies": {
     "js-cookie": "^2.1.4",
