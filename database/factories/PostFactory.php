@@ -14,12 +14,19 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Post::class, function (Faker $faker) {
+    $title = $faker->sentence;
     return [
-        'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => Str::random(10),
-        'activation_token' => Str::random(10),
-        'status' => 'activated',
+        'user_id' => function () {
+            return factory('App\User')->create()->id;
+        },
+        'category_id' => function () {
+            return factory('App\Category')->create()->id;
+        },
+        'is_draft' => 0,
+        'title' => $title,
+        'slug' => Str::slug($title),
+        'body' => $faker->paragraph,
+        'cover' => $faker->imageUrl(),
     ];
 });
