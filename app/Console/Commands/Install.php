@@ -10,6 +10,7 @@ use App\Repositories\RoleRepository;
 use App\Repositories\LocaleRepository;
 use Spatie\Permission\Models\Permission;
 use App\Repositories\PermissionRepository;
+use Illuminate\Support\Str;
 
 class Install extends Command
 {
@@ -91,7 +92,7 @@ class Install extends Command
             if (!in_array($value, $categories)) {
                 Category::create([
                     'name' => $value,
-                    'slug' => str_slug($value),
+                    'slug' => Str::slug($value),
                 ]);
             }
         }

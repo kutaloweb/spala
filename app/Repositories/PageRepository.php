@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Page;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 
 class PageRepository
 {
@@ -118,7 +119,7 @@ class PageRepository
         ]);
 
         if (!$id) {
-            $slug = str_slug($params['title']);
+            $slug = Str::slug($params['title']);
             if (Page::whereSlug($slug)->exists()) {
                 throw ValidationException::withMessages(['message' => trans('page.slug_exists')]);
             }

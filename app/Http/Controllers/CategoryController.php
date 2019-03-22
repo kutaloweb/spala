@@ -10,6 +10,7 @@ use App\Http\Requests\CategoryRequest;
 use Illuminate\Validation\ValidationException;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ActivityLogRepository;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -68,12 +69,12 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        if (Category::where('slug', str_slug(request('name')))->exists()) {
+        if (Category::where('slug', Str::slug(request('name')))->exists()) {
             return $this->error(['message' => trans('category.exists')]);
         }
         $category = Category::create([
             'name' => request('name'),
-            'slug' => str_slug(request('name')),
+            'slug' => Str::slug(request('name')),
         ]);
 
         $this->activity->record([

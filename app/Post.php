@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 /**
  * App\Profile
@@ -141,9 +142,9 @@ class Post extends Model
      */
     public function setUniqueSlug($value)
     {
-        $slug = str_slug($value);
+        $slug = Str::slug($value);
         if (static::whereSlug($slug)->exists()) {
-            $slug = str_slug($value . '-' . str_random(5));
+            $slug = Str::slug($value . '-' . Str::random(5));
             $this->attributes['slug'] = $slug;
             return;
         }
