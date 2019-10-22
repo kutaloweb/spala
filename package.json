@@ -38,7 +38,7 @@
     "sass": "^1.17.3",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10",
-    "webpack-bundle-analyzer": "^2.9.0"
+    "webpack-bundle-analyzer": "^3.6.0"
   },
   "dependencies": {
     "js-cookie": "^2.1.4",
